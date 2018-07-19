@@ -5,3 +5,11 @@ export function doSomething(thing) {
     payload: thing
   };
 }
+
+
+export function moveLeft() {
+
+  return {
+    type: 'MOVE LEFT'
+  }
+}
