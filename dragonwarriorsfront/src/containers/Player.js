@@ -9,30 +9,28 @@ import PlayerAttack from './PlayerAttack';
 
 
 class Player extends React.Component {
-  state = {
-    health: 100,
-    attack: false
-    // playDisplayDirection: {
-    //   image: 'http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png',
-    //   width: '5'
-    // },
-    // playDefaultDirection: {
-    //   image: 'http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png',
-    //   width: '5'
-    // },
-    // playRightDirection: {
-    //   image: 'https://vignette.wikia.nocookie.net/deadliestfiction/images/0/09/Goku.png/revision/latest?cb=20180325020436',
-    //   width: '3.5'
-    // },
-    // playLeftDirection: {
-    //   image: 'https://vignette.wikia.nocookie.net/dragonball/images/0/09/Goku.png/revision/latest?cb=20160204151954',
-    //   width: '4.25'
-    // }
+
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      health: 100,
+      attack: false,
+      testleft: this.props.attackLeft,
+      testtop: this.props.attackTop
+    }
   }
+
 
 
   componentDidMount() {
     window.addEventListener('keydown', this.handleControls)
+  }
+
+  handleResetAttack = (event) => {
+    this.setState({
+      attack: false
+    })
   }
 
   handleControls = (event) => {
@@ -122,33 +120,33 @@ class Player extends React.Component {
       break;
 
       case 32:
+
         if (this.state.attack == false){
           this.setState ({
             attack: true
           })
-      } else {
-        this.setState ({
-          attack: false
-        })
       }
 
-      if (this.props.playerDirection.characterdirection == 'DOWN') {
+      if (this.props.playerDirection.characterdirection == 'LEFT') {
         action = {
           type: "ATTACKLEFT"
         }
         this.props.dispatch(action)
+
+        console.log('im here')
+      } else if (this.props.playerDirection.characterdirection == 'DOWN'){
+        action = {
+          type: "ATTACKDOWN"
+        }
+        this.props.dispatch(action)
       }
 
-      action = {
-        type: "ATTACK"
+      // action = {
+      //   type: "ATTACK"
+      // }
+      // this.props.dispatch(action)
+      break;
       }
-      this.props.dispatch(action)
-
-      }
-
-
-
-
 
 
 
@@ -160,22 +158,33 @@ class Player extends React.Component {
 
   render() {
 
+
     return (
       <React.Fragment>
         <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`, transform: 'rotate(0deg)' }} />
         <Healthbar health={this.state.health}/>
-        {this.state.attack == true ? <PlayerAttack attack={this.state.attack}/> : null}
+        {this.props.attackLeft !== null ? <PlayerAttack attack={this.state.attack} resetState={this.handleResetAttack}/> : null}
       </React.Fragment>
     )
   }
 }
+
+
+
+
+
+
+
 
 const mapStateToProps = (state) => {
 
     return {
       top: state.playerCoordinates.top,
       left: state.playerCoordinates.left,
-      playerDirection: state.playerCoordinates.defaultDirection
+      playerDirection: state.playerCoordinates.defaultDirection,
+      attackLeft: state.playerCoordinates.attackLeft,
+      attackTop: state.playerCoordinates.attackTop,
+      degree: state.playerCoordinates.degree
   }
 }
 

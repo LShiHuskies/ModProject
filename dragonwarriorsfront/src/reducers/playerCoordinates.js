@@ -7,8 +7,9 @@
           width: '5',
           characterdirection: 'DOWN'
         },
-        attackTop: '500',
-        attackLeft: '500'
+        attackTop: null,
+        attackLeft: null,
+        degree: '0'
     }
 
 
@@ -114,9 +115,15 @@ export default function playMovements(state = defaultState, action) {
 
     case 'ATTACKLEFT':
 
+
     return {
-      ...state, attackTop: state.top, attackLeft: state.left
+      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) - 50, degree: '180'
     }
+
+    case 'ATTACKDOWN':
+
+    console.log("do nothing")
+    break;
 
   default:
     return state

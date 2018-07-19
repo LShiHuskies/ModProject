@@ -1,19 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-
+var object = []
 class PlayerAttack extends React.Component {
 
-  state = {
-    leftAttack: 100,
-    topAttack: 100
+constructor (props) {
+  super(props)
+
+  this.state = {
+    left: this.props.attackLeft,
+    top: this.props.attackTop
   }
+}
 
   componentDidMount() {
-
+    console.log('state', this.state)
+    if (this.props.degree == '180') {
+      object.push(setInterval( () => {this.setState ({
+        left: this.state.left - 10,
+        top: this.state.top
+      })
+    }, 100))
   }
+  }
+
+
+
   render() {
-    console.log(this.props)
+
     // let leftAttackCoordinates = this.props.attackCoorindates.left
     // let topAttackCoordinates = this.props.attackCoorindates.top
     // let attackRotation = 0;
@@ -28,14 +42,23 @@ class PlayerAttack extends React.Component {
     //   topAttackCoordinates = Number(this.props.attackCoorindates.top) + 60;
     //   attackRotation = 90;
     // }
-
+    if (this.state.left < 0) {
+      // console.log(object)
+      // var leftObjecttimer = object.pop()
+      // clearInterval(leftObjecttimer)
+      // this.setState({
+      //   left: 200,
+      //   top: 200
+      // })
+      // this.props.resetState()
+    }
     return (
       <img src="https://orig00.deviantart.net/c74e/f/2013/060/6/5/kamehameha_style_blue_png_by_lewildgoku-d5wny3l.png"
       style={{
                     width: "6%",
                     position: "absolute",
-                    transform: `rotate(90deg)`,
-                    left: `${this.props.attackLeft}px`,
+                    transform: `rotate(${this.props.degree}deg)`,
+                    left: `${this.state.left}px`,
                     top: `${this.props.attackTop}px`}}
       />
     )
@@ -44,12 +67,15 @@ class PlayerAttack extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  console.log(state)
+
   return {
-    attackleft: state.playerCoordinates.left,
-    attackTop: state.playerCoordinates.top
+    attackLeft: state.playerCoordinates.attackLeft,
+    attackTop: state.playerCoordinates.attackTop,
+    degree: state.playerCoordinates.degree
   }
 }
+
+
 
 
 
