@@ -7,7 +7,10 @@ import PlayerAttack from './PlayerAttack';
 
 
 
-
+var leftAttackProjectile = [];
+var upAttackProjectile = [];
+var downAttackProjectile = [];
+var rightAttackProjectile = [];
 class Player extends React.Component {
 
   constructor (props) {
@@ -16,8 +19,9 @@ class Player extends React.Component {
     this.state = {
       health: 100,
       attack: false,
-      testleft: this.props.attackLeft,
-      testtop: this.props.attackTop
+      leftAttack: null,
+      topAttack: null,
+      degree: this.props.degree
     }
   }
 
@@ -110,6 +114,16 @@ class Player extends React.Component {
 
       break;
 
+      case 38:
+
+        action = {
+          type: 'LOOKUP'
+        }
+
+        this.props.dispatch(action)
+
+      break;
+
       case 40:
 
         action = {
@@ -121,26 +135,149 @@ class Player extends React.Component {
 
       case 32:
 
-        if (this.state.attack == false){
-          this.setState ({
-            attack: true
-          })
-      }
+      if (this.props.playerDirection.characterdirection == 'LEFT' && this.state.attack == false && this.state.leftAttack == null) {
 
-      if (this.props.playerDirection.characterdirection == 'LEFT') {
+
         action = {
           type: "ATTACKLEFT"
         }
         this.props.dispatch(action)
 
-        console.log('im here')
-      } else if (this.props.playerDirection.characterdirection == 'DOWN'){
+        this.setState({
+          attack: true,
+          leftAttack: this.props.attackLeft,
+          topAttack: this.props.attackTop,
+          degree: this.props.degree
+        }, () => {
+          leftAttackProjectile.push(setInterval(
+            () =>  this.setState({
+            leftAttack: this.state.leftAttack - 1,
+            topAttack: this.state.attackTop
+          }, () => { if (this.state.leftAttack < 0) {
+            this.setState({
+              attack: false,
+              leftAttack: null,
+              topAttack: null
+            })
+          }
+          }), 10 )
+        )
+        })
+
+
+      }
+    
+
+
+      else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == false && this.state.topAttack == null){
         action = {
           type: "ATTACKDOWN"
         }
         this.props.dispatch(action)
+
+
+
+      this.setState({
+        attack: true,
+        leftAttack: this.props.attackLeft,
+        topAttack: this.props.attackTop,
+        degree: this.props.degree
+      }, () => {
+        downAttackProjectile.push(setInterval(
+          () =>  this.setState({
+          leftAttack: this.state.leftAttack,
+          topAttack: this.state.topAttack + 1
+        }, () => { if (this.state.topAttack > window.innerHeight) {
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          })
+        }
+        }), 10 )
+      )
+      })
+
+
+    } else if (this.props.playerDirection.characterdirection == 'RIGHT' && this.state.attack == false && this.state.leftAttack == null) {
+      action = {
+        type: "ATTACKRIGHT"
+      }
+      this.props.dispatch(action)
+
+      this.setState({
+        attack: true,
+        leftAttack: this.props.attackLeft,
+        topAttack: this.props.attackTop,
+        degree: this.props.degree
+      }, () => {
+        rightAttackProjectile.push(setInterval(
+          () => this.setState({
+            leftAttack: this.state.leftAttack + 1,
+            topAttack: this.state.topAttack
+          }, () => { if (this.state.leftAttack > window.innerWidth) {
+            this.setState({
+              attack: false,
+              leftAttack: null,
+              topAttack: null
+            })
+          } } ), 10
+        ))
       }
 
+      )
+
+
+    } else if (this.props.playerDirection.characterdirection == 'UP' && this.state.attack == false && this.state.topAttack == null) {
+
+      action = {
+        type: "ATTACKUP"
+      }
+      this.props.dispatch(action)
+
+
+
+    this.setState({
+      attack: true,
+      leftAttack: this.props.attackLeft,
+      topAttack: this.props.attackTop,
+      degree: this.props.degree
+    }, () => {
+      upAttackProjectile.push(setInterval(
+        () =>  this.setState({
+        leftAttack: this.state.leftAttack,
+        topAttack: this.state.topAttack - 1
+      }, () => { if (this.state.topAttack < 0) {
+        this.setState({
+          attack: false,
+          leftAttack: null,
+          topAttack: null
+        })
+      }
+      }), 10 )
+    )
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
       // action = {
       //   type: "ATTACK"
       // }
@@ -157,13 +294,34 @@ class Player extends React.Component {
 
 
   render() {
+  if (this.state.leftAttack < 0) {
+    while (leftAttackProjectile.length > 0) {
+      let leftattackInstance = leftAttackProjectile.pop()
+      clearInterval(leftattackInstance)
+    }
+  } else if ( this.state.topAttack > window.innerHeight) {
 
+    while(downAttackProjectile.length > 0) {
+      let downattackInstance = downAttackProjectile.pop()
+      clearInterval(downattackInstance)
+    }
+  } else if (this.state.leftAttack > window.innerWidth) {
+    while(rightAttackProjectile.length > 0) {
+      let rightattackInstance = rightAttackProjectile.pop()
+      clearInterval(rightattackInstance)
+    }
+  } else if (this.state.topAttack < 0) {
+    while(upAttackProjectile.length > 0) {
+      let upattackInstance = upAttackProjectile.pop()
+      clearInterval(upattackInstance)
+    }
+  }
 
     return (
       <React.Fragment>
         <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`, transform: 'rotate(0deg)' }} />
         <Healthbar health={this.state.health}/>
-        {this.props.attackLeft !== null ? <PlayerAttack attack={this.state.attack} resetState={this.handleResetAttack}/> : null}
+        {this.state.attack == true ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack} topAttackCoordinates={this.state.topAttack} degree={this.state.degree}/> : null}
       </React.Fragment>
     )
   }
@@ -177,6 +335,7 @@ class Player extends React.Component {
 
 
 const mapStateToProps = (state) => {
+
 
     return {
       top: state.playerCoordinates.top,

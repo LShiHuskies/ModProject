@@ -113,6 +113,16 @@ export default function playMovements(state = defaultState, action) {
       }
     }
 
+    case 'LOOKUP':
+
+    return {
+      ...state, defaultDirection: {
+        image: 'http://img00.deviantart.net/c1c5/i/2016/054/4/e/goku_de_espaldas_by_saodvd-d9svku5.png',
+        width: '5',
+        characterdirection: 'UP'
+      }
+    }
+
     case 'ATTACKLEFT':
 
 
@@ -122,7 +132,23 @@ export default function playMovements(state = defaultState, action) {
 
     case 'ATTACKDOWN':
 
-    console.log("do nothing")
+    return {
+      ...state, attackTop: Number(state.top) + 90, attackLeft: Number(state.left) - 10, degree: '90'
+    }
+
+    case 'ATTACKRIGHT':
+
+    return {
+      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) + 30, degree: '0'
+    }
+
+    case 'ATTACKUP':
+
+    return {
+      ...state, attackTop: Number(state.top) - 45, attackLeft: Number(state.left) - 5, degree: '270'
+    }
+
+
     break;
 
   default:
