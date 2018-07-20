@@ -2,16 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-let thing = []
+let friezaIntervals = []
 class Enemy extends React.Component {
 
   componentDidMount() {
     console.log(this.props)
-    window.addEventListener('keydown', this.handleThatKey)
+    window.addEventListener('keydown', () => {
+      friezaIntervals.push(setInterval(this.handleThatKey, 100))
+    })
 
   }
 
-  handleThatKey = (event) => {
+  handleThatKey = () => {
     if (this.props.playerTop > this.props.enemyTop) {
       let action = {
         type: 'ENEMYMOVEDOWN'
@@ -34,7 +36,7 @@ class Enemy extends React.Component {
        this.props.dispatch(action)
      }
 
-     if (this.props.playerLeft < this.props.enemyTop) {
+     if (this.props.playerLeft < this.props.enemyLeft) {
        let action = {
          type: 'ENEMYMOVELEFT'
        }
@@ -46,7 +48,12 @@ class Enemy extends React.Component {
   }
 
   render() {
-    
+    if (friezaIntervals.length > 2) {
+      while (friezaIntervals.length > 1) {
+        let intervalInstance = friezaIntervals.pop()
+        clearInterval(intervalInstance)
+      }
+    }
     return (
       <div>
         <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506' style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
