@@ -2,6 +2,8 @@
     const defaultState = {
         top: '500',
         left: '500',
+        playerHealth: '100',
+        enemyHealth: '100',
         defaultDirection: {
           image: 'http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png',
           width: '5',
@@ -156,7 +158,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: Number(state.enemyCoordinates.enemyTop) + 4,
+        enemyTop: Number(state.enemyCoordinates.enemyTop) + 1,
         enemyLeft: state.enemyCoordinates.enemyLeft
       }
     }
@@ -166,7 +168,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
-        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 4
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 1
       }
     }
 
@@ -174,7 +176,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: Number(state.enemyCoordinates.enemyTop) - 4,
+        enemyTop: Number(state.enemyCoordinates.enemyTop) - 1,
         enemyLeft: state.enemyCoordinates.enemyLeft
       }
     }
@@ -184,7 +186,52 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
-        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 4
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 1
+      }
+    }
+
+    case 'HITFRIEZALEFT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.enemyCoordinates.enemyTop,
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 30
+      }
+    }
+
+    case 'HITFRIEZADOWN':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.enemyCoordinates.enemyTop + 30,
+        enemyLeft: state.enemyCoordinates.enemyLeft
+      }
+    }
+
+    case 'HITFRIEZARIGHT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.enemyCoordinates.enemyTop,
+        enemyLeft: state.enemyCoordinates.enemyLeft + 30
+      }
+    }
+
+    case 'HITFRIEZAUP':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.enemyCoordinates.enemyTop - 30,
+        enemyLeft: state.enemyCoordinates.enemyLeft
+      }
+    }
+
+    case 'TELEPORTENEMY':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: 800,
+        enemyLeft: 800
       }
     }
 

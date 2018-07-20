@@ -17,7 +17,6 @@ class Player extends React.Component {
     super(props)
 
     this.state = {
-      health: 100,
       attack: false,
       leftAttack: null,
       topAttack: null,
@@ -149,23 +148,42 @@ class Player extends React.Component {
           topAttack: this.props.attackTop,
           degree: this.props.degree
         }, () => {
+
           leftAttackProjectile.push(setInterval(
             () =>  this.setState({
             leftAttack: this.state.leftAttack - 5,
-            topAttack: this.state.attackTop
+            topAttack: this.state.topAttack
           }, () => { if (this.state.leftAttack < 0) {
             this.setState({
               attack: false,
               leftAttack: null,
               topAttack: null
             })
-          }
-          }), 10 )
-        )
-        })
+          } else if (  (this.state.leftAttack < this.props.enemyLeft + 20 && this.state.leftAttack > this.props.enemyLeft - 20)
+            && (this.state.topAttack > this.props.enemyTop - 50 && this.state.topAttack < this.props.enemyTop + 105  )
+                  ) {
+
+                    action = {
+                      type: 'HITFRIEZALEFT'
+                    }
+                  this.props.dispatch(action)
+
+            this.setState({
+              attack: false,
+              leftAttack: null,
+              topAttack: null
+            })
+
+          } // end of the else if statement for left attack
 
 
-      }
+
+        }), 10 ) // end of the set Interval for left attack
+      ) // end of the leftAttackProjectile push
+    }) // end of the setState
+
+
+  } // end of the if statement for left direction pointing
 
 
 
@@ -183,6 +201,7 @@ class Player extends React.Component {
         topAttack: this.props.attackTop,
         degree: this.props.degree
       }, () => {
+
         downAttackProjectile.push(setInterval(
           () =>  this.setState({
           leftAttack: this.state.leftAttack,
@@ -193,11 +212,34 @@ class Player extends React.Component {
             leftAttack: null,
             topAttack: null
           })
-        }
-        }), 10 )
-      )
-      })
+        }  // end of the if statement
+        else if ( (this.state.topAttack > this.props.enemyTop - 30 && this.state.topAttack < this.props.enemyTop + 30)
+              && (this.state.leftAttack < this.props.enemyLeft + 40 && this.state.leftAttack > this.props.enemyLeft - 60 )
 
+         ) {
+
+
+             action = {
+               type: 'HITFRIEZADOWN'
+             }
+           this.props.dispatch(action)
+
+           this.setState({
+             attack: false,
+             leftAttack: null,
+             topAttack: null
+           })
+
+           clearInterval(downAttackProjectile.pop())
+        }  // end of the else if statement
+
+
+      }), 10 ) // end of the set interval for the downAttackProjectile
+    ) // end of the push into the downAttackProjectile array
+  }) // end of the setState for the down attack
+
+
+   // end of the else if for the down direction pointing
 
     } else if (this.props.playerDirection.characterdirection == 'RIGHT' && this.state.attack == false && this.state.leftAttack == null) {
       action = {
@@ -221,8 +263,28 @@ class Player extends React.Component {
               leftAttack: null,
               topAttack: null
             })
-          } } ), 10
-        ))
+          }  // end of the if
+          else if ( (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 30)
+            && (this.state.topAttack < this.props.enemyTop + 80 && this.state.topAttack > this.props.enemyTop - 30)
+         ) {
+
+           action = {
+             type: 'HITFRIEZARIGHT'
+           }
+         this.props.dispatch(action)
+
+         this.setState({
+           attack: false,
+           leftAttack: null,
+           topAttack: null
+         })
+         clearInterval(rightAttackProjectile.pop()) // clears the interval if it touches frieza
+
+          } // end of the else if
+
+
+
+        } ), 10 )) // end of the push into the rightAttackProjectile
       }
 
       )
@@ -252,17 +314,35 @@ class Player extends React.Component {
           attack: false,
           leftAttack: null,
           topAttack: null
-        })
-      }
-      }), 10 )
-    )
-    })
+        }) // end of the setState
+      } // end of the if statement
+      else if (
+        ( this.state.topAttack < this.props.enemyTop + 100 && this.state.topAttack > this.props.enemyTop )
+        && (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 20)
+      ) {
+
+        action = {
+          type: 'HITFRIEZAUP'
+        }
+      this.props.dispatch(action)
+
+      this.setState({
+        attack: false,
+        leftAttack: null,
+        topAttack: null
+      }) // end of this this state within the else if statement
+
+
+      } // end of the else if
+    }), 10 ) // end of the setInterval
+  ) // end of the upAttackProjectile
+  })  // end of the setState
 
 
 
 
 
-    }
+  } // end of the else
 
 
       break;
@@ -278,7 +358,9 @@ class Player extends React.Component {
 
   render() {
   if (this.state.leftAttack < 0) {
+
     while (leftAttackProjectile.length > 0) {
+
       let leftattackInstance = leftAttackProjectile.pop()
       clearInterval(leftattackInstance)
     }
@@ -287,6 +369,7 @@ class Player extends React.Component {
     while(downAttackProjectile.length > 0) {
       let downattackInstance = downAttackProjectile.pop()
       clearInterval(downattackInstance)
+
     }
   } else if (this.state.leftAttack > window.innerWidth) {
     while(rightAttackProjectile.length > 0) {
@@ -294,7 +377,9 @@ class Player extends React.Component {
       clearInterval(rightattackInstance)
     }
   } else if (this.state.topAttack < 0) {
+
     while(upAttackProjectile.length > 0) {
+
       let upattackInstance = upAttackProjectile.pop()
       clearInterval(upattackInstance)
     }
@@ -303,7 +388,7 @@ class Player extends React.Component {
     return (
       <React.Fragment>
         <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`, transform: 'rotate(0deg)' }} />
-        <Healthbar health={this.state.health}/>
+        <Healthbar />
         {this.state.attack == true ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack} topAttackCoordinates={this.state.topAttack} degree={this.state.degree}/> : null}
       </React.Fragment>
     )
@@ -320,13 +405,16 @@ class Player extends React.Component {
 const mapStateToProps = (state) => {
 
 
+
     return {
       top: state.playerCoordinates.top,
       left: state.playerCoordinates.left,
       playerDirection: state.playerCoordinates.defaultDirection,
       attackLeft: state.playerCoordinates.attackLeft,
       attackTop: state.playerCoordinates.attackTop,
-      degree: state.playerCoordinates.degree
+      degree: state.playerCoordinates.degree,
+      enemyTop: state.playerCoordinates.enemyCoordinates.enemyTop,
+      enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft
   }
 }
 

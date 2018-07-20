@@ -6,9 +6,9 @@ let friezaIntervals = []
 class Enemy extends React.Component {
 
   componentDidMount() {
-    console.log(this.props)
+
     window.addEventListener('keydown', () => {
-      friezaIntervals.push(setInterval(this.handleThatKey, 100))
+      friezaIntervals.push(setInterval(this.handleThatKey, 100) )
     })
 
   }
@@ -20,7 +20,7 @@ class Enemy extends React.Component {
       }
       this.props.dispatch(action)
 
-    }
+    }  // if the player is closer to the bottom of the screen than the computer
      if (this.props.playerLeft > this.props.enemyLeft) {
 
        let action = {
@@ -28,20 +28,27 @@ class Enemy extends React.Component {
        }
        this.props.dispatch(action)
 
-     }
+     } // if the player is closer to the left of the screen than the computer
      if (this.props.playerTop < this.props.enemyTop) {
        let action = {
          type: 'ENEMYMOVEUP'
        }
        this.props.dispatch(action)
-     }
+     } // if the player is closer to the top of the screen than the computer
 
      if (this.props.playerLeft < this.props.enemyLeft) {
        let action = {
          type: 'ENEMYMOVELEFT'
        }
        this.props.dispatch(action)
-     }
+     } // if the player is closer to the left of the screen than the computer
+
+     if (this.props.playerLeft == this.props.enemyLeft) {
+       let action = {
+         type: 'TELEPORTENEMY'
+       }
+       this.props.dispatch(action)
+     } // if the player is same need to teleport to detect the collision first
 
 
 
@@ -49,7 +56,9 @@ class Enemy extends React.Component {
 
   render() {
     if (friezaIntervals.length > 2) {
+
       while (friezaIntervals.length > 1) {
+
         let intervalInstance = friezaIntervals.pop()
         clearInterval(intervalInstance)
       }
