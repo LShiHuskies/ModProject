@@ -24,7 +24,7 @@ constructor (props) {
 
 
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     // let leftAttackCoordinates = this.props.attackCoorindates.left
     // let topAttackCoordinates = this.props.attackCoorindates.top
     // let attackRotation = 0;

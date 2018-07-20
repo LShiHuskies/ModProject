@@ -4,6 +4,8 @@ import './App.css';
 import Login from './containers/Login'
 import World from './containers/World'
 
+// https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
+
 class App extends Component {
   state = {
     backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-z-namek-background-5521.jpg)',
@@ -18,7 +20,7 @@ class App extends Component {
     if (event.target.value == "Login") {
       this.setState({
         login: true,
-        backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)',
+        backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
       })
     } else if (event.target.value == "Create New Account") {
 

@@ -151,7 +151,7 @@ class Player extends React.Component {
         }, () => {
           leftAttackProjectile.push(setInterval(
             () =>  this.setState({
-            leftAttack: this.state.leftAttack - 1,
+            leftAttack: this.state.leftAttack - 5,
             topAttack: this.state.attackTop
           }, () => { if (this.state.leftAttack < 0) {
             this.setState({
@@ -166,7 +166,7 @@ class Player extends React.Component {
 
 
       }
-    
+
 
 
       else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == false && this.state.topAttack == null){
@@ -186,7 +186,7 @@ class Player extends React.Component {
         downAttackProjectile.push(setInterval(
           () =>  this.setState({
           leftAttack: this.state.leftAttack,
-          topAttack: this.state.topAttack + 1
+          topAttack: this.state.topAttack + 5
         }, () => { if (this.state.topAttack > window.innerHeight) {
           this.setState({
             attack: false,
@@ -213,7 +213,7 @@ class Player extends React.Component {
       }, () => {
         rightAttackProjectile.push(setInterval(
           () => this.setState({
-            leftAttack: this.state.leftAttack + 1,
+            leftAttack: this.state.leftAttack + 5,
             topAttack: this.state.topAttack
           }, () => { if (this.state.leftAttack > window.innerWidth) {
             this.setState({
@@ -246,7 +246,7 @@ class Player extends React.Component {
       upAttackProjectile.push(setInterval(
         () =>  this.setState({
         leftAttack: this.state.leftAttack,
-        topAttack: this.state.topAttack - 1
+        topAttack: this.state.topAttack - 5
       }, () => { if (this.state.topAttack < 0) {
         this.setState({
           attack: false,
@@ -262,26 +262,9 @@ class Player extends React.Component {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-      // action = {
-      //   type: "ATTACK"
-      // }
-      // this.props.dispatch(action)
+
+
       break;
       }
 

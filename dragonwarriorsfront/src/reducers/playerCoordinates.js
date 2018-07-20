@@ -9,7 +9,11 @@
         },
         attackTop: null,
         attackLeft: null,
-        degree: '0'
+        degree: '0',
+        enemyCoordinates: {
+          enemyTop: '300',
+          enemyLeft: '300'
+        }
     }
 
 
@@ -127,25 +131,61 @@ export default function playMovements(state = defaultState, action) {
 
 
     return {
-      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) - 50, degree: '180'
+      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) - 80, degree: '180'
     }
 
     case 'ATTACKDOWN':
 
     return {
-      ...state, attackTop: Number(state.top) + 90, attackLeft: Number(state.left) - 10, degree: '90'
+      ...state, attackTop: Number(state.top) + 130, attackLeft: Number(state.left) - 10, degree: '90'
     }
 
     case 'ATTACKRIGHT':
 
     return {
-      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) + 30, degree: '0'
+      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) + 42, degree: '0'
     }
 
     case 'ATTACKUP':
 
     return {
-      ...state, attackTop: Number(state.top) - 45, attackLeft: Number(state.left) - 5, degree: '270'
+      ...state, attackTop: Number(state.top) - 75, attackLeft: Number(state.left) - 5, degree: '270'
+    }
+
+    case 'ENEMYMOVEDOWN':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: Number(state.enemyCoordinates.enemyTop) + 4,
+        enemyLeft: state.enemyCoordinates.enemyLeft
+      }
+    }
+
+    case 'ENEMYMOVERIGHT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.enemyCoordinates.enemyTop,
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 4
+      }
+    }
+
+    case 'ENEMYMOVEUP':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: Number(state.enemyCoordinates.enemyTop) - 4,
+        enemyLeft: state.enemyCoordinates.enemyLeft
+      }
+    }
+
+    case 'ENEMYMOVELEFT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.enemyCoordinates.enemyTop,
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 4
+      }
     }
 
 

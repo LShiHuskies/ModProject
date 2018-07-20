@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Player from './Player';
+import Enemy from './Enemy';
 
 
 
@@ -18,6 +19,7 @@ class World extends React.Component {
           textAlign: 'left'
         }}> Welcome {this.props.username} </div>
         <Player />
+        <Enemy />
       </div>
     )
   }

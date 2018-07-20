@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
 import characters from './characters';
-import selectedCharacter from './select_characters'
-import playMovements from './playerCoordinates'
+import selectedCharacter from './select_characters';
+import playMovements from './playerCoordinates';
 
 
 const rootReducer = combineReducers({
@@ -10,7 +10,6 @@ const rootReducer = combineReducers({
   counter: counter,
   selectedCharacter: selectedCharacter,
   playerCoordinates: playMovements
-
 });
 
 export default rootReducer;
