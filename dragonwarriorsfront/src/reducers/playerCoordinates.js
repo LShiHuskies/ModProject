@@ -17,7 +17,11 @@
           enemyTop: '300',
           enemyLeft: '1500'
         },
-        score: 0
+        score: 0,
+        enemyAttackTop: null,
+        enemyAttackLeft: null,
+        enemyAttackDirection: null,
+        enemyAttack: false
     }
 
 
@@ -250,6 +254,30 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, username: action.payload
+    }
+
+    case 'ENEMYATTACKLEFT':
+
+    return {
+      ...state, enemyAttackTop: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft: state.enemyCoordinates.enemyLeft,
+      enemyAttackDirection: 'LEFT',
+      enemyAttack: true
+    }
+
+    case 'ENEMYMISSILELEFT':
+
+    return {
+      ...state, enemyAttackTop: state.enemyAttackTop,
+      enemyAttackLeft: state.enemyAttackLeft - 3
+    }
+
+    case 'SETENEMYATTACKTOFALSE':
+
+    return {
+      ...state, enemyAttackTop: null,
+      enemyAttackLeft: null,
+      enemyAttack: false
     }
 
 
