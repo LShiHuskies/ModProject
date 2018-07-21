@@ -17,9 +17,9 @@ class Login extends React.Component {
 
             <label id="label">
               Username: <br></br>
-            <input type="text" name="username" placeholder="username" id="username" value={this.props.username} onChange={this.props.userNameChange}/> <br></br>
+            <input type="text" name="username" placeholder="Username" id="username" value={this.props.username} onChange={this.props.userNameChange}/> <br></br>
               Password: <br></br>
-            <input type="password" name="password" placeholder="password" id="password" value={this.props.password} onChange={this.props.passwordChange}/>
+            <input type="password" name="password" placeholder="Password" id="password" value={this.props.password} onChange={this.props.passwordChange}/>
             </label>
             <br></br>
             <input type="submit" value="Login" id="login" /> <br></br>

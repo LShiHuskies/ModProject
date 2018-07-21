@@ -4,6 +4,7 @@ import { moveLeft } from '../actions';
 import { bindActionCreators } from 'redux';
 import Healthbar from './Healthbar';
 import PlayerAttack from './PlayerAttack';
+import Score from './Score';
 
 
 
@@ -388,6 +389,7 @@ class Player extends React.Component {
     return (
       <React.Fragment>
         <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`, transform: 'rotate(0deg)' }} />
+        <Score />
         <Healthbar />
         {this.state.attack == true ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack} topAttackCoordinates={this.state.topAttack} degree={this.state.degree}/> : null}
       </React.Fragment>

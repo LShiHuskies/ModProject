@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './containers/Login'
-import World from './containers/World'
+import Login from './containers/Login';
+import World from './containers/World';
+import { connect } from 'react-redux';
 
 // https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
 
@@ -22,6 +23,15 @@ class App extends Component {
         login: true,
         backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
       })
+
+      let action = {
+        type: 'SETUSERNAME',
+        payload: this.state.username
+      }
+
+      this.props.dispatch(action)
+
+
     } else if (event.target.value == "Create New Account") {
 
     }
@@ -58,4 +68,22 @@ class App extends Component {
   }
 }
 
-export default App;
+
+
+const mapStateToProps = (state) => {
+
+  return {
+    username: state.playerCoordinates.username
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+  return {
+    dispatch
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

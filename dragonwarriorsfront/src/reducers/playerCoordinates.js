@@ -1,5 +1,6 @@
 
     const defaultState = {
+        username: null,
         top: '500',
         left: '500',
         playerHealth: '100',
@@ -14,8 +15,9 @@
         degree: '0',
         enemyCoordinates: {
           enemyTop: '300',
-          enemyLeft: '300'
-        }
+          enemyLeft: '1500'
+        },
+        score: 0
     }
 
 
@@ -158,7 +160,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: Number(state.enemyCoordinates.enemyTop) + 1,
+        enemyTop: Number(state.enemyCoordinates.enemyTop) + 4,
         enemyLeft: state.enemyCoordinates.enemyLeft
       }
     }
@@ -168,7 +170,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
-        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 1
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 4
       }
     }
 
@@ -176,7 +178,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: Number(state.enemyCoordinates.enemyTop) - 1,
+        enemyTop: Number(state.enemyCoordinates.enemyTop) - 4,
         enemyLeft: state.enemyCoordinates.enemyLeft
       }
     }
@@ -186,7 +188,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
-        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 1
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 4
       }
     }
 
@@ -196,7 +198,9 @@ export default function playMovements(state = defaultState, action) {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
         enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 30
-      }
+      },
+      enemyHealth: state.enemyHealth - 5,
+      score: state.score + 50
     }
 
     case 'HITFRIEZADOWN':
@@ -205,7 +209,9 @@ export default function playMovements(state = defaultState, action) {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop + 30,
         enemyLeft: state.enemyCoordinates.enemyLeft
-      }
+      },
+      enemyHealth: state.enemyHealth - 5,
+      score: state.score + 50
     }
 
     case 'HITFRIEZARIGHT':
@@ -214,7 +220,9 @@ export default function playMovements(state = defaultState, action) {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
         enemyLeft: state.enemyCoordinates.enemyLeft + 30
-      }
+      },
+      enemyHealth: state.enemyHealth - 5,
+      score: state.score + 50
     }
 
     case 'HITFRIEZAUP':
@@ -223,7 +231,9 @@ export default function playMovements(state = defaultState, action) {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop - 30,
         enemyLeft: state.enemyCoordinates.enemyLeft
-      }
+      },
+      enemyHealth: state.enemyHealth - 5,
+      score: state.score + 50
     }
 
     case 'TELEPORTENEMY':
@@ -231,8 +241,15 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: 800,
-        enemyLeft: 800
-      }
+        enemyLeft: 800,
+      },
+      playerHealth: state.playerHealth - 10
+    }
+
+    case 'SETUSERNAME':
+
+    return {
+      ...state, username: action.payload
     }
 
 

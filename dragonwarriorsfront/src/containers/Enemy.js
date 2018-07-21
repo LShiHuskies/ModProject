@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import EnemyAttacks from './EnemyAttacks';
 
 
 let friezaIntervals = []
@@ -66,6 +67,7 @@ class Enemy extends React.Component {
     return (
       <div>
         <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506' style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
+        <EnemyAttacks />
       </div>
     )
   }
