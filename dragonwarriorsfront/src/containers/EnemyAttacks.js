@@ -5,15 +5,6 @@ let enemyAttackIntervalArray = []
 
 class EnemyAttacks extends React.Component {
 
-  // constructor (props) {
-  //   super(props)
-  //
-  //   this.state = {
-  //     enemyAttackTop: this.props.enemyAttackTop,
-  //     enemyAttackLeft: this.props.enemyAttackLeft
-  //   }
-  //
-  // }
 
   componentDidMount() {
 
@@ -40,7 +31,7 @@ class EnemyAttacks extends React.Component {
   }
 
   render() {
-    if (this.props.enemyAttackLeft < 0) {
+    if  (this.props.enemyAttackLeft < 0) {
       let action = {
         type: "SETENEMYATTACKTOFALSE"
       }
@@ -68,7 +59,7 @@ class EnemyAttacks extends React.Component {
 
     return (
       <div>
-        <img src='https://orig00.deviantart.net/6ee6/f/2009/227/f/4/death_ball_cell__png_by_aragorn3000.png' style={{position: 'absolute', width:"4%", left: `${this.props.enemyAttackLeft}px`, top: `${this.props.enemyAttackTop}px` }}/>
+        <img src='https://orig00.deviantart.net/6ee6/f/2009/227/f/4/death_ball_cell__png_by_aragorn3000.png' style={{position: 'absolute', width:"3%", left: `${this.props.enemyAttackLeft}px`, top: `${this.props.enemyAttackTop}px` }}/>
       </div>
     )
   }

@@ -1,10 +1,10 @@
 
     const defaultState = {
         username: null,
-        top: '500',
-        left: '500',
-        playerHealth: '100',
-        enemyHealth: '100',
+        top: 500,
+        left: 500,
+        playerHealth: 100,
+        enemyHealth: 100,
         defaultDirection: {
           image: 'http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png',
           width: '5',
@@ -14,8 +14,8 @@
         attackLeft: null,
         degree: '0',
         enemyCoordinates: {
-          enemyTop: '300',
-          enemyLeft: '1500'
+          enemyTop: 300,
+          enemyLeft: 1500
         },
         score: 0,
         enemyAttackTop: null,
@@ -272,6 +272,13 @@ export default function playMovements(state = defaultState, action) {
       enemyAttackLeft: state.enemyAttackLeft - 3
     }
 
+    case 'ENEMYSUCCESSFULATTACKLEFT':
+
+    return {
+      ...state, playerHealth: Number(state.playerHealth) - 10,
+      left: state.left - 40
+    }
+
     case 'ENEMYATTACKRIGHT':
 
     return {
@@ -286,6 +293,13 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyAttackTop: state.enemyAttackTop,
       enemyAttackLeft: state.enemyAttackLeft + 3
+    }
+
+    case 'ENEMYSUCCESSFULATTACKRIGHT':
+
+    return {
+      ...state, playerHealth: Number(state.playerHealth) - 10,
+      left: state.left + 40
     }
 
     case 'SETENEMYATTACKTOFALSE':

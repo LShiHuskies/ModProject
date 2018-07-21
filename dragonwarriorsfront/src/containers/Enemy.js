@@ -82,10 +82,48 @@ class Enemy extends React.Component {
        this.props.dispatch(action)
 
 
-
-
-
      } // end of the if statement for the right attack
+
+     if ( (this.props.playerTop + 90 > this.props.enemyAttackTop && this.props.playerTop - 70 < this.props.enemyAttackTop)
+      && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 50 < this.props.enemyAttackLeft )
+        && (this.props.enemyAttackDirection == 'LEFT')
+      )
+     {
+
+       let action = {
+         type: 'ENEMYSUCCESSFULATTACKLEFT'
+       }
+
+       this.props.dispatch(action)
+
+       let anotheraction = {
+         type: "SETENEMYATTACKTOFALSE"
+       }
+       this.props.dispatch(anotheraction)
+
+
+     } // end of the if statement of the left successful attack by frieza
+
+     if ( (this.props.playerTop + 90 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
+      && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 30 < this.props.enemyAttackLeft )
+        && (this.props.enemyAttackDirection == 'RIGHT')
+      ) {
+        
+
+        let action = {
+          type: 'ENEMYSUCCESSFULATTACKRIGHT'
+        }
+
+        this.props.dispatch(action)
+
+        let anotheraction = {
+          type: "SETENEMYATTACKTOFALSE"
+        }
+        this.props.dispatch(anotheraction)
+
+      } // end of the if statement for the right attack
+
+
 
 
   }
@@ -123,7 +161,8 @@ const mapStateToProps = (state) => {
       enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft,
       enemyAttackTop: state.playerCoordinates.enemyAttackTop,
       enemyAttackLeft: state.playerCoordinates.enemyAttackLeft,
-      enemyAttack: state.playerCoordinates.enemyAttack
+      enemyAttack: state.playerCoordinates.enemyAttack,
+      enemyAttackDirection: state.playerCoordinates.enemyAttackDirection
   }
 }
 
