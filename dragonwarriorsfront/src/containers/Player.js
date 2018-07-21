@@ -343,16 +343,32 @@ class Player extends React.Component {
 
 
 
-  } // end of the else
+} // end of the else end of the spacebar
 
 
-      break;
+      break; // end of the spacebar case
+
+      case 13:
+
+      if (this.props.left < 800) {
+        let action = {
+          type: 'TELEPORTRIGHT'
+        }
+        this.props.dispatch(action)
+      } else if (this.props.left >= 800) {
+        let action = {
+          type: 'TELEPORTLEFT'
+        }
+        this.props.dispatch(action)
       }
 
-
-
-
+      
     }
+
+
+
+
+    } // end of the handle controls function
 
 
 

@@ -86,9 +86,9 @@ class Enemy extends React.Component {
 
      } // end of the if statement for the right attack
 
-     if ( (this.props.playerTop + 90 > this.props.enemyAttackTop && this.props.playerTop - 70 < this.props.enemyAttackTop)
+     if ( (this.props.playerTop + 110 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 50 < this.props.enemyAttackLeft )
-        && (this.props.enemyAttackDirection == 'LEFT')
+      && (this.props.enemyAttackDirection == "LEFT")
       )
      {
 
@@ -108,7 +108,7 @@ class Enemy extends React.Component {
 
      if ( (this.props.playerTop + 90 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 30 < this.props.enemyAttackLeft )
-        && (this.props.enemyAttackDirection == 'RIGHT')
+      && (this.props.enemyAttackDirection == "RIGHT")
       ) {
 
 

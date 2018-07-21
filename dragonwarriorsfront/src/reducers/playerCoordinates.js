@@ -21,7 +21,8 @@
         enemyAttackTop: null,
         enemyAttackLeft: null,
         enemyAttackDirection: null,
-        enemyAttack: false
+        enemyAttack: false,
+        time: 60
     }
 
 
@@ -310,6 +311,26 @@ export default function playMovements(state = defaultState, action) {
       ...state, enemyAttackTop: null,
       enemyAttackLeft: null,
       enemyAttack: false
+    }
+
+    case 'COUNTERDOWN':
+
+    return {
+      ...state, time: state.time - 1
+    }
+
+    case 'TELEPORTRIGHT':
+
+    return {
+      ...state, top: 300,
+      left: 1300
+    }
+
+    case 'TELEPORTLEFT':
+
+    return {
+      ...state, top: 850,
+      left: 100
     }
 
 
