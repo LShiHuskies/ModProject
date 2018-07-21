@@ -45,11 +45,15 @@ class Enemy extends React.Component {
        this.props.dispatch(action)
      } // if the player is closer to the left of the screen than the computer
 
-     if (this.props.playerLeft == this.props.enemyLeft) {
-       // let action = {
-       //   type: 'TELEPORTENEMY'
-       // }
-       // this.props.dispatch(action)
+     if (
+       (this.props.playerTop + 90 > this.props.enemyTop && this.props.playerTop - 70 < this.props.enemyTop)
+        && (this.props.playerLeft + 50 > this.props.enemyLeft && this.props.playerLeft - 50 < this.props.enemyLeft )
+
+     ) {
+       let action = {
+         type: 'TELEPORTENEMYANDPLAYER'
+       }
+       this.props.dispatch(action)
      } // if the player is same need to teleport to detect the collision first
 
      if (
@@ -62,8 +66,6 @@ class Enemy extends React.Component {
          type: 'ENEMYATTACKLEFT'
        }
        this.props.dispatch(action)
-
-
 
 
 
@@ -108,7 +110,7 @@ class Enemy extends React.Component {
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 30 < this.props.enemyAttackLeft )
         && (this.props.enemyAttackDirection == 'RIGHT')
       ) {
-        
+
 
         let action = {
           type: 'ENEMYSUCCESSFULATTACKRIGHT'

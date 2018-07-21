@@ -204,7 +204,7 @@ export default function playMovements(state = defaultState, action) {
         enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 30
       },
       enemyHealth: state.enemyHealth - 5,
-      score: state.score + 50
+      score: state.score + 400
     }
 
     case 'HITFRIEZADOWN':
@@ -215,7 +215,7 @@ export default function playMovements(state = defaultState, action) {
         enemyLeft: state.enemyCoordinates.enemyLeft
       },
       enemyHealth: state.enemyHealth - 5,
-      score: state.score + 50
+      score: state.score + 200
     }
 
     case 'HITFRIEZARIGHT':
@@ -226,7 +226,7 @@ export default function playMovements(state = defaultState, action) {
         enemyLeft: state.enemyCoordinates.enemyLeft + 30
       },
       enemyHealth: state.enemyHealth - 5,
-      score: state.score + 50
+      score: state.score + 400
     }
 
     case 'HITFRIEZAUP':
@@ -237,17 +237,19 @@ export default function playMovements(state = defaultState, action) {
         enemyLeft: state.enemyCoordinates.enemyLeft
       },
       enemyHealth: state.enemyHealth - 5,
-      score: state.score + 50
+      score: state.score + 200
     }
 
-    case 'TELEPORTENEMY':
+    case 'TELEPORTENEMYANDPLAYER':
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: 800,
-        enemyLeft: 800,
+        enemyTop: 300,
+        enemyLeft: 1400,
       },
-      playerHealth: state.playerHealth - 10
+      playerHealth: state.playerHealth - 20,
+      top: 480,
+      left: 500
     }
 
     case 'SETUSERNAME':
