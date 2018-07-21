@@ -70,6 +70,24 @@ class Enemy extends React.Component {
      } // end of the if statement for the attack
 
 
+     if (
+       (this.props.playerLeft > this.props.enemyLeft)
+       && (this.props.enemyTop < this.props.playerTop + 80 && this.props.enemyTop > this.props.playerTop - 80)
+       && (this.props.enemyAttack !== true)
+     ) {
+
+       let action = {
+         type: 'ENEMYATTACKRIGHT'
+       }
+       this.props.dispatch(action)
+
+
+
+
+
+     } // end of the if statement for the right attack
+
+
   }
 
   render() {

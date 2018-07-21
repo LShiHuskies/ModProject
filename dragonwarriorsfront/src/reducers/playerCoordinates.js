@@ -272,6 +272,22 @@ export default function playMovements(state = defaultState, action) {
       enemyAttackLeft: state.enemyAttackLeft - 3
     }
 
+    case 'ENEMYATTACKRIGHT':
+
+    return {
+      ...state, enemyAttackTop: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft: state.enemyCoordinates.enemyLeft,
+      enemyAttackDirection: 'RIGHT',
+      enemyAttack: true
+    }
+
+    case 'ENEMYMISSILERIGHT':
+
+    return {
+      ...state, enemyAttackTop: state.enemyAttackTop,
+      enemyAttackLeft: state.enemyAttackLeft + 3
+    }
+
     case 'SETENEMYATTACKTOFALSE':
 
     return {
