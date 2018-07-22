@@ -1,7 +1,21 @@
 class Api::UsersController < ApplicationController
 
   def index
-    render json: User.all
+
+    token = request.headers["Authorization"]
+
+    begin
+
+      if (decoded_token())
+        render json: User.all
+      end
+
+    rescue JWT::DecodeError
+      render json: {
+        message: 'INFO ENTERED IS WRONG!!!'
+      }, status: :unauthorized
+    end
+
   end
 
   def create
@@ -9,6 +23,8 @@ class Api::UsersController < ApplicationController
 
     @user.username = params[:username]
     @user.password = params[:password]
+
+
 
     if @user.save
       render json: {
@@ -22,5 +38,22 @@ class Api::UsersController < ApplicationController
     end
   end
 
+
+  def show
+    @user = User.find_by(id: params[:id])
+
+    begin
+
+      if (decoded_token())
+        render json: @user
+      end
+
+    rescue JWT::DecodeError
+      render json: {
+        message: 'INFO ENTERED IS WRONG!!!'
+      }, status: :unauthorized
+    end
+
+  end
 
 end

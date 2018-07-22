@@ -1,17 +1,30 @@
-class SessionsController < ApplicationController
-
-  def new
-    @users = User.all
-  end
+class Api::SessionsController < ApplicationController
 
   def create
-    @user = User.find_by(username: params[:username])
+
+
+    @user = User.find_by(username: params['username'])
+
+
+    payload = { username: params['username'] }
+    secret_key = secret_key()
+
+    # IMPORTANT: SET NIL AS PASSWORD PARAMETER
+    token = JWT.encode payload, secret_key, 'HS256'
+
+    puts token
+    puts 'whats up'
+
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to @user
+      render json: {
+        username: @user.username,
+        id: @user.id,
+        token: token
+      }
     else
-      flash[:errors] = ["Cannot find a User with that Username or Password doesn't exist. Please try again."]
-      redirect_to login_path
+      render json: {
+        errors: "Those credentials don't match anything we have in our database"
+      }, status: :unauthorized
     end
   end
 
