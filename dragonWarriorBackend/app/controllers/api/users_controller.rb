@@ -1,20 +1,11 @@
 class Api::UsersController < ApplicationController
 
+    before_action :requires_login, only: [:index, :show, :users_games]
+    before_action :is_admin, only: [:index]
+
   def index
 
-    token = request.headers["Authorization"]
-
-    begin
-
-      if (decoded_token())
-        render json: User.all
-      end
-
-    rescue JWT::DecodeError
-      render json: {
-        message: 'INFO ENTERED IS WRONG!!!'
-      }, status: :unauthorized
-    end
+    render json: User.all
 
   end
 
@@ -42,17 +33,14 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
 
-    begin
+    render json: @user
 
-      if (decoded_token())
-        render json: @user
-      end
+  end
 
-    rescue JWT::DecodeError
-      render json: {
-        message: 'INFO ENTERED IS WRONG!!!'
-      }, status: :unauthorized
-    end
+  def users_games
+    @user = User.find_by(id: params[:id])
+
+    render @user
 
   end
 
