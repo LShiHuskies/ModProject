@@ -28,6 +28,7 @@ class Player extends React.Component {
 
 
   componentDidMount() {
+
     window.addEventListener('keydown', this.handleControls)
   }
 
@@ -341,9 +342,24 @@ class Player extends React.Component {
 
 
 
-
-
 } // end of the else end of the spacebar
+// else if ((this.state.topAttack > this.props.enemyAttackTop - 50 && this.state.topAttack < this.props.enemyAttackTop + 50)
+//
+// )
+// {
+//   debugger;
+//   console.log('attackTop', this.state.topAttack)
+//   console.log('attackLeft', this.state.leftAttack)
+//   console.log('enemyleftattack', this.props.enemyAttackLeft)
+//   console.log('enemyTopAttack', this.props.enemyAttackTop)
+//   console.log('trying this')
+//
+//
+//
+//
+// }
+
+
 
 
       break; // end of the spacebar case
@@ -361,9 +377,12 @@ class Player extends React.Component {
         }
         this.props.dispatch(action)
       }
+      break;
 
 
-    }
+
+
+    } // end of the switch statements
 
 
 
@@ -374,6 +393,7 @@ class Player extends React.Component {
 
 
   render() {
+
   if (this.state.leftAttack < 0) {
 
     while (leftAttackProjectile.length > 0) {
@@ -423,7 +443,6 @@ class Player extends React.Component {
 const mapStateToProps = (state) => {
 
 
-
     return {
       top: state.playerCoordinates.top,
       left: state.playerCoordinates.left,
@@ -432,7 +451,11 @@ const mapStateToProps = (state) => {
       attackTop: state.playerCoordinates.attackTop,
       degree: state.playerCoordinates.degree,
       enemyTop: state.playerCoordinates.enemyCoordinates.enemyTop,
-      enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft
+      enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft,
+      enemyAttack: state.playerCoordinates.enemyAttack,
+      enemyAttackDirection: state.playerCoordinates.enemyAttackDirection,
+      enemyAttackLeft: state.playerCoordinates.enemyAttackLeft,
+      enemyAttackTop: state.playerCoordinates.enemyAttackTop
   }
 }
 
