@@ -333,6 +333,18 @@ export default function playMovements(state = defaultState, action) {
       left: 100
     }
 
+    case 'BLOCKFRIEZAATTACKLEFT':
+
+    return {
+      ...state, score: state.score + 250
+    }
+
+    case 'BLOCKFRIEZAATTACKRIGHT':
+
+    return {
+      ...state, score: state.score + 250
+    }
+
 
     break;
 

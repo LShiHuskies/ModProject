@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import enemyAttackIntervalArray from '../reducers/enemyAttackInterval'
 
-let enemyAttackIntervalArray = []
 
 class EnemyAttacks extends React.Component {
 
@@ -31,6 +31,7 @@ class EnemyAttacks extends React.Component {
   }
 
   render() {
+
     if  (this.props.enemyAttackLeft < 0) {
       let action = {
         type: "SETENEMYATTACKTOFALSE"

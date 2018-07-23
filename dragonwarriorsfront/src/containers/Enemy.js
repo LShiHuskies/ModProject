@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EnemyAttacks from './EnemyAttacks';
+import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 
 
 let friezaIntervals = []
@@ -103,6 +104,10 @@ class Enemy extends React.Component {
        }
        this.props.dispatch(anotheraction)
 
+       let misslelandLeft = enemyAttackIntervalArray.pop()
+       clearInterval(misslelandLeft)
+
+
 
      } // end of the if statement of the left successful attack by frieza
 
@@ -122,6 +127,9 @@ class Enemy extends React.Component {
           type: "SETENEMYATTACKTOFALSE"
         }
         this.props.dispatch(anotheraction)
+
+        let misslelandRight = enemyAttackIntervalArray.pop()
+        clearInterval(misslelandRight)
 
       } // end of the if statement for the right attack
 

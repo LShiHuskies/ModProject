@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import Healthbar from './Healthbar';
 import PlayerAttack from './PlayerAttack';
 import Score from './Score';
-
+import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 
 
 var leftAttackProjectile = [];
@@ -177,8 +177,31 @@ class Player extends React.Component {
             })
 
           } // end of the else if statement for left attack
+          else if (( this.state.topAttack > this.props.enemyAttackTop - 30 && this.state.topAttack < this.props.enemyAttackTop + 30 )
+          && ( this.state.leftAttack < this.props.enemyAttackLeft + 30 && this.state.leftAttack > this.props.enemyAttackLeft - 30 )
+        ) {
+          let action = {
+            type: 'SETENEMYATTACKTOFALSE'
+          };
+          this.props.dispatch(action);
+
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          });
+
+          let anotheraction = {
+            type: 'BLOCKFRIEZAATTACKLEFT'
+          };
+          this.props.dispatch(anotheraction);
 
 
+          let misslelandLeft = enemyAttackIntervalArray.pop()
+          clearInterval(misslelandLeft)
+
+
+        }
 
         }), 10 ) // end of the set Interval for left attack
       ) // end of the leftAttackProjectile push
@@ -283,6 +306,33 @@ class Player extends React.Component {
          clearInterval(rightAttackProjectile.pop()) // clears the interval if it touches frieza
 
           } // end of the else if
+          else if (
+            ( this.state.topAttack > this.props.enemyAttackTop - 50 && this.state.topAttack < this.props.enemyAttackTop + 50 )
+          && ( this.state.leftAttack < this.props.enemyAttackLeft + 40 && this.state.leftAttack > this.props.enemyAttackLeft - 40 )
+         ) {
+
+           let action = {
+             type: 'SETENEMYATTACKTOFALSE'
+           };
+           this.props.dispatch(action);
+
+           this.setState({
+             attack: false,
+             leftAttack: null,
+             topAttack: null
+           });
+
+           let anotheraction = {
+             type: 'BLOCKFRIEZAATTACKRIGHT'
+           };
+           this.props.dispatch(anotheraction);
+
+
+           let misslelandRight = enemyAttackIntervalArray.pop()
+           clearInterval(misslelandRight)
+           clearInterval(rightAttackProjectile.pop()) // clears the interval if it touches frieza's attack
+
+          } // end of the else if for the frieza attack and player attack collision
 
 
 
@@ -343,20 +393,20 @@ class Player extends React.Component {
 
 
 } // end of the else end of the spacebar
-// else if ((this.state.topAttack > this.props.enemyAttackTop - 50 && this.state.topAttack < this.props.enemyAttackTop + 50)
-//
+// else if ( (this.state.topAttack > this.props.enemyAttackTop - 50 && this.state.topAttack < this.props.enemyAttackTop + 50)
+// && (this.state.leftAttack < this.props.enemyAttackLeft + 50 && this.state.leftAttack > this.props.enemyAttackLeft - 50)
 // )
 // {
-//   debugger;
 //   console.log('attackTop', this.state.topAttack)
 //   console.log('attackLeft', this.state.leftAttack)
 //   console.log('enemyleftattack', this.props.enemyAttackLeft)
 //   console.log('enemyTopAttack', this.props.enemyAttackTop)
 //   console.log('trying this')
-//
-//
-//
-//
+//   debugger;
+
+
+
+
 // }
 
 
@@ -393,6 +443,7 @@ class Player extends React.Component {
 
 
   render() {
+
 
   if (this.state.leftAttack < 0) {
 
