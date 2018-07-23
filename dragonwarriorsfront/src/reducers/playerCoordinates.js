@@ -22,7 +22,8 @@
         enemyAttackDirection: null,
         enemyAttack: false,
         time: 60,
-        player: null
+        player: null,
+        startGame: false
     }
 
 
@@ -349,6 +350,11 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, time: 60
+    }
+
+    case 'STARTGAME':
+    return {
+      ...state, startGame: true
     }
 
 

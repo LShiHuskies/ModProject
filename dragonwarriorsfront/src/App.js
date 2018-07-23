@@ -4,6 +4,9 @@ import './App.css';
 import Login from './containers/Login';
 import World from './containers/World';
 import { connect } from 'react-redux';
+import GameOver from './containers/GameOver';
+import Profile from './containers/Profile';
+
 
 // https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
 
@@ -13,9 +16,15 @@ class App extends Component {
     login: false,
     username: '',
     password: '',
-    loginError: null
+    loginError: null,
+    profileBackgroundImage: 'url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fprophotoresource.com%2Fwp-content%2Fuploads%2F2015%2F12%2FLandscape_01.jpg&f=1)'
   }
 
+
+  // this.setState({
+  //   login: true,
+  //   backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
+  // })
 
 
 
@@ -34,6 +43,8 @@ class App extends Component {
       })
       .then( res => res.json() )
       .then(player => this.handlePlayer(player) )
+
+
 
 
     } else if (event.target.value == "Create New Account") {
@@ -80,7 +91,7 @@ class App extends Component {
     if (player['errors'] == undefined) {
       this.setState({
         login: true,
-        backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
+        backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)',
       })
 
       // let action = {
@@ -96,6 +107,9 @@ class App extends Component {
       }
 
       this.props.dispatch(action);
+
+      // localStorage.setItem('token', player.token)
+
 
     } else if (player['errors'] !== undefined) {
       alert(player['errors'])
@@ -125,8 +139,10 @@ class App extends Component {
     })
   }
 
+// <div>{this.props.playerHealth > 0 ? <World /> : <GameOver/> } </div>
 
   render() {
+
     return (
       <div className="App" style={{backgroundImage: this.state.backgroundImage}}>
         {this.state.login == false ? <div id="Login">
@@ -138,7 +154,9 @@ class App extends Component {
             passwordChange={this.handlePasswordChange}
             loginError={this.state.loginError}
           />
-      </div> : <World username={this.state.username} />}
+      </div> :
+      (this.props.startGame == false) ? <Profile /> :  <World /> 
+    }
       </div>
     );
   }
@@ -149,7 +167,11 @@ class App extends Component {
 const mapStateToProps = (state) => {
 
   return {
-    username: state.playerCoordinates.username
+    username: state.playerCoordinates.player,
+    playerHealth: state.playerCoordinates.playerHealth,
+    enemyHealth: state.playerCoordinates.enemyHealth,
+    time: state.playerCoordinates.time,
+    startGame: state.playerCoordinates.startGame
   }
 }
 

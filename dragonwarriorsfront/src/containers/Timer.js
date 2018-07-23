@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Logout from './Logout';
 
 let counterInterval = [];
 
@@ -20,7 +21,7 @@ class Timer extends React.Component {
     this.props.dispatch(action)
 
     if (this.props.timer < 0) {
-      
+
       let action = {
         type: 'RESETTIMER'
       }
@@ -31,8 +32,8 @@ class Timer extends React.Component {
 
   render() {
     return (
-      <div>
-      {this.props.timer}
+      <div style={{marginRight: '120px'}}>
+      <div style={{display: 'inline', float: 'left'}}> <Logout /></div> {this.props.timer}
       </div>
     )
   }
