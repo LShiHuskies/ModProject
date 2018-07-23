@@ -26,6 +26,8 @@ class Login extends React.Component {
             <input type="submit" value="Create New Account" id="create" />
         </form>
 
+        <div> {this.props.loginError} </div>
+
         <div id='show'>
         <button id="button" onClick={ () => {
                 const action = {

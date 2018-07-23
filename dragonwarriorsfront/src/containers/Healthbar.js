@@ -12,7 +12,7 @@ class Healthbar extends React.Component {
       <React.Fragment>
       <div id='top-health'>
         User: {showuser}
-        <div class="health">
+        <div className="health">
           <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
         </div>
       </div>

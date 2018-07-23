@@ -362,7 +362,7 @@ class Player extends React.Component {
         this.props.dispatch(action)
       }
 
-      
+
     }
 
 
