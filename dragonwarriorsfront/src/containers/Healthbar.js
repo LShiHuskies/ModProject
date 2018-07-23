@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Healthbar extends React.Component {
 
   render() {
-    let showuser = this.props.username !== '' ? this.props.username : "NO USER NAME ENTERED"
+    let showuser = this.props.player !== null ? this.props.player.username : "NO USER NAME ENTERED"
 
     return (
       <React.Fragment>
@@ -37,8 +37,8 @@ const mapStateToProps = (state) => {
 
     return {
       playerHealth: state.playerCoordinates.playerHealth,
-      username: state.playerCoordinates.username,
-      enemyHealth: state.playerCoordinates.enemyHealth
+      enemyHealth: state.playerCoordinates.enemyHealth,
+      player: state.playerCoordinates.player
   }
 }
 

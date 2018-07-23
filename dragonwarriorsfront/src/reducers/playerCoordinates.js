@@ -1,6 +1,5 @@
 
     const defaultState = {
-        username: null,
         top: 500,
         left: 500,
         playerHealth: 100,
@@ -22,7 +21,8 @@
         enemyAttackLeft: null,
         enemyAttackDirection: null,
         enemyAttack: false,
-        time: 60
+        time: 60,
+        player: null
     }
 
 
@@ -253,12 +253,6 @@ export default function playMovements(state = defaultState, action) {
       left: 500
     }
 
-    case 'SETUSERNAME':
-
-    return {
-      ...state, username: action.payload
-    }
-
     case 'ENEMYATTACKLEFT':
 
     return {
@@ -343,6 +337,18 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, score: state.score + 250
+    }
+
+    case 'OPERATIONGETPLAYER':
+
+    return {
+      ...state, player: action.payload
+    }
+
+    case 'RESETTIMER':
+
+    return {
+      ...state, time: 60
     }
 
 

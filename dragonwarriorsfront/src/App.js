@@ -76,22 +76,33 @@ class App extends Component {
 
   handlePlayer = (player) => {
 
+
     if (player['errors'] == undefined) {
       this.setState({
         login: true,
         backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
       })
 
+      // let action = {
+      //   type: 'SETUSERNAME',
+      //   payload: this.state.username
+      // }
+      //
+      // this.props.dispatch(action)
+
       let action = {
-        type: 'SETUSERNAME',
-        payload: this.state.username
+        type: 'OPERATIONGETPLAYER',
+        payload: player
       }
 
-      this.props.dispatch(action)
+      this.props.dispatch(action);
 
     } else if (player['errors'] !== undefined) {
       alert(player['errors'])
     }
+
+
+
 
 
 

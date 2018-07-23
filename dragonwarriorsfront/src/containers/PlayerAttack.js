@@ -1,14 +1,7 @@
 import React from 'react';
 
 
-var object = []
 class PlayerAttack extends React.Component {
-
-constructor (props) {
-  super(props)
-
-
-}
 
 
 

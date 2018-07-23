@@ -19,6 +19,14 @@ class Timer extends React.Component {
     }
     this.props.dispatch(action)
 
+    if (this.props.timer < 0) {
+      
+      let action = {
+        type: 'RESETTIMER'
+      }
+      this.props.dispatch(action)
+    }
+
   }
 
   render() {
