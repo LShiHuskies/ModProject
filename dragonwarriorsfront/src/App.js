@@ -17,7 +17,7 @@ class App extends Component {
     username: '',
     password: '',
     loginError: null,
-    profileBackgroundImage: 'url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fprophotoresource.com%2Fwp-content%2Fuploads%2F2015%2F12%2FLandscape_01.jpg&f=1)'
+    startGame: false
   }
 
 
@@ -25,6 +25,16 @@ class App extends Component {
   //   login: true,
   //   backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
   // })
+
+  handleStartGame = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      startGame: true,
+      backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
+    })
+
+  }
 
 
 
@@ -89,10 +99,14 @@ class App extends Component {
 
 
     if (player['errors'] == undefined) {
-      this.setState({
-        login: true,
-        backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)',
-      })
+
+      localStorage.setItem('token', player.token)
+
+        this.setState({
+          login: true,
+          backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)',
+        })
+
 
       // let action = {
       //   type: 'SETUSERNAME',
@@ -141,6 +155,8 @@ class App extends Component {
 
 // <div>{this.props.playerHealth > 0 ? <World /> : <GameOver/> } </div>
 
+//{(this.props.startGame == false) ? <Profile /> :  <World />}
+
   render() {
 
     return (
@@ -155,7 +171,8 @@ class App extends Component {
             loginError={this.state.loginError}
           />
       </div> :
-      (this.props.startGame == false) ? <Profile /> :  <World /> 
+      this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
+      (this.props.playerHealth > 0) ? <World /> : <GameOver/>
     }
       </div>
     );
@@ -170,8 +187,7 @@ const mapStateToProps = (state) => {
     username: state.playerCoordinates.player,
     playerHealth: state.playerCoordinates.playerHealth,
     enemyHealth: state.playerCoordinates.enemyHealth,
-    time: state.playerCoordinates.time,
-    startGame: state.playerCoordinates.startGame
+    time: state.playerCoordinates.time
   }
 }
 

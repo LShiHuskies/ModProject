@@ -37,10 +37,18 @@ class Api::UsersController < ApplicationController
 
   end
 
+  def update
+    @user = User.find_by(id: params[:id])
+    @game = Game.find_by(id: params['game_id'])
+    @user.games << @game
+
+    render json: @user.games
+  end
+
   def users_games
     @user = User.find_by(id: params[:id])
 
-    render @user
+    render json: @user.games
 
   end
 

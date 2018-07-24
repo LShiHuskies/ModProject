@@ -31,6 +31,7 @@ class Api::GamesController < ApplicationController
     if @game.save
       render json: {
         scores: @game.scores,
+        id: @game.id
     }
     else
       render json: {

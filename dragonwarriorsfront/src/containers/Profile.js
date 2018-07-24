@@ -5,12 +5,12 @@ import Logout from './Logout';
 class Profile extends Component {
 
 
-  handleClick = () => {
-    let action = {
-      type: 'STARTGAME'
-    }
-    this.props.dispatch(action)
-  }
+  // handleClick = () => {
+  //   let action = {
+  //     type: 'STARTGAME'
+  //   }
+  //   this.props.dispatch(action)
+  // }
 
   render() {
 
@@ -18,7 +18,7 @@ class Profile extends Component {
       <React.Fragment>
       <div style={{float: 'left', display: 'inline' }}>
         <Logout />
-        <button style={{marginLeft: '40px', color: 'red', backgroundColor: 'blue', fontFamily: 'cursive'}} onClick={this.handleClick} > Start Game </button>
+        <button style={{marginLeft: '40px', color: 'red', backgroundColor: 'blue', fontFamily: 'cursive'}} onClick={this.props.handleStartGame} > Start Game </button>
         <div style={{float: 'right', marginLeft: '500px', fontFamily: 'cursive', color: 'green'}}> Welcome {this.props.player !== null ?
             this.props.player.username :
             null} </div>
