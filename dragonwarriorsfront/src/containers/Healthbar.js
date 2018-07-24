@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Healthbar extends React.Component {
 
   render() {
-    let showuser = this.props.player !== null ? this.props.player.username : "NO USER NAME ENTERED"
+    let showuser = this.props.player !== null ? this.props.player.username !== undefined ? this.props.player.username : this.props.player.name : 'NO USER SELECTED'
 
     return (
       <React.Fragment>

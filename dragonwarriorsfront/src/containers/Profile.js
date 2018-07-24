@@ -20,8 +20,8 @@ class Profile extends Component {
         <Logout />
         <button style={{marginLeft: '40px', color: 'red', backgroundColor: 'blue', fontFamily: 'cursive'}} onClick={this.props.handleStartGame} > Start Game </button>
         <div style={{float: 'right', marginLeft: '500px', fontFamily: 'cursive', color: 'green'}}> Welcome {this.props.player !== null ?
-            this.props.player.username :
-            null} </div>
+            this.props.player.username !== undefined ? this.props.player.username : this.props.player.name
+             : null} </div>
       </div>
       <img src='https://img00.deviantart.net/ca58/i/2012/282/d/6/dbz__the_z_warriors_by_ineverfinishanythi-d5h9j36.png'
         style={{position: 'absolute', width: '10%', top: '600px', left: '600px'}}/>
@@ -42,6 +42,7 @@ class Profile extends Component {
 
 
 const mapStateToProps = (state) => {
+  
   return {
     player: state.playerCoordinates.player,
     startGame: state.playerCoordinates.startGame

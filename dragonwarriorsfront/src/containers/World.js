@@ -7,7 +7,6 @@ import Timer from './Timer';
 
 class World extends React.Component {
 
-
   render() {
     return (
     <div>

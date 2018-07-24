@@ -41,7 +41,7 @@ class Api::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @game = Game.find_by(id: params['game_id'])
     @user.games << @game
-
+    
     render json: @user.games
   end
 

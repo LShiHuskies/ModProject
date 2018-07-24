@@ -8,7 +8,9 @@ import GameOver from './containers/GameOver';
 import Profile from './containers/Profile';
 
 
+
 // https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
+let count = 0;
 
 class App extends Component {
   state = {
@@ -17,7 +19,42 @@ class App extends Component {
     username: '',
     password: '',
     loginError: null,
-    startGame: false
+    startGame: false,
+    gameOver: false
+  }
+
+  componentDidMount() {
+
+    if(!!localStorage.getItem('token')){
+
+      let player = atob(localStorage.getItem('token').split('.')[1])
+
+      
+      let bestPlayer = JSON.parse(player)
+      let action = {
+        type: 'OPERATIONGETPLAYER',
+        payload: bestPlayer
+      }
+      this.props.dispatch(action)
+      this.setState({
+        login: true,
+        backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)'
+      })
+    }
+
+  }
+
+  componentDidUpdate() {
+    if(this.props.playerHealth < 1 && count < 1) {
+      this.setState({
+        gameOver: true,
+        backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)'
+      })
+      count = count + 1
+    }
+
+
+
   }
 
 
@@ -40,6 +77,7 @@ class App extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
 
     if (event.target.value == "Login") {
 
@@ -99,6 +137,7 @@ class App extends Component {
 
 
     if (player['errors'] == undefined) {
+
 
       localStorage.setItem('token', player.token)
 
