@@ -3,13 +3,36 @@ import { connect } from 'react-redux';
 
 
 class Logout extends React.Component {
+
+  handleTheLogout = () => {
+    let action = {
+      type: 'LOGOUT'
+    }
+
+    this.props.dispatch(action);
+
+
+  }
+
   render() {
     return (
-      <button style={{backgroundColor: 'black', color: 'rgba(130, 170, 0, 0.7)', fontFamily: 'cursive'}}>
+      <button onClick={this.handleTheLogout} style={{backgroundColor: 'black', color: 'rgba(130, 170, 0, 0.7)', fontFamily: 'cursive'}}>
         Log Out
       </button>
     )
   }
 }
 
-export default Logout
+const mapStateToProps = (state) =>  {
+  return {
+    logout: state.playerCoordinates.logOut
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch
+  }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps)(Logout);

@@ -6,11 +6,13 @@ import World from './containers/World';
 import { connect } from 'react-redux';
 import GameOver from './containers/GameOver';
 import Profile from './containers/Profile';
+import Logout from './containers/Logout';
 
 
 
 // https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
 let count = 0;
+let otherCount = 0;
 
 class App extends Component {
   state = {
@@ -28,8 +30,6 @@ class App extends Component {
     if(!!localStorage.getItem('token')){
 
       let player = atob(localStorage.getItem('token').split('.')[1])
-
-      
       let bestPlayer = JSON.parse(player)
       let action = {
         type: 'OPERATIONGETPLAYER',
@@ -51,17 +51,17 @@ class App extends Component {
         backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)'
       })
       count = count + 1
+    } else if ( this.props.logout == true && otherCount < 1 ) {
+      this.setState({
+        login: false,
+        backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-z-namek-background-5521.jpg)'
+      })
+      otherCount = otherCount + 1
     }
 
 
 
   }
-
-
-  // this.setState({
-  //   login: true,
-  //   backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)',
-  // })
 
   handleStartGame = (event) => {
     event.preventDefault();
@@ -144,15 +144,9 @@ class App extends Component {
         this.setState({
           login: true,
           backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)',
+          username: '',
+          password: ''
         })
-
-
-      // let action = {
-      //   type: 'SETUSERNAME',
-      //   payload: this.state.username
-      // }
-      //
-      // this.props.dispatch(action)
 
       let action = {
         type: 'OPERATIONGETPLAYER',
@@ -167,9 +161,6 @@ class App extends Component {
     } else if (player['errors'] !== undefined) {
       alert(player['errors'])
     }
-
-
-
 
 
 
@@ -192,9 +183,6 @@ class App extends Component {
     })
   }
 
-// <div>{this.props.playerHealth > 0 ? <World /> : <GameOver/> } </div>
-
-//{(this.props.startGame == false) ? <Profile /> :  <World />}
 
   render() {
 
@@ -226,7 +214,8 @@ const mapStateToProps = (state) => {
     username: state.playerCoordinates.player,
     playerHealth: state.playerCoordinates.playerHealth,
     enemyHealth: state.playerCoordinates.enemyHealth,
-    time: state.playerCoordinates.time
+    time: state.playerCoordinates.time,
+    logout: state.playerCoordinates.logOut
   }
 }
 

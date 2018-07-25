@@ -23,7 +23,8 @@
         enemyAttack: false,
         time: 60,
         player: null,
-        startGame: false
+        startGame: false,
+        logOut: false
     }
 
 
@@ -355,6 +356,14 @@ export default function playMovements(state = defaultState, action) {
     case 'STARTGAME':
     return {
       ...state, startGame: true
+    }
+
+    case 'LOGOUT':
+
+    localStorage.removeItem('token')
+
+    return {
+      ...state, logOut: true
     }
 
 

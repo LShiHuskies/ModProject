@@ -42,7 +42,7 @@ class Profile extends Component {
 
 
 const mapStateToProps = (state) => {
-  
+
   return {
     player: state.playerCoordinates.player,
     startGame: state.playerCoordinates.startGame
