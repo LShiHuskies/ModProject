@@ -440,7 +440,7 @@ class Player extends React.Component {
     } // end of the handle controls function
 
 
-
+// transform: 'rotate(0deg)'
 
   render() {
 
@@ -475,7 +475,9 @@ class Player extends React.Component {
 
     return (
       <React.Fragment>
-        <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`, transform: 'rotate(0deg)' }} />
+        <div>
+          <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`}} />
+        </div>
         <Score />
         <Healthbar />
         {this.state.attack == true ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack} topAttackCoordinates={this.state.topAttack} degree={this.state.degree}/> : null}

@@ -45,7 +45,8 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    if(this.props.playerHealth < 1 && count < 1) {
+
+    if( (this.props.playerHealth < 1 && count < 1) || ( !(this.props.enemyHealth < 1 ) && (this.props.time < 1) && (count < 1) ) ){
       this.setState({
         gameOver: true,
         backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)'
@@ -197,7 +198,7 @@ class App extends Component {
           />
       </div> :
       this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
-      (this.props.playerHealth > 0) ? <World /> : <GameOver />
+      (!(this.props.playerHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) ) ) ? <GameOver /> : <World />
     }
       </div>
     );

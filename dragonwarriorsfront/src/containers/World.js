@@ -5,12 +5,14 @@ import Enemy from './Enemy';
 import Timer from './Timer';
 
 
+
 class World extends React.Component {
 
   render() {
     return (
     <div>
       <Timer />
+
       <Player />
       <Enemy />
     </div>
