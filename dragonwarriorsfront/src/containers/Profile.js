@@ -33,8 +33,8 @@ class Profile extends Component {
        <button style={{position: 'absolute',
          top: '100px',
          left: '20px',
-          backgroundColor: 'purple',
-          fontFamily: 'cursive'}}> View High Scores </button>
+         backgroundColor: 'purple',
+         fontFamily: 'cursive'}}> View High Scores </button>
     </React.Fragment>
     )
   }

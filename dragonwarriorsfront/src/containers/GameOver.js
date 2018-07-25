@@ -61,7 +61,7 @@ class GameOver extends React.Component {
           marginRight: '500px',
           backgroundColor: 'rgba(0, 0, 0, 0.6)'
       }}> {`${user}\'s`} Score: {this.props.score}</div>
-    <button style={{color: 'red', backgroundColor: 'rgba(128, 128, 128, 0.7)', marginTop: '50px', fontFamily: 'cursive'}}> Back to Profile? </button>
+    <button value="Refresh Page" onClick={() => {window.location.reload()}} style={{color: 'red', backgroundColor: 'rgba(128, 128, 128, 0.7)', marginTop: '50px', fontFamily: 'cursive'}}> Back to Profile? </button>
       </React.Fragment>
 
     )

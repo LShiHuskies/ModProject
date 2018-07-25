@@ -282,7 +282,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyAttackTop: state.enemyCoordinates.enemyTop,
-      enemyAttackLeft: state.enemyCoordinates.enemyLeft,
+      enemyAttackLeft: state.enemyCoordinates.enemyLeft + 35,
       enemyAttackDirection: 'RIGHT',
       enemyAttack: true
     }
@@ -365,7 +365,6 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, logOut: true
     }
-
 
     break;
 

@@ -169,8 +169,6 @@ class App extends Component {
 
 
 
-
-
   handleUserNameChange = (event) => {
     this.setState({
       username: event.target.value
@@ -199,7 +197,7 @@ class App extends Component {
           />
       </div> :
       this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
-      (this.props.playerHealth > 0) ? <World /> : <GameOver/>
+      (this.props.playerHealth > 0) ? <World /> : <GameOver />
     }
       </div>
     );
