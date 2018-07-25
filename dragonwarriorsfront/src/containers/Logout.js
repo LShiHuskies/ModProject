@@ -11,6 +11,7 @@ class Logout extends React.Component {
 
     this.props.dispatch(action);
 
+  setTimeout(window.location.reload(), 1000)
 
   }
 

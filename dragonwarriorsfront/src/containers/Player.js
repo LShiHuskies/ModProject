@@ -178,7 +178,7 @@ class Player extends React.Component {
 
           } // end of the else if statement for left attack
           else if (( this.state.topAttack > this.props.enemyAttackTop - 30 && this.state.topAttack < this.props.enemyAttackTop + 30 )
-          && ( this.state.leftAttack < this.props.enemyAttackLeft + 30 && this.state.leftAttack > this.props.enemyAttackLeft - 30 )
+          && ( this.state.leftAttack < this.props.enemyAttackLeft + 5 && this.state.leftAttack > this.props.enemyAttackLeft - 5 )
         ) {
           let action = {
             type: 'SETENEMYATTACKTOFALSE'
@@ -307,7 +307,7 @@ class Player extends React.Component {
 
           } // end of the else if
           else if (
-            ( this.state.topAttack > this.props.enemyAttackTop - 50 && this.state.topAttack < this.props.enemyAttackTop + 50 )
+            ( this.state.topAttack > this.props.enemyAttackTop - 35 && this.state.topAttack < this.props.enemyAttackTop + 35 )
           && ( this.state.leftAttack < this.props.enemyAttackLeft + 40 && this.state.leftAttack > this.props.enemyAttackLeft - 40 )
          ) {
 
