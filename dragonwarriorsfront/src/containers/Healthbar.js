@@ -17,7 +17,7 @@ class Healthbar extends React.Component {
         </div>
       </div>
 
-        <div class="healthenemy">
+        <div className="healthenemy">
           <span style={{width: `${this.props.enemyHealth}%`}}>{this.props.enemyHealth}% </span>
         </div>
 

@@ -24,7 +24,11 @@
         time: 60,
         player: null,
         startGame: false,
-        logOut: false
+        logOut: false,
+        ginyuLeft: 1000,
+        ginyuTop: 600,
+        attackLeft2: null,
+        attackTop2: null
     }
 
 
@@ -167,7 +171,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: Number(state.enemyCoordinates.enemyTop) + 4,
+        enemyTop: Number(state.enemyCoordinates.enemyTop) + 6,
         enemyLeft: state.enemyCoordinates.enemyLeft
       }
     }
@@ -177,7 +181,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
-        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 4
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) + 6
       }
     }
 
@@ -185,7 +189,7 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyCoordinates: {
-        enemyTop: Number(state.enemyCoordinates.enemyTop) - 4,
+        enemyTop: Number(state.enemyCoordinates.enemyTop) - 6,
         enemyLeft: state.enemyCoordinates.enemyLeft
       }
     }
@@ -195,7 +199,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, enemyCoordinates: {
         enemyTop: state.enemyCoordinates.enemyTop,
-        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 4
+        enemyLeft: Number(state.enemyCoordinates.enemyLeft) - 6
       }
     }
 
@@ -365,6 +369,67 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, logOut: true
     }
+
+    case 'GINYUGOLEFT':
+
+    return {
+      ...state, ginyuLeft: state.ginyuLeft - 10
+    }
+
+    case 'GINYUGORIGHT':
+
+    return {
+      ...state, ginyuLeft: state.ginyuLeft + 10
+    }
+
+    case 'GINYUGODOWN':
+
+    return {
+      ...state, ginyuTop: state.ginyuTop + 10
+    }
+
+    case 'GINYUGOUP':
+
+    return {
+      ...state, ginyuTop: state.ginyuTop - 10
+    }
+
+    case 'GINYUGOTGOKU':
+
+    return {
+      ...state, playerHealth: state.playerHealth - 10,
+      enemyHealth: state.enemyHealth + 5,
+      ginyuLeft: Math.random() * 1400,
+      ginyuTop: Math.random() * 1000
+    }
+
+    case 'ATTACKLEFT2':
+
+    return {
+      ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) - 80, degree: '180'
+    }
+
+    case 'ATTACKDOWN2':
+
+    return {
+      ...state, attackTop2: Number(state.top) + 130, attackLeft2: Number(state.left) - 2, degree: '90'
+    }
+
+    case 'ATTACKRIGHT2':
+
+    return {
+      ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) + 42, degree: '0'
+    }
+
+    case 'ATTACKUP2':
+
+    return {
+      ...state, attackTop2: Number(state.top) - 75, attackLeft2: Number(state.left) + 5, degree: '270'
+    }
+
+
+
+
 
     break;
 
