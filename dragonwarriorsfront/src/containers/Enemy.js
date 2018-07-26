@@ -13,7 +13,7 @@ class Enemy extends React.Component {
   componentDidMount() {
 
     window.addEventListener('keydown', () => {
-      friezaIntervals.push(setInterval(this.handleThatKey, 100) )
+      friezaIntervals.push(setInterval(this.handleThatKey, 80) )
     })
 
   }

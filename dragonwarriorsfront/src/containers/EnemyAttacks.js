@@ -9,7 +9,7 @@ class EnemyAttacks extends React.Component {
 
   componentDidMount() {
 
-      enemyAttackIntervalArray.push(setInterval( this.handleTheComponent, 7 )
+      enemyAttackIntervalArray.push(setInterval( this.handleTheComponent, 6.5 )
     )
 
   }

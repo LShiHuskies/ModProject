@@ -368,15 +368,15 @@ export default function playMovements(state = defaultState, action) {
     case 'TELEPORTRIGHT':
 
     return {
-      ...state, top: 300,
-      left: 1300
+      ...state, top: Math.random() * 800,
+      left: 1400
     }
 
     case 'TELEPORTLEFT':
 
     return {
-      ...state, top: 850,
-      left: 100
+      ...state, top: Math.random() * 900,
+      left: 150
     }
 
     case 'BLOCKFRIEZAATTACKLEFT':

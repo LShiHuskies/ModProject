@@ -234,17 +234,32 @@ class Player extends React.Component {
 
 
 
+            let action = {
+              type: 'SETENEMYATTACK2TOFALSE'
+            };
+            this.props.dispatch(action);
+
+            this.setState({
+              attack: false,
+              leftAttack: null,
+              topAttack: null
+            });
+
+            let anotheraction = {
+              type: 'BLOCKFRIEZAATTACKLEFT'
+            };
+            this.props.dispatch(anotheraction);
 
 
-
-
+            let misslelandLeft = enemyAttackIntervalArray2.pop()
+            clearInterval(misslelandLeft)
 
 
         }
 
         // end of the else if for the blocking frieza's attack
 
-        }), 10 ) // end of the set Interval for left attack
+      }), 7 ) // end of the set Interval for left attack
       ) // end of the leftAttackProjectile push
     }) // end of the setState
 
@@ -318,9 +333,35 @@ class Player extends React.Component {
         clearInterval(misslelandLeft)
 
 
+      } // end of the else if statement for the top attack2--
+      else if (
+        ( this.state.topAttack2 > this.props.enemyAttackTop2 - 30 && this.state.topAttack2 < this.props.enemyAttackTop2 + 30 )
+        && ( this.state.leftAttack2 < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack2 > this.props.enemyAttackLeft2 - 5 )
+      ) {
+
+        let action = {
+          type: 'SETENEMYATTACK2TOFALSE'
+        };
+        this.props.dispatch(action);
+
+        this.setState({
+          attack2: false,
+          leftAttack2: null,
+          topAttack2: null
+        });
+
+        let anotheraction = {
+          type: 'BLOCKFRIEZAATTACKLEFT'
+        };
+        this.props.dispatch(anotheraction);
+
+
+        let misslelandLeft = enemyAttackIntervalArray2.pop()
+        clearInterval(misslelandLeft)
+
       }
 
-      }), 10 ) // end of the set Interval for left attack
+    }), 7 ) // end of the set Interval for left attack
       ) // end of the leftAttackProjectile push
       }) // end of the setState
 
@@ -407,17 +448,43 @@ this.props.dispatch(action)
     clearInterval(misslelandLeft)
 
 
+  }  else if (
+    ( this.state.topAttack3 > this.props.enemyAttackTop2 - 30 && this.state.topAttack3 < this.props.enemyAttackTop2 + 30 )
+    && ( this.state.leftAttack3 < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack3 > this.props.enemyAttackLeft2 - 5 )
+  ) {
+
+    let action = {
+      type: 'SETENEMYATTACK2TOFALSE'
+    };
+    this.props.dispatch(action);
+
+    this.setState({
+      attack3: false,
+      leftAttack3: null,
+      topAttack3: null
+    });
+
+    let anotheraction = {
+      type: 'BLOCKFRIEZAATTACKLEFT'
+    };
+    this.props.dispatch(anotheraction);
+
+
+    let misslelandLeft = enemyAttackIntervalArray2.pop()
+    clearInterval(misslelandLeft)
+
+
   }
 
-  }), 10 ) // end of the set Interval for left attack
+}), 7 ) // end of the set Interval for left attack
   ) // end of the leftAttackProjectile push
   }) // end of the setState
 
 
 
-// this is the end of the copy and paste for attack # 3
+  // this is the end of the copy and paste for attack # 3
 
-}
+  }
 
   else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == false && this.state.topAttack == null){
         action = {
@@ -466,7 +533,7 @@ this.props.dispatch(action)
         }  // end of the else if statement
 
 
-      }), 10 ) // end of the set interval for the downAttackProjectile
+      }), 7 ) // end of the set interval for the downAttackProjectile
     ) // end of the push into the downAttackProjectile array
   }) // end of the setState for the down attack
 
@@ -523,7 +590,7 @@ this.props.dispatch(action)
    }  // end of the else if statement
 
 
- }), 10 ) // end of the set interval for the downAttackProjectile
+ }), 7 ) // end of the set interval for the downAttackProjectile
 ) // end of the push into the downAttackProjectile array
 }) // end of the setState for the down attack
 
@@ -588,7 +655,7 @@ this.props.dispatch(action)
    }  // end of the else if statement
 
 
- }), 10 ) // end of the set interval for the downAttackProjectile
+ }), 7 ) // end of the set interval for the downAttackProjectile
 ) // end of the push into the downAttackProjectile array
 }) // end of the setState for the down attack
 
@@ -667,9 +734,37 @@ this.props.dispatch(action)
 
           } // end of the else if for the frieza attack and player attack collision
 
+          else if (
+            ( this.state.topAttack > this.props.enemyAttackTop2 - 35 && this.state.topAttack < this.props.enemyAttackTop2 + 35 )
+          && ( this.state.leftAttack < this.props.enemyAttackLeft2 + 40 && this.state.leftAttack > this.props.enemyAttackLeft2 - 40 )
+
+          ) {
+
+            let action = {
+              type: 'SETENEMYATTACK2TOFALSE'
+            };
+            this.props.dispatch(action);
+
+            this.setState({
+              attack: false,
+              leftAttack: null,
+              topAttack: null
+            });
+
+            let anotheraction = {
+              type: 'BLOCKFRIEZAATTACKRIGHT'
+            };
+            this.props.dispatch(anotheraction);
 
 
-        } ), 10 )) // end of the push into the rightAttackProjectile
+            let misslelandRight = enemyAttackIntervalArray2.pop()
+            clearInterval(misslelandRight)
+            clearInterval(rightAttackProjectile.pop()) // clears the interval if it touches frieza's attack
+
+
+          }
+
+        } ), 7 )) // end of the push into the rightAttackProjectile
       }
 
       )
@@ -747,8 +842,38 @@ this.props.dispatch(action)
           } // end of the else if for the frieza attack and player attack collision
 
 
+          else if (
+            ( this.state.topAttack2 > this.props.enemyAttackTop2 - 35 && this.state.topAttack2 < this.props.enemyAttackTop2 + 35 )
+          && ( this.state.leftAttack2 < this.props.enemyAttackLeft2 + 40 && this.state.leftAttack2 > this.props.enemyAttackLeft2 - 40 )
 
-        } ), 10 )) // end of the push into the rightAttackProjectile
+          ) {
+
+            let action = {
+              type: 'SETENEMYATTACK2TOFALSE'
+            };
+            this.props.dispatch(action);
+
+            this.setState({
+              attack2: false,
+              leftAttack2: null,
+              topAttack2: null
+            });
+
+            let anotheraction = {
+              type: 'BLOCKFRIEZAATTACKRIGHT'
+            };
+            this.props.dispatch(anotheraction);
+
+
+            let misslelandRight = enemyAttackIntervalArray2.pop()
+            clearInterval(misslelandRight)
+            clearInterval(rightAttackProjectile2.pop()) // clears the interval if it touches frieza's attack
+
+
+          }
+
+
+        } ), 7 )) // end of the push into the rightAttackProjectile
       }
 
       )
@@ -831,9 +956,37 @@ this.props.dispatch(action)
 
           } // end of the else if for the frieza attack and player attack collision
 
+          else if (
+            ( this.state.topAttack3 > this.props.enemyAttackTop2 - 35 && this.state.topAttack3 < this.props.enemyAttackTop2 + 35 )
+          && ( this.state.leftAttack3 < this.props.enemyAttackLeft2 + 40 && this.state.leftAttack3 > this.props.enemyAttackLeft2 - 40 )
+          ) {
+
+            let action = {
+              type: 'SETENEMYATTACK2TOFALSE'
+            };
+            this.props.dispatch(action);
+
+            this.setState({
+              attack3: false,
+              leftAttack3: null,
+              topAttack3: null
+            });
+
+            let anotheraction = {
+              type: 'BLOCKFRIEZAATTACKRIGHT'
+            };
+            this.props.dispatch(anotheraction);
 
 
-        } ), 10 )) // end of the push into the rightAttackProjectile
+            let misslelandRight = enemyAttackIntervalArray2.pop()
+            clearInterval(misslelandRight)
+            clearInterval(rightAttackProjectile3.pop()) // clears the interval if it touches frieza's attack
+
+          }
+
+
+
+        } ), 7 )) // end of the push into the rightAttackProjectile
       }
 
     ) // end of the set state.
@@ -891,7 +1044,7 @@ this.props.dispatch(action)
 
 
           } // end of the else if
-        }), 10 ) // end of the setInterval
+        }), 7 ) // end of the setInterval
       ) // end of the upAttackProjectile
       })  // end of the setState
 
@@ -945,7 +1098,7 @@ this.props.dispatch(action)
 
 
             } // end of the else if
-          }), 10 ) // end of the setInterval
+          }), 7 ) // end of the setInterval
           ) // end of the upAttackProjectile
           })  // end of the setState
 
@@ -1002,7 +1155,7 @@ this.props.dispatch(action)
 
 
           } // end of the else if
-        }), 10 ) // end of the setInterval
+        }), 7 ) // end of the setInterval
         ) // end of the upAttackProjectile
         })  // end of the setState
 
