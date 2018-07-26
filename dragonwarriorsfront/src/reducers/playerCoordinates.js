@@ -28,7 +28,10 @@
         ginyuLeft: 1000,
         ginyuTop: 600,
         attackLeft2: null,
-        attackTop2: null
+        attackTop2: null,
+        level: 'ONE',
+        attackLeft3: null,
+        attackTop3: null
     }
 
 
@@ -427,6 +430,29 @@ export default function playMovements(state = defaultState, action) {
       ...state, attackTop2: Number(state.top) - 75, attackLeft2: Number(state.left) + 5, degree: '270'
     }
 
+    case 'ATTACKLEFT3':
+
+    return {
+      ...state, attackTop3: Number(state.top) + 30, attackLeft3: Number(state.left) - 80, degree: '180'
+    }
+
+    case 'ATTACKDOWN3':
+
+    return {
+      ...state, attackTop3: Number(state.top) + 130, attackLeft3: Number(state.left) - 2, degree: '90'
+    }
+
+    case 'ATTACKRIGHT3':
+
+    return {
+      ...state, attackTop3: Number(state.top) + 30, attackLeft3: Number(state.left) + 42, degree: '0'
+    }
+
+    case 'ATTACKUP3':
+
+    return {
+      ...state, attackTop3: Number(state.top) - 75, attackLeft3: Number(state.left) + 5, degree: '270'
+    }
 
 
 

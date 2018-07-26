@@ -21,6 +21,12 @@ let downAttackProjectile2 = [];
 let rightAttackProjectile2 = [];
 let upAttackProjectile2 = [];
 
+
+let leftAttackProjectile3 = [];
+let downAttackProjectile3 = [];
+let rightAttackProjectile3 = [];
+let upAttackProjectile3 = [];
+
 class Player extends React.Component {
 
   constructor (props) {
@@ -33,7 +39,10 @@ class Player extends React.Component {
       degree: this.props.degree,
       attack2: false,
       leftAttack2: null,
-      topAttack2: null
+      topAttack2: null,
+      attack3: false,
+      leftAttack3: null,
+      topAttack3: null
     }
   }
 
@@ -302,10 +311,93 @@ class Player extends React.Component {
 
 
 
-} // this is the else if statement for when this.state.attack is true and we entered the attack phase # 2
+} // this is end for the else if statement for when this.state.attack is true and we entered the attack phase # 2 --
+
+
+// this is the start of the else if for attack phase # 3
+
+else if ( this.props.playerDirection.characterdirection == 'LEFT'
+&& this.state.attack == true
+&& this.state.attack2 == true
+&& this.state.attack3 == false
+&& this.state.leftAttack3 == null ) {
+
+// this is the start for attack # 3
+let action = {
+  type: "ATTACKLEFT3"
+}
+this.props.dispatch(action)
+//  here is the start of the copy and paste ---
+
+
+  this.setState({
+    attack3: true,
+    leftAttack3: this.props.attackLeft3,
+    topAttack3: this.props.attackTop3,
+    degree: this.props.degree
+  }, () => {
+
+    leftAttackProjectile3.push(setInterval(
+      () =>  this.setState({
+      leftAttack3: this.state.leftAttack3 - 5,
+      topAttack3: this.state.topAttack3
+    }, () => { if (this.state.leftAttack3 < 0) {
+      this.setState({
+        attack3: false,
+        leftAttack3: null,
+        topAttack3: null
+      })
+    } else if (  (this.state.leftAttack3 < this.props.enemyLeft + 20 && this.state.leftAttack3 > this.props.enemyLeft - 20)
+      && (this.state.topAttack3 > this.props.enemyTop - 50 && this.state.topAttack3 < this.props.enemyTop + 105  )
+            ) {
+
+              action = {
+                type: 'HITFRIEZALEFT'
+              }
+            this.props.dispatch(action)
+
+      this.setState({
+        attack3: false,
+        leftAttack3: null,
+        topAttack3: null
+      })
+
+    } // end of the else if statement for left attack
+    else if (( this.state.topAttack3 > this.props.enemyAttackTop - 30 && this.state.topAttack3 < this.props.enemyAttackTop + 30 )
+    && ( this.state.leftAttack3 < this.props.enemyAttackLeft + 5 && this.state.leftAttack3 > this.props.enemyAttackLeft - 5 )
+  ) {
+    let action = {
+      type: 'SETENEMYATTACKTOFALSE'
+    };
+    this.props.dispatch(action);
+
+    this.setState({
+      attack3: false,
+      leftAttack3: null,
+      topAttack3: null
+    });
+
+    let anotheraction = {
+      type: 'BLOCKFRIEZAATTACKLEFT'
+    };
+    this.props.dispatch(anotheraction);
+
+
+    let misslelandLeft = enemyAttackIntervalArray.pop()
+    clearInterval(misslelandLeft)
+
+
+  }
+
+  }), 10 ) // end of the set Interval for left attack
+  ) // end of the leftAttackProjectile push
+  }) // end of the setState
 
 
 
+// this is the end of the copy and paste for attack # 3
+
+}
 
   else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == false && this.state.topAttack == null){
         action = {
@@ -360,7 +452,7 @@ class Player extends React.Component {
 
 
 
- }  // end of the else if for the down direction pointing
+}  // end of the else if for the down direction pointing for attack 1
  else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
    // this is the start of the copy and paste for the downward direction
 
@@ -423,6 +515,67 @@ class Player extends React.Component {
 
  }  // this is the end of the phase 2 attack for the down attack
 
+  else if ( this.props.playerDirection.characterdirection == 'DOWN'
+  && this.state.attack == true
+  && this.state.attack2 == true
+  && this.state.attack3 == false
+  && this.state.leftAttack3 == null   ) {
+   // this is the start for phase #3 down attack for goku
+
+   action = {
+     type: "ATTACKDOWN3"
+   }
+   this.props.dispatch(action)
+
+
+
+ this.setState({
+   attack3: true,
+   leftAttack3: this.props.attackLeft3,
+   topAttack3: this.props.attackTop3,
+   degree: this.props.degree
+ }, () => {
+
+   downAttackProjectile3.push(setInterval(
+     () =>  this.setState({
+     leftAttack3: this.state.leftAttack3,
+     topAttack3: this.state.topAttack3 + 5
+   }, () => { if (this.state.topAttack3 > window.innerHeight) {
+     this.setState({
+       attack3: false,
+       leftAttack3: null,
+       topAttack3: null
+     })
+   }  // end of the if statement
+   else if ( (this.state.topAttack3 > this.props.enemyTop - 30 && this.state.topAttack3 < this.props.enemyTop + 30)
+         && (this.state.leftAttack3 < this.props.enemyLeft + 40 && this.state.leftAttack3 > this.props.enemyLeft - 60 )
+
+    ) {
+
+
+        action = {
+          type: 'HITFRIEZADOWN'
+        }
+      this.props.dispatch(action)
+
+      this.setState({
+        attack3: false,
+        leftAttack3: null,
+        topAttack3: null
+      })
+
+      clearInterval(downAttackProjectile3.pop())
+   }  // end of the else if statement
+
+
+ }), 10 ) // end of the set interval for the downAttackProjectile
+) // end of the push into the downAttackProjectile array
+}) // end of the setState for the down attack
+
+
+
+
+ }  // this is the end of the phase # 3 down attack for goku
 
 
 
@@ -584,122 +737,262 @@ class Player extends React.Component {
 
     }
 
-
-
-
-
-    // This is the end of the copy and paste for the second phase attack for the right attack2
-
-
-
-     else if (this.props.playerDirection.characterdirection == 'UP' && this.state.attack == false && this.state.topAttack == null) {
-
+    // This is the end for the second phase attack for the right attack2
+    // this is the start for the phase attack # 3 for the right
+    else if ( this.props.playerDirection.characterdirection == 'RIGHT'
+    && this.state.attack == true
+    && this.state.attack2 == true
+    && this.state.attack3 == false
+    && this.state.leftAttack3 == null   ) {
       action = {
-        type: "ATTACKUP"
+        type: "ATTACKRIGHT3"
       }
       this.props.dispatch(action)
 
-
-
-    this.setState({
-      attack: true,
-      leftAttack: this.props.attackLeft,
-      topAttack: this.props.attackTop,
-      degree: this.props.degree
-    }, () => {
-      upAttackProjectile.push(setInterval(
-        () =>  this.setState({
-        leftAttack: this.state.leftAttack,
-        topAttack: this.state.topAttack - 5
-      }, () => { if (this.state.topAttack < 0) {
-        this.setState({
-          attack: false,
-          leftAttack: null,
-          topAttack: null
-        }) // end of the setState
-      } // end of the if statement
-      else if (
-        ( this.state.topAttack < this.props.enemyTop + 100 && this.state.topAttack > this.props.enemyTop )
-        && (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 20)
-      ) {
-
-        action = {
-          type: 'HITFRIEZAUP'
-        }
-      this.props.dispatch(action)
-
       this.setState({
-        attack: false,
-        leftAttack: null,
-        topAttack: null
-      }) // end of this this state within the else if statement
+        attack3: true,
+        leftAttack3: this.props.attackLeft3,
+        topAttack3: this.props.attackTop3,
+        degree: this.props.degree
+      }, () => {
+        rightAttackProjectile3.push(setInterval(
+          () => this.setState({
+            leftAttack3: this.state.leftAttack3 + 5,
+            topAttack3: this.state.topAttack3
+          }, () => { if (this.state.leftAttack3 > window.innerWidth) {
+            this.setState({
+              attack3: false,
+              leftAttack3: null,
+              topAttack3: null
+            })
+          }  // end of the if
+          else if ( (this.state.leftAttack3 > this.props.enemyLeft - 30 && this.state.leftAttack3 < this.props.enemyLeft + 30)
+            && (this.state.topAttack3 < this.props.enemyTop + 80 && this.state.topAttack3 > this.props.enemyTop - 30)
+         ) {
+
+           action = {
+             type: 'HITFRIEZARIGHT'
+           }
+         this.props.dispatch(action)
+
+         this.setState({
+           attack3: false,
+           leftAttack3: null,
+           topAttack3: null
+         })
+         clearInterval(rightAttackProjectile3.pop()) // clears the interval if it touches frieza
+
+          } // end of the else if
+          else if (
+            ( this.state.topAttack3 > this.props.enemyAttackTop - 35 && this.state.topAttack3 < this.props.enemyAttackTop + 35 )
+          && ( this.state.leftAttack3 < this.props.enemyAttackLeft + 40 && this.state.leftAttack3 > this.props.enemyAttackLeft - 40 )
+         ) {
+
+           let action = {
+             type: 'SETENEMYATTACKTOFALSE'
+           };
+           this.props.dispatch(action);
+
+           this.setState({
+             attack3: false,
+             leftAttack3: null,
+             topAttack3: null
+           });
+
+           let anotheraction = {
+             type: 'BLOCKFRIEZAATTACKRIGHT'
+           };
+           this.props.dispatch(anotheraction);
 
 
-      } // end of the else if
-    }), 10 ) // end of the setInterval
-  ) // end of the upAttackProjectile
-  })  // end of the setState
+           let misslelandRight = enemyAttackIntervalArray.pop()
+           clearInterval(misslelandRight)
+           clearInterval(rightAttackProjectile3.pop()) // clears the interval if it touches frieza's attack
 
-
-
-} // end of the else end of the spacebar
-// end of the if statement for the first up attack--
-else if ( this.props.playerDirection.characterdirection == 'UP' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
-
-  // this is the start of the second attack
-
-  action = {
-    type: "ATTACKUP2"
-  }
-  this.props.dispatch(action)
-
-
-
-this.setState({
-  attack2: true,
-  leftAttack2: this.props.attackLeft2,
-  topAttack2: this.props.attackTop2,
-  degree: this.props.degree
-}, () => {
-  upAttackProjectile2.push(setInterval(
-    () =>  this.setState({
-    leftAttack2: this.state.leftAttack2,
-    topAttack2: this.state.topAttack2 - 5
-  }, () => { if (this.state.topAttack2 < 0) {
-    this.setState({
-      attack2: false,
-      leftAttack2: null,
-      topAttack2: null
-    }) // end of the setState
-  } // end of the if statement
-  else if (
-    ( this.state.topAttack2 < this.props.enemyTop + 100 && this.state.topAttack2 > this.props.enemyTop )
-    && (this.state.leftAttack2 > this.props.enemyLeft - 30 && this.state.leftAttack2 < this.props.enemyLeft + 20)
-  ) {
-
-    action = {
-      type: 'HITFRIEZAUP'
-    }
-  this.props.dispatch(action)
-
-  this.setState({
-    attack2: false,
-    leftAttack2: null,
-    topAttack2: null
-  }) // end of this this state within the else if statement
-
-
-  } // end of the else if
-}), 10 ) // end of the setInterval
-) // end of the upAttackProjectile
-})  // end of the setState
+          } // end of the else if for the frieza attack and player attack collision
 
 
 
+        } ), 10 )) // end of the push into the rightAttackProjectile
+      }
+
+      )
 
 
-// end of the copy and paste
-}
+
+
+    } // this is the end for the phase # 3 attack for the right.
+
+
+         else if (this.props.playerDirection.characterdirection == 'UP'
+         && this.state.attack == false
+         && this.state.topAttack == null) {
+
+          action = {
+            type: "ATTACKUP"
+          }
+          this.props.dispatch(action)
+
+
+
+        this.setState({
+          attack: true,
+          leftAttack: this.props.attackLeft,
+          topAttack: this.props.attackTop,
+          degree: this.props.degree
+        }, () => {
+          upAttackProjectile.push(setInterval(
+            () =>  this.setState({
+            leftAttack: this.state.leftAttack,
+            topAttack: this.state.topAttack - 5
+          }, () => { if (this.state.topAttack < 0) {
+            this.setState({
+              attack: false,
+              leftAttack: null,
+              topAttack: null
+            }) // end of the setState
+          } // end of the if statement
+          else if (
+            ( this.state.topAttack < this.props.enemyTop + 100 && this.state.topAttack > this.props.enemyTop )
+            && (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 20)
+          ) {
+
+            action = {
+              type: 'HITFRIEZAUP'
+            }
+          this.props.dispatch(action)
+
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          }) // end of this this state within the else if statement
+
+
+          } // end of the else if
+        }), 10 ) // end of the setInterval
+      ) // end of the upAttackProjectile
+      })  // end of the setState
+
+
+
+          } // end of the else end of the spacebar
+          // end of the if statement for the first up attack--
+          else if ( this.props.playerDirection.characterdirection == 'UP' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+
+            // this is the start of the second attack
+
+            action = {
+              type: "ATTACKUP2"
+            }
+            this.props.dispatch(action)
+
+
+
+          this.setState({
+            attack2: true,
+            leftAttack2: this.props.attackLeft2,
+            topAttack2: this.props.attackTop2,
+            degree: this.props.degree
+          }, () => {
+            upAttackProjectile2.push(setInterval(
+              () =>  this.setState({
+              leftAttack2: this.state.leftAttack2,
+              topAttack2: this.state.topAttack2 - 5
+            }, () => { if (this.state.topAttack2 < 0) {
+              this.setState({
+                attack2: false,
+                leftAttack2: null,
+                topAttack2: null
+              }) // end of the setState
+            } // end of the if statement
+            else if (
+              ( this.state.topAttack2 < this.props.enemyTop + 100 && this.state.topAttack2 > this.props.enemyTop )
+              && (this.state.leftAttack2 > this.props.enemyLeft - 30 && this.state.leftAttack2 < this.props.enemyLeft + 20)
+            ) {
+
+              action = {
+                type: 'HITFRIEZAUP'
+              }
+            this.props.dispatch(action)
+
+            this.setState({
+              attack2: false,
+              leftAttack2: null,
+              topAttack2: null
+            }) // end of this this state within the else if statement
+
+
+            } // end of the else if
+          }), 10 ) // end of the setInterval
+          ) // end of the upAttackProjectile
+          })  // end of the setState
+
+
+        } // end of the else if for the up attack for phase # 2
+        else if ( this.props.playerDirection.characterdirection == 'UP'
+        && this.state.attack == true
+        && this.state.attack2 == true
+        && this.state.attack3 == false
+        && this.state.leftAttack3 == null   ) {
+
+          // start of attack # 3 for the up
+
+
+          action = {
+            type: "ATTACKUP3"
+          }
+          this.props.dispatch(action)
+
+
+
+        this.setState({
+          attack3: true,
+          leftAttack3: this.props.attackLeft3,
+          topAttack3: this.props.attackTop3,
+          degree: this.props.degree
+        }, () => {
+          upAttackProjectile3.push(setInterval(
+            () =>  this.setState({
+            leftAttack3: this.state.leftAttack3,
+            topAttack3: this.state.topAttack3 - 5
+          }, () => { if (this.state.topAttack3 < 0) {
+            this.setState({
+              attack3: false,
+              leftAttack3: null,
+              topAttack3: null
+            }) // end of the setState
+          } // end of the if statement
+          else if (
+            ( this.state.topAttack3 < this.props.enemyTop + 100 && this.state.topAttack3 > this.props.enemyTop )
+            && (this.state.leftAttack3 > this.props.enemyLeft - 30 && this.state.leftAttack3 < this.props.enemyLeft + 20)
+          ) {
+
+            action = {
+              type: 'HITFRIEZAUP'
+            }
+          this.props.dispatch(action)
+
+          this.setState({
+            attack3: false,
+            leftAttack3: null,
+            topAttack3: null
+          }) // end of this this state within the else if statement
+
+
+          } // end of the else if
+        }), 10 ) // end of the setInterval
+        ) // end of the upAttackProjectile
+        })  // end of the setState
+
+
+
+
+
+
+          // end of the attack # 3 for the up
+
+        }
 
 
 
@@ -754,6 +1047,13 @@ this.setState({
     }
   }
 
+  else if ( this.state.leftAttack3 < 0 ) {
+    while(leftAttackProjectile3.length > 0) {
+      let leftattackInstance = leftAttackProjectile3.pop()
+      clearInterval(leftattackInstance)
+    }
+  }
+
   else if ( this.state.topAttack > window.innerHeight) {
 
     while(downAttackProjectile.length > 0) {
@@ -768,6 +1068,11 @@ this.setState({
       let downattackInstance = downAttackProjectile2.pop()
       clearInterval(downattackInstance)
     }
+  } else if (this.state.topAttack3 > window.innerHeight) {
+      while(downAttackProjectile3.length > 0) {
+        let downattackInstance = downAttackProjectile3.pop()
+        clearInterval(downattackInstance)
+      }
   }
 
   else if (this.state.leftAttack > window.innerWidth) {
@@ -780,8 +1085,12 @@ this.setState({
       let rightattackInstance = rightAttackProjectile2.pop()
       clearInterval(rightattackInstance)
     }
+  } else if (this.state.leftAttack3 > window.innerWidth) {
+    while(rightAttackProjectile3.length > 0) {
+      let rightattackInstance = rightAttackProjectile3.pop()
+      clearInterval(rightattackInstance)
+    }
   }
-
 
   else if (this.state.topAttack < 0) {
 
@@ -796,6 +1105,11 @@ this.setState({
         let upattackInstance = upAttackProjectile2.pop()
         clearInterval(upattackInstance)
       }
+  } else if (this.state.topAttack3 < 0) {
+    while(upAttackProjectile3.length > 0) {
+      let upattackInstance = upAttackProjectile3.pop()
+      clearInterval(upattackInstance)
+    }
   }
 
     return (
@@ -815,6 +1129,13 @@ this.setState({
         {this.state.attack2 == true ?
           <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack2}
           topAttackCoordinates={this.state.topAttack2}
+          degree={this.state.degree}/>
+        : null
+        }
+
+        {this.state.attack3 == true ?
+          <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack3}
+          topAttackCoordinates={this.state.topAttack3}
           degree={this.state.degree}/>
         : null
         }
@@ -848,7 +1169,9 @@ const mapStateToProps = (state) => {
       enemyAttackLeft: state.playerCoordinates.enemyAttackLeft,
       enemyAttackTop: state.playerCoordinates.enemyAttackTop,
       attackLeft2: state.playerCoordinates.attackLeft2,
-      attackTop2: state.playerCoordinates.attackTop2
+      attackTop2: state.playerCoordinates.attackTop2,
+      attackLeft3: state.playerCoordinates.attackLeft3,
+      attackTop3: state.playerCoordinates.attackTop3
   }
 }
 

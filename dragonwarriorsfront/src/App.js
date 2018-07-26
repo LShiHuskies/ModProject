@@ -198,7 +198,9 @@ class App extends Component {
           />
       </div> :
       this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
-      (!(this.props.playerHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) ) ) ? <GameOver /> : <World />
+      (!(this.props.playerHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) ) )
+      ? <GameOver />
+      : <World />
     }
       </div>
     );
