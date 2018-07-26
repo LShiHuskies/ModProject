@@ -274,11 +274,27 @@ export default function playMovements(state = defaultState, action) {
       enemyAttack: true
     }
 
+    case 'ENEMYATTACKLEFT2':
+
+    return {
+      ...state, enemyAttackTop2: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft2: state.enemyCoordinates.enemyLeft,
+      enemyAttack2Direction: 'LEFT',
+      enemyAttack2: true
+    }
+
     case 'ENEMYMISSILELEFT':
 
     return {
       ...state, enemyAttackTop: state.enemyAttackTop,
       enemyAttackLeft: state.enemyAttackLeft - 3
+    }
+
+    case 'ENEMYMISSILELEFT2':
+
+    return {
+      ...state, enemyAttackTop2: state.enemyAttackTop2,
+      enemyAttackLeft2: state.enemyAttackLeft2 - 3
     }
 
     case 'ENEMYSUCCESSFULATTACKLEFT':
@@ -297,11 +313,27 @@ export default function playMovements(state = defaultState, action) {
       enemyAttack: true
     }
 
+    case 'ENEMYATTACKRIGHT2':
+
+    return {
+      ...state, enemyAttackTop2: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft2: state.enemyCoordinates.enemyLeft + 35,
+      enemyAttack2Direction: 'RIGHT',
+      enemyAttack2: true
+    }
+
     case 'ENEMYMISSILERIGHT':
 
     return {
       ...state, enemyAttackTop: state.enemyAttackTop,
       enemyAttackLeft: state.enemyAttackLeft + 3
+    }
+
+    case 'ENEMYMISSILERIGHT2':
+
+    return {
+      ...state, enemyAttackTop2: state.enemyAttackTop2,
+      enemyAttackLeft2: state.enemyAttackLeft2 + 3
     }
 
     case 'ENEMYSUCCESSFULATTACKRIGHT':
@@ -317,6 +349,14 @@ export default function playMovements(state = defaultState, action) {
       ...state, enemyAttackTop: null,
       enemyAttackLeft: null,
       enemyAttack: false
+    }
+
+    case 'SETENEMYATTACK2TOFALSE':
+
+    return {
+      ...state, enemyAttackTop2: null,
+      enemyAttackLeft2: null,
+      enemyAttack2: false
     }
 
     case 'COUNTERDOWN':

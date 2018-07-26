@@ -4,6 +4,7 @@ import EnemyAttacks from './EnemyAttacks';
 import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2';
 
+import EnemyAttacks2 from './EnemyAttacks2';
 
 let friezaIntervals = []
 class Enemy extends React.Component {
@@ -73,18 +74,18 @@ class Enemy extends React.Component {
 
      } // end of the if statement for the attack left
      // start for the if statement attack left 2
-     // if (
-     //   (this.props.playerLeft < this.props.enemyLeft)
-     //   && (this.props.enemyTop > this.props.playerTop - 80 && this.props.enemyTop < this.props.playerTop + 80)
-     //   && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
-     // ) {
-     //
-     //   let action = {
-     //     type: 'ENEMYATTACKLEFT'
-     //   }
-     //   this.props.dispatch(action)
-     //
-     // }
+     if (
+       (this.props.playerLeft < this.props.enemyLeft)
+       && (this.props.enemyTop > this.props.playerTop - 80 && this.props.enemyTop < this.props.playerTop + 80)
+       && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+     ) {
+
+       let action = {
+         type: 'ENEMYATTACKLEFT2'
+       }
+       this.props.dispatch(action)
+
+     }
      // end of the if statement of the attack left 2
      if (
        (this.props.playerLeft > this.props.enemyLeft)
@@ -99,6 +100,21 @@ class Enemy extends React.Component {
 
 
      } // end of the if statement for the right attack
+
+     // if statement for the second right attack for frieza
+
+     if (
+       (this.props.playerLeft > this.props.enemyLeft)
+       && (this.props.enemyTop < this.props.playerTop + 80 && this.props.enemyTop > this.props.playerTop - 80)
+       && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+     ) {
+
+       let action = {
+         type: 'ENEMYATTACKRIGHT2'
+       }
+       this.props.dispatch(action)
+
+     }
 
      if ( (this.props.playerTop + 110 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 50 < this.props.enemyAttackLeft )
@@ -128,7 +144,7 @@ class Enemy extends React.Component {
      if (
        (this.props.playerTop + 110 > this.props.enemyAttackTop2 && this.props.playerTop - 40 < this.props.enemyAttackTop2)
         && (this.props.playerLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerLeft - 50 < this.props.enemyAttackLeft2 )
-        && (this.props.enemyAttackDirection == "LEFT")
+        && (this.props.enemyAttack2Direction == "LEFT")
       ) {
 
         let action = {
@@ -138,7 +154,7 @@ class Enemy extends React.Component {
         this.props.dispatch(action)
 
         let anotheraction = {
-          type: "SETENEMYATTACKTOFALSE"
+          type: "SETENEMYATTACK2TOFALSE"
         }
         this.props.dispatch(anotheraction)
 
@@ -173,7 +189,26 @@ class Enemy extends React.Component {
 
       } // end of the if statement for the right attack
 
+      if (
+        (this.props.playerTop + 90 > this.props.enemyAttackTop2 && this.props.playerTop - 40 < this.props.enemyAttackTop2)
+         && (this.props.playerLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerLeft - 30 < this.props.enemyAttackLeft2 )
+         && (this.props.enemyAttack2Direction == "RIGHT")
+      ) {
+        let action = {
+          type: 'ENEMYSUCCESSFULATTACKRIGHT'
+        }
 
+        this.props.dispatch(action)
+
+        let anotheraction = {
+          type: "SETENEMYATTACK2TOFALSE"
+        }
+        this.props.dispatch(anotheraction)
+
+        let misslelandRight = enemyAttackIntervalArray2.pop()
+        clearInterval(misslelandRight)
+
+      }
 
 
   }
@@ -193,6 +228,7 @@ class Enemy extends React.Component {
       <div>
         <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506' style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
         {this.props.enemyAttack == true ? <EnemyAttacks /> : null }
+        {this.props.enemyAttack2 == true ? <EnemyAttacks2 /> : null }
       </div>
     )
   }
@@ -215,7 +251,8 @@ const mapStateToProps = (state) => {
       enemyAttackDirection: state.playerCoordinates.enemyAttackDirection,
       enemyAttack2: state.playerCoordinates.enemyAttack2,
       enemyAttackTop2: state.playerCoordinates.enemyAttackTop2,
-      enemyAttackLeft2: state.playerCoordinates.enemyAttackLeft2
+      enemyAttackLeft2: state.playerCoordinates.enemyAttackLeft2,
+      enemyAttack2Direction: state.playerCoordinates.enemyAttack2Direction
   }
 }
 

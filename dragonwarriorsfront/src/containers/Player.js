@@ -7,6 +7,8 @@ import PlayerAttack from './PlayerAttack';
 import Score from './Score';
 import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 
+import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2'
+
 import PlayerAttack2 from './PlayerAttack2';
 
 
@@ -222,7 +224,25 @@ class Player extends React.Component {
           clearInterval(misslelandLeft)
 
 
+        } // end of the else if for the attack left 1
+        // start of the else if for the attack left 2
+
+        else if (
+          ( this.state.topAttack > this.props.enemyAttackTop2 - 30 && this.state.topAttack < this.props.enemyAttackTop2 + 30 )
+          && ( this.state.leftAttack < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack > this.props.enemyAttackLeft2 - 5 )
+          ) {
+
+
+
+
+
+
+
+
+
         }
+
+        // end of the else if for the blocking frieza's attack
 
         }), 10 ) // end of the set Interval for left attack
       ) // end of the leftAttackProjectile push
@@ -816,7 +836,8 @@ this.props.dispatch(action)
         } ), 10 )) // end of the push into the rightAttackProjectile
       }
 
-      )
+    ) // end of the set state.
+
 
 
 
@@ -1171,7 +1192,11 @@ const mapStateToProps = (state) => {
       attackLeft2: state.playerCoordinates.attackLeft2,
       attackTop2: state.playerCoordinates.attackTop2,
       attackLeft3: state.playerCoordinates.attackLeft3,
-      attackTop3: state.playerCoordinates.attackTop3
+      attackTop3: state.playerCoordinates.attackTop3,
+      enemyAttack2: state.playerCoordinates.enemyAttack2,
+      enemyAttackLeft2: state.playerCoordinates.enemyAttackLeft2,
+      enemyAttackTop2: state.playerCoordinates.enemyAttackTop2,
+      enemyAttack2Direction: state.playerCoordinates.enemyAttack2Direction
   }
 }
 
