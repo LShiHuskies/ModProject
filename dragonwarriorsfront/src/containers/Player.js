@@ -29,6 +29,8 @@ let downAttackProjectile3 = [];
 let rightAttackProjectile3 = [];
 let upAttackProjectile3 = [];
 
+let counter = 0;
+
 class Player extends React.Component {
 
   constructor (props) {
@@ -710,6 +712,7 @@ this.props.dispatch(action)
             ( this.state.topAttack > this.props.enemyAttackTop - 35 && this.state.topAttack < this.props.enemyAttackTop + 35 )
           && ( this.state.leftAttack < this.props.enemyAttackLeft + 40 && this.state.leftAttack > this.props.enemyAttackLeft - 40 )
          ) {
+            
 
            let action = {
              type: 'SETENEMYATTACKTOFALSE'
@@ -740,6 +743,7 @@ this.props.dispatch(action)
 
           ) {
 
+
             let action = {
               type: 'SETENEMYATTACK2TOFALSE'
             };
@@ -755,6 +759,8 @@ this.props.dispatch(action)
               type: 'BLOCKFRIEZAATTACKRIGHT'
             };
             this.props.dispatch(anotheraction);
+
+
 
 
             let misslelandRight = enemyAttackIntervalArray2.pop()
@@ -774,6 +780,8 @@ this.props.dispatch(action)
     // This is the start of the copy and paste for the second phase attack for the right attack2
 
     else if (this.props.playerDirection.characterdirection == 'RIGHT' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null) {
+
+
       action = {
         type: "ATTACKRIGHT2"
       }

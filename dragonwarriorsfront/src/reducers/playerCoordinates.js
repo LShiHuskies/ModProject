@@ -369,14 +369,16 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, top: Math.random() * 800,
-      left: 1400
+      left: 1400,
+      playerHealth: state.playerHealth - 2.5
     }
 
     case 'TELEPORTLEFT':
 
     return {
       ...state, top: Math.random() * 900,
-      left: 150
+      left: 150,
+      playerHealth: state.playerHealth - 2.5
     }
 
     case 'BLOCKFRIEZAATTACKLEFT':
