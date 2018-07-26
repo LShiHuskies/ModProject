@@ -1127,7 +1127,7 @@ this.props.dispatch(action)
         }
 
         {this.state.attack2 == true ?
-          <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack2}
+          <PlayerAttack leftAttackCoordinates={this.state.leftAttack2}
           topAttackCoordinates={this.state.topAttack2}
           degree={this.state.degree}/>
         : null

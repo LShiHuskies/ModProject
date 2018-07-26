@@ -31,7 +31,10 @@
         attackTop2: null,
         level: 'ONE',
         attackLeft3: null,
-        attackTop3: null
+        attackTop3: null,
+        enemyAttackTop2: null,
+        enemyAttackLeft2: null,
+        enemyAttack2: false,
     }
 
 

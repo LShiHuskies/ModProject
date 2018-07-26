@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import EnemyAttacks from './EnemyAttacks';
 import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
+import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2';
 
 
 let friezaIntervals = []
@@ -70,9 +71,21 @@ class Enemy extends React.Component {
 
 
 
-     } // end of the if statement for the attack
-
-
+     } // end of the if statement for the attack left
+     // start for the if statement attack left 2
+     // if (
+     //   (this.props.playerLeft < this.props.enemyLeft)
+     //   && (this.props.enemyTop > this.props.playerTop - 80 && this.props.enemyTop < this.props.playerTop + 80)
+     //   && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+     // ) {
+     //
+     //   let action = {
+     //     type: 'ENEMYATTACKLEFT'
+     //   }
+     //   this.props.dispatch(action)
+     //
+     // }
+     // end of the if statement of the attack left 2
      if (
        (this.props.playerLeft > this.props.enemyLeft)
        && (this.props.enemyTop < this.props.playerTop + 80 && this.props.enemyTop > this.props.playerTop - 80)
@@ -109,7 +122,34 @@ class Enemy extends React.Component {
 
 
 
-     } // end of the if statement of the left successful attack by frieza
+     } // end of the if statement of the left successful attack 1 by frieza
+
+     // start for the if statement for the left successful attack 2 by frieza
+     if (
+       (this.props.playerTop + 110 > this.props.enemyAttackTop2 && this.props.playerTop - 40 < this.props.enemyAttackTop2)
+        && (this.props.playerLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerLeft - 50 < this.props.enemyAttackLeft2 )
+        && (this.props.enemyAttackDirection == "LEFT")
+      ) {
+
+        let action = {
+          type: 'ENEMYSUCCESSFULATTACKLEFT'
+        }
+
+        this.props.dispatch(action)
+
+        let anotheraction = {
+          type: "SETENEMYATTACKTOFALSE"
+        }
+        this.props.dispatch(anotheraction)
+
+        let misslelandLeft = enemyAttackIntervalArray2.pop()
+        clearInterval(misslelandLeft)
+
+      }
+
+
+     // end of the if statement for the left successful attack 2 by frieza
+
 
      if ( (this.props.playerTop + 90 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 30 < this.props.enemyAttackLeft )
@@ -172,7 +212,10 @@ const mapStateToProps = (state) => {
       enemyAttackTop: state.playerCoordinates.enemyAttackTop,
       enemyAttackLeft: state.playerCoordinates.enemyAttackLeft,
       enemyAttack: state.playerCoordinates.enemyAttack,
-      enemyAttackDirection: state.playerCoordinates.enemyAttackDirection
+      enemyAttackDirection: state.playerCoordinates.enemyAttackDirection,
+      enemyAttack2: state.playerCoordinates.enemyAttack2,
+      enemyAttackTop2: state.playerCoordinates.enemyAttackTop2,
+      enemyAttackLeft2: state.playerCoordinates.enemyAttackLeft2
   }
 }
 

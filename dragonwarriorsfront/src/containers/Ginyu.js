@@ -6,7 +6,7 @@ import ginyuAttackIntervalArray from '../reducers/ginyuAttackInterval';
 class Ginyu extends React.Component {
 
   componentDidMount() {
-    ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 10 ))
+    ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 30 ))
 
   }
 

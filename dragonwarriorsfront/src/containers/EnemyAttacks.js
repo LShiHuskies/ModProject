@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import enemyAttackIntervalArray from '../reducers/enemyAttackInterval'
+import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
+
 
 
 class EnemyAttacks extends React.Component {
