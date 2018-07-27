@@ -13,6 +13,7 @@ import Logout from './containers/Logout';
 // https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
 let count = 0;
 let otherCount = 0;
+let thirdCount = 0;
 
 class App extends Component {
   state = {
@@ -58,6 +59,16 @@ class App extends Component {
         backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-z-namek-background-5521.jpg)'
       })
       otherCount = otherCount + 1
+    } else if ( this.props.enemyHealth < 1 && thirdCount < 1 ) {
+      this.setState({
+        gameOver: true,
+        backgroundImage: 'url(https://i.pinimg.com/originals/0f/18/c4/0f18c45e07a7212f4d49e71213833e01.jpg)'
+      })
+      let action = {
+        type: 'RESTORE'
+      }
+      this.props.dispatch(action)
+      thirdCount = thirdCount + 1;
     }
 
 

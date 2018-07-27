@@ -6,7 +6,11 @@ import ginyuAttackIntervalArray from '../reducers/ginyuAttackInterval';
 class Ginyu extends React.Component {
 
   componentDidMount() {
+    if (this.props.level == 'ONE') {
     ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 30 ))
+  } else if (this.props.level == 'TWO') {
+    ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 10 ))
+  }
 
   }
 
@@ -55,7 +59,6 @@ class Ginyu extends React.Component {
 
   render() {
 
-
     return (
       <div>
         <img src='https://vignette.wikia.nocookie.net/dbz-vs/images/7/72/Captain_Ginyu.png/revision/latest?cb=20150805182823'
@@ -74,7 +77,8 @@ const mapStateToProps = (state) => {
     ginyuTop: state.playerCoordinates.ginyuTop,
     ginyuLeft: state.playerCoordinates.ginyuLeft,
     playerTop: state.playerCoordinates.top,
-    playerLeft: state.playerCoordinates.left
+    playerLeft: state.playerCoordinates.left,
+    level: state.playerCoordinates.level
   }
 }
 

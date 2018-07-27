@@ -499,6 +499,13 @@ export default function playMovements(state = defaultState, action) {
       ...state, attackTop3: Number(state.top) - 75, attackLeft3: Number(state.left) + 5, degree: '270'
     }
 
+    case 'RESTORE':
+
+    return {
+      ...state, playerHealth: 100, enemyHealth: 100, time: 60,
+      level: 'TWO'
+    }
+
 
 
 
