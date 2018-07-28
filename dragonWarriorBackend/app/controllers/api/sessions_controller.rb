@@ -12,8 +12,6 @@ class Api::SessionsController < ApplicationController
     # IMPORTANT: SET NIL AS PASSWORD PARAMETER
     token = JWT.encode payload, secret_key, 'HS256'
 
-    puts token
-    puts 'whats up'
 
     if @user && @user.authenticate(params[:password])
       render json: {
