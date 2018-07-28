@@ -5,12 +5,6 @@ Rails.application.routes.draw do
     resources :games
     resources :users
     resources :sessions
-
-
-    get '/users/:user_id/games', to: 'users#users_games'
-
   end
-
-  mount ActionCable.server => '/cable'
 
 end
