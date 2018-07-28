@@ -6,21 +6,20 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by(username: params['username'])
 
 
-    # payload = { username: params['username'], id: @user.id }
+    payload = { username: params['username'] }
     secret_key = secret_key()
 
     # IMPORTANT: SET NIL AS PASSWORD PARAMETER
-    # token = JWT.encode payload, secret_key, 'HS256'
+    token = JWT.encode payload, secret_key, 'HS256'
 
-    # puts token
-    # puts 'whats up'
+    puts token
+    puts 'whats up'
 
     if @user && @user.authenticate(params[:password])
-      # payload = { username: params['username'], id: @user.id }
       render json: {
         username: @user.username,
         id: @user.id,
-        token: get_token(payload(@user.username, @user.id) )
+        token: token
       }
     else
       render json: {
