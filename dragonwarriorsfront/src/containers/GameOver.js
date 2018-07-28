@@ -21,7 +21,7 @@ class GameOver extends React.Component {
 
     fetch(`http://localhost:3000/api/games`, config).then(r => r.json())
     .then(res => {
-
+      debugger;
       const otherConfig = {
         method: 'PATCH',
         headers: {
