@@ -94,10 +94,20 @@ class Api::UsersController < ApplicationController
 
 
     if @user.save
+      ActionCable.server.broadcast 'UsersChannel', {
+        username: @user.username,
+        id: @user.id
+      }
+
       render json: {
         username: @user.username,
         id: @user.id
       }
+      # serialized_data = ActiveModelSerializers::Adapter::Json.new(
+      #   UserSerializer.new(@user)
+      # ).serializable_hash
+      # UsersChannel.broadcast_to @user, serialized_data
+      # head :ok
     else
       render json: {
         errors: @user.errors.full_messages
@@ -115,8 +125,16 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    @game = Game.find_by(id: params['game_id'])
-    @user.games << @game
+    if params['game_id']
+      @game = Game.find_by(id: params['game_id'])
+      @user.games << @game
+    end
+
+    ActionCable.server.broadcast 'UsersChannel', {
+      username: @user.username,
+      id: @user.id,
+      games: @user.games
+    }
 
     render json: @user.games
   end

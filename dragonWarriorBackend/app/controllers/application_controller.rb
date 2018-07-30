@@ -53,7 +53,7 @@ class ApplicationController < ActionController::API
   end
 
   def is_admin
-    decoded_token[0]["id"] < 1
+    decoded_token[0]["id"] < 100
   end
 
   # def authenticate(data)

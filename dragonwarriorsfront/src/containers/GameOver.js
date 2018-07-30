@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Logout from './Logout';
+import { ActionCable } from 'react-actioncable-provider';
 
 
 
@@ -8,20 +9,18 @@ class GameOver extends React.Component {
 
   componentDidMount() {
     const config = {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
+        'Accept': 'application/json',
         'Authorization': localStorage.getItem('token')
       },
       body:JSON.stringify({scores: this.props.score})
     }
 
-
-
-
-    fetch(`http://localhost:3000/api/games`, config).then(r => r.json())
+    fetch(`http://localhost:3000/api/games/374`, config).then(r => r.json())
     .then(res => {
-      debugger;
+
       const otherConfig = {
         method: 'PATCH',
         headers: {
@@ -43,12 +42,21 @@ class GameOver extends React.Component {
 
   }
 
+  handleUser = (event) => {
+    debugger;
+    alert(event)
+  }
+
 
 
   render() {
     let user = this.props.player.username !== undefined ? this.props.player.username : this.props.player.name
     return (
       <React.Fragment>
+      <ActionCable
+        channel={{ channel: 'UsersChannel'}}
+        onReceived={this.handleUser}
+        />
       <div style={{color: 'red', display: 'inline', fontFamily: 'cursive', fontSize: '100px'}}>
       <div style={{float: 'left', fontSize: '30px'}}> <Logout/> </div>
         Game Over

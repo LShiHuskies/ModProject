@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import GameOver from './containers/GameOver';
 import Profile from './containers/Profile';
 import Logout from './containers/Logout';
+import { ActionCable } from 'react-actioncable-provider';
+import SecondPlayer from './containers/SecondPlayer';
 
 
 
@@ -14,6 +16,7 @@ import Logout from './containers/Logout';
 let count = 0;
 let otherCount = 0;
 let thirdCount = 0;
+let fourthCount = 0;
 
 class App extends Component {
   state = {
@@ -30,13 +33,13 @@ class App extends Component {
 
     if(!!localStorage.getItem('token')){
 
-      let player = atob(localStorage.getItem('token').split('.')[1])
-      let bestPlayer = JSON.parse(player)
-      let action = {
-        type: 'OPERATIONGETPLAYER',
-        payload: bestPlayer
-      }
-      this.props.dispatch(action)
+      // let player = atob(localStorage.getItem('token').split('.')[1])
+      // let bestPlayer = JSON.parse(player)
+      // let action = {
+      //   type: 'OPERATIONGETLOCALPLAYER',
+      //   payload: bestPlayer
+      // }
+      // this.props.dispatch(action)
       this.setState({
         login: true,
         backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)'
@@ -78,10 +81,26 @@ class App extends Component {
   handleStartGame = (event) => {
     event.preventDefault();
 
+
+    const config = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      },
+      body:JSON.stringify({
+        playerOne: this.props.playerOne,
+        playerTwo: this.props.playerTwo
+      })
+    }
+    fetch(`http://localhost:3000/api/games/`, config).then(r => r.json())
+
     this.setState({
       startGame: true,
       backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
     })
+
+
 
   }
 
@@ -103,6 +122,8 @@ class App extends Component {
       })
       .then( res => res.json() )
       .then(player => this.handlePlayer(player) )
+
+
 
 
 
@@ -152,6 +173,13 @@ class App extends Component {
 
 
       localStorage.setItem('token', player.token)
+      let action = {
+        type: 'LOCALPLAYER',
+        payload: player
+      }
+      this.props.dispatch(action)
+
+      // fetch('http://localhost:3000/api/games').then(r => r.json()).then(data => this.doStuffWithData(data, player))
 
         this.setState({
           login: true,
@@ -160,20 +188,165 @@ class App extends Component {
           password: ''
         })
 
-      let action = {
-        type: 'OPERATIONGETPLAYER',
-        payload: player
-      }
-
-      this.props.dispatch(action);
+      // let action = {
+      //   type: 'OPERATIONGETPLAYER',
+      //   payload: player
+      // }
+      //
+      // this.props.dispatch(action);
 
       // localStorage.setItem('token', player.token)
+
+
+
+      const config = {
+        method: 'PATCH',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        },
+        body:JSON.stringify({
+          username: player
+        })
+      }
+      fetch(`http://localhost:3000/api/users/${player.id}`, config).then(r => r.json())
+
+
+      // if (this.props.playerOne == null) {
+      //   let action = {
+      //     type: 'OPERATIONGETPLAYER',
+      //     payload: player
+      //   }
+      //   this.props.dispatch(action);
+      // } else if (this.props.playerTwo == null) {
+      //   let action = {
+      //     type: 'OPERATIONGETSECONDPLAYER',
+      //     payload: player
+      //   }
+      //   this.props.dispatch(action)
+      // }
+
+
+
+      // const config = {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-type': 'application/json',
+      //     'Authorization': localStorage.getItem('token')
+      //   },
+      //   body:JSON.stringify({user: player})
+      // }
+      //
+      // fetch(`http://localhost:3000/api/games`, config).then(r => r.json())
+
+
+
 
 
     } else if (player['errors'] !== undefined) {
       alert(player['errors'])
     }
 
+
+
+  }
+
+
+  doStuffWithData = (data, player) => {
+
+    // let lastGame = data.pop()
+    // if (lastGame.scores == null) {
+    //
+    //
+    //   const otherConfig = {
+    //     method: 'PATCH',
+    //     headers: {
+    //       'Content-type': 'application/json',
+    //       'Authorization': localStorage.getItem('token')
+    //     },
+    //     body:JSON.stringify({
+    //       game_id: lastGame.id,
+    //       username: player
+    //     })
+    //   }
+    //   fetch(`http://localhost:3000/api/games/${lastGame.id}`, otherConfig).then(r => r.json())
+    //
+    // } else {
+
+      const config = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        },
+        body:JSON.stringify({
+          username: player
+        })
+      }
+      fetch(`http://localhost:3000/api/games/`, config).then(r => r.json())
+
+
+     // end of the else statement
+
+
+
+
+
+
+
+
+  } // end of the doStuffWithData function
+
+
+
+  // this is the function when we initiate a new game.
+
+  handleReceived = (event) => {
+    // let action = {
+    //   type: 'OPERATIONGETSECONDPLAYER'
+    // }
+    // this.props.dispatch(action)
+    // fourthCount = fourthCount + 1
+    // alert(fourthCount)
+    // if (fourthCount == 2) {
+    //   let action = {
+    //     type: 'OPERATIONGETSECONDPLAYER'
+    //   }
+    //
+    //   alert('we are here')
+    //   this.props.dispatch(action)
+    // }
+
+    this.setState({
+      startGame: true,
+      backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
+    })
+
+  }
+
+
+  handleUser = (player) => {
+
+    if (this.props.playerOne == null) {
+      // let player = atob(localStorage.getItem('token').split('.')[1])
+      // let bestPlayer = JSON.parse(player)
+      let action = {
+        type: 'OPERATIONGETPLAYER',
+        payload: player
+      }
+      this.props.dispatch(action);
+
+      console.log('playerone', player)
+    } else if (this.props.playerTwo == null) {
+      // let player = atob(localStorage.getItem('token').split('.')[1])
+      // let bestPlayer = JSON.parse(player)
+      let action = {
+        type: 'OPERATIONGETSECONDPLAYER',
+        payload: player
+      }
+      this.props.dispatch(action)
+      console.log('playertwo', player)
+    }
 
 
   }
@@ -195,9 +368,18 @@ class App extends Component {
 
 
   render() {
-
+    console.log('player One', this.props.playerOne)
+    console.log('player two', this.props.playerTwo)
     return (
       <div className="App" style={{backgroundImage: this.state.backgroundImage}}>
+        <ActionCable
+          channel={{ channel: 'GamesChannel' }}
+          onReceived={this.handleReceived}
+          />
+        <ActionCable
+          channel={{ channel: 'UsersChannel'}}
+          onReceived={this.handleUser}
+          />
         {this.state.login == false ? <div id="Login">
           <Login login={this.state.login}
             username={this.state.username}
@@ -213,6 +395,7 @@ class App extends Component {
       ? <GameOver />
       : <World />
     }
+
       </div>
     );
   }
@@ -227,7 +410,9 @@ const mapStateToProps = (state) => {
     playerHealth: state.playerCoordinates.playerHealth,
     enemyHealth: state.playerCoordinates.enemyHealth,
     time: state.playerCoordinates.time,
-    logout: state.playerCoordinates.logOut
+    logout: state.playerCoordinates.logOut,
+    playerOne: state.playerCoordinates.player,
+    playerTwo: state.secondPlayerCoordinates.secondplayer
   }
 }
 

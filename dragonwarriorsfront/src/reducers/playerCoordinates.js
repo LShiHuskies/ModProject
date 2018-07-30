@@ -35,6 +35,7 @@
         enemyAttackTop2: null,
         enemyAttackLeft2: null,
         enemyAttack2: false,
+        localplayer: null
     }
 
 
@@ -504,6 +505,12 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, playerHealth: 100, enemyHealth: 100, time: 60,
       level: 'TWO'
+    }
+
+    case 'LOCALPLAYER':
+
+    return {
+      ...state, localplayer: action.payload
     }
 
 

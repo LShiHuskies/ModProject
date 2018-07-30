@@ -5,6 +5,8 @@ import Enemy from './Enemy';
 import Timer from './Timer';
 import Ginyu from './Ginyu';
 import ginyuAttackIntervalArray from '../reducers/ginyuAttackInterval';
+import { ActionCable } from 'react-actioncable-provider';
+
 
 
 
@@ -17,6 +19,7 @@ class World extends React.Component {
 
     return (
     <div>
+      
       <Timer />
       <Player />
       <Enemy />

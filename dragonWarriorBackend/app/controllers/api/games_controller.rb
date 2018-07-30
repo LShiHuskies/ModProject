@@ -60,7 +60,7 @@
 
 class Api::GamesController < ApplicationController
 
-  before_action :requires_login, only: [:index]
+  # before_action :requires_login, only: [:index]
 
 
 
@@ -84,15 +84,28 @@ class Api::GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new
 
-    @game.scores = params[:scores]
+    @game = Game.new
+    # @user = User.find_by(id: params[:user][:id])
+    # @game.users << @user
+    # @game.scores = params[:scores]
 
     if @game.save
-      render json: {
-        scores: @game.scores,
-        id: @game.id
+
+    # @user = User.find_by(id: params[:user][:id])
+    # @game.users << @user
+    # serialized_data = ActiveModelSerializers::Adapter::Json.new(
+    #   GameSerializer.new(@game)
+    # ).serializable_hash
+    ActionCable.server.broadcast 'GamesChannel', {
+      id: @game.id
+      # users: @user
     }
+
+    render json: {
+      id: @game.id
+    }
+
     else
       render json: {
         errors: @game.errors.full_messages
@@ -105,6 +118,22 @@ class Api::GamesController < ApplicationController
   def show
     @game = Game.find_by(id: params[:id])
 
+    render json: @game
+
+  end
+
+
+  def update
+
+    @game = Game.find_by(id: params[:id])
+    if params['scores']
+      @game.scores = params['scores']
+    end
+    if params['username']
+      @user = User.find_by(id: params['username']['id'])
+      @game.users << @user
+    end
+    @game.save
     render json: @game
 
   end

@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resources :sessions
   end
 
+  mount ActionCable.server => '/cable'
+
 end
