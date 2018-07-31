@@ -8,8 +8,8 @@ class Timer extends React.Component {
 
 
   componentDidMount() {
-    counterInterval.push(setInterval( this.handleCounter, 1000 )
-  )
+    
+      counterInterval.push(setInterval( this.handleCounter, 1000 ) )
   }
 
 

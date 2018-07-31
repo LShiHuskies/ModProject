@@ -125,21 +125,7 @@ export default function secondPlayMovements(state = defaultState, action) {
     return {
       ...state, attackTop: state.top,
       attackLeft: state.left - 60,
-      degree: 180,
-      attack: true
-    }
-
-    case 'PLAYERTWOMISSILELEFT':
-
-    return {
-      ...state, attackTop: state.attackTop,
-      attackLeft: state.attackLeft - 3
-    }
-
-    case 'SETPLAYERTWOATTACKTOFALSE':
-    return {
-      ...state, attackTop: null,
-      attackLeft: null, attack: false
+      degree: 180
     }
 
     case 'ATTACKRIGHT TWO':
@@ -147,16 +133,37 @@ export default function secondPlayMovements(state = defaultState, action) {
     return {
       ...state, attackTop: state.top,
       attackLeft: state.left + 60,
-      degree: 0,
-      attack: true
+      degree: 0
     }
 
-    case 'PLAYERTWOMISSILERIGHT':
+    case 'ENEMYSUCCESSFULATTACKLEFTVEGETA':
 
     return {
-      ...state, attackTop: state.attackTop,
-      attackLeft: state.attackLeft + 3
+      ...state, playerHealth: Number(state.playerHealth) - 10,
+      left: state.left - 40
     }
+
+    case 'ENEMYSUCCESSFULATTACKRIGHTVEGETA':
+
+    return {
+      ...state, playerHealth: Number(state.playerHealth) - 10,
+      left: state.left + 40
+    }
+
+    case 'TELEPORTVEGETALEFT':
+
+    return {
+      ...state, top: 100, left: 300, playerHealth: state.playerHealth - 2.5
+    }
+
+    case 'TELEPORTVEGETARIGHT':
+
+    return {
+      ...state, top: 800, left: 1100, playerHealth: state.playerHealth - 2.5
+    }
+
+
+
 
 
 

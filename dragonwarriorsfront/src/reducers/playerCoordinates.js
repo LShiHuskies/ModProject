@@ -449,8 +449,8 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, playerHealth: state.playerHealth - 10,
       enemyHealth: state.enemyHealth + 5,
-      ginyuLeft: Math.random() * 1400,
-      ginyuTop: Math.random() * 1000
+      ginyuLeft: 1200,
+      ginyuTop: 800
     }
 
     case 'ATTACKLEFT2':
@@ -519,6 +519,41 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, clicked: true
     }
+
+    case 'ENEMYATTACKLEFTVEGETA':
+
+    return {
+      ...state, enemyAttackTop: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft: state.enemyCoordinates.enemyLeft,
+      enemyAttackDirection: 'LEFT',
+      enemyAttack: true
+    }
+
+    case 'ENEMYATTACKLEFT2VEGETA':
+
+    return {
+      ...state, enemyAttackTop2: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft2: state.enemyCoordinates.enemyLeft,
+      enemyAttack2Direction: 'LEFT',
+      enemyAttack2: true
+    }
+
+    case 'ENEMYATTACKRIGHTVEGETA':
+
+    return {
+      ...state, enemyAttackTop: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft: state.enemyCoordinates.enemyLeft + 35,
+      enemyAttackDirection: 'RIGHT',
+      enemyAttack: true
+    }
+
+    case 'SETSCORETOALL':
+
+    return {
+      ...state, score: action.payload.score, enemyHealth: action.payload.enemyHealth
+    }
+
+
 
 
 

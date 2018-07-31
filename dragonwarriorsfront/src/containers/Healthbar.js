@@ -6,14 +6,14 @@ import { connect } from 'react-redux';
 class Healthbar extends React.Component {
 
   render() {
-    let showuser = this.props.player !== null ? this.props.player.username !== undefined ? this.props.player.username : this.props.player.name : 'NO USER SELECTED'
 
     return (
       <React.Fragment>
       <div id='top-health'>
-        User: {showuser}
+        {this.props.clicked == true ? 'Player: Goku' : 'Player: Vegeta' }
         <div className="health">
-          <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
+          {this.props.clicked == true ? <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
+        : <span style={{width: `${this.props.playerTwoHealth}%`}}>{this.props.playerTwoHealth}% </span> }
         </div>
       </div>
 
@@ -38,7 +38,10 @@ const mapStateToProps = (state) => {
     return {
       playerHealth: state.playerCoordinates.playerHealth,
       enemyHealth: state.playerCoordinates.enemyHealth,
-      player: state.playerCoordinates.player
+      player: state.playerCoordinates.player,
+      playerTwoHealth: state.secondPlayerCoordinates.playerHealth,
+      secondPlayer: state.secondPlayerCoordinates.secondplayer,
+      clicked: state.playerCoordinates.clicked
   }
 }
 

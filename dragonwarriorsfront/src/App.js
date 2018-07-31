@@ -18,6 +18,8 @@ let otherCount = 0;
 let thirdCount = 0;
 let fourthCount = 0;
 
+let scoreCount = 0;
+
 class App extends Component {
   state = {
     backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-z-namek-background-5521.jpg)',
@@ -27,6 +29,32 @@ class App extends Component {
     loginError: null,
     startGame: false,
     gameOver: false
+  }
+
+  makeFetchForScore = () => {
+
+    scoreCount = scoreCount + 1;
+    let object = {
+      score: this.props.score,
+      enemyHealth: this.props.enemyHealth
+    };
+    let action = {
+      type: 'SETSCORETOALL',
+      payload: object
+    }
+
+    let config = {
+      method: 'POST',
+      headers: {
+      'Accepts': 'application/json',
+    'Content-Type': 'application/json'
+    },
+      body: JSON.stringify({
+        type: action
+      })
+    };
+    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+
   }
 
   componentDidMount() {
@@ -73,6 +101,27 @@ class App extends Component {
       }
       this.props.dispatch(action)
       thirdCount = thirdCount + 1;
+    } else if ( this.props.time < 51 && scoreCount < 1 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 46 && scoreCount < 2 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 41 && scoreCount < 3 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 36 && scoreCount < 4 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 31 && scoreCount < 5 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 26 && scoreCount < 6 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 21 && scoreCount < 7 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 16 && scoreCount < 8 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 11 && scoreCount < 9 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 6 && scoreCount < 10 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+      scoreCount = 0
     }
 
 
@@ -370,12 +419,22 @@ class App extends Component {
     })
   }
 
+  handleScoreAndEnemyHealth = (event) => {
+    if (event.type.type == 'SETSCORETOALL' ) {
+      this.props.dispatch(event.type)
+    }
+  }
+
 
   render() {
     // console.log('player One', this.props.playerOne)
     // console.log('player two', this.props.playerTwo)
     return (
       <div className="App" style={{backgroundImage: this.state.backgroundImage}}>
+        <ActionCable
+          channel={{ channel: 'MovesChannel' }}
+          onReceived={this.handleScoreAndEnemyHealth}
+          />
         <ActionCable
           channel={{ channel: 'GamesChannel' }}
           onReceived={this.handleReceived}
@@ -417,7 +476,8 @@ const mapStateToProps = (state) => {
     logout: state.playerCoordinates.logOut,
     playerOne: state.playerCoordinates.player,
     playerTwo: state.secondPlayerCoordinates.secondplayer,
-    clicked: state.playerCoordinates.clicked
+    clicked: state.playerCoordinates.clicked,
+    score: state.playerCoordinates.score
   }
 }
 
