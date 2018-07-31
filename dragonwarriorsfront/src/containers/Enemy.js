@@ -10,11 +10,17 @@ let friezaIntervals = []
 class Enemy extends React.Component {
 
 
+  // componentDidMount() {
+  //
+  //   window.addEventListener('keydown', () => {
+  //     friezaIntervals.push(setInterval(this.handleThatKey, 200) )
+  //   })
+  //
+  // }
+
   componentDidMount() {
 
-    window.addEventListener('keydown', () => {
-      friezaIntervals.push(setInterval(this.handleThatKey, 80) )
-    })
+  friezaIntervals.push(setInterval(this.handleThatKey, 200))
 
   }
 

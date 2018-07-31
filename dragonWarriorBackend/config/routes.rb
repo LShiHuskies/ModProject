@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :games
     resources :users
     resources :sessions
+    resources :user_games
+    resources :moves
+    resources :move_twos
   end
 
   mount ActionCable.server => '/cable'

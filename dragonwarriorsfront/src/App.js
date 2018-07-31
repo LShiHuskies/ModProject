@@ -33,13 +33,14 @@ class App extends Component {
 
     if(!!localStorage.getItem('token')){
 
-      // let player = atob(localStorage.getItem('token').split('.')[1])
-      // let bestPlayer = JSON.parse(player)
-      // let action = {
-      //   type: 'OPERATIONGETLOCALPLAYER',
-      //   payload: bestPlayer
-      // }
-      // this.props.dispatch(action)
+      let player = atob(localStorage.getItem('token').split('.')[1])
+
+      let bestPlayer = JSON.parse(player)
+      let action = {
+        type: 'OPERATIONGETPLAYER',
+        payload: bestPlayer
+      }
+      this.props.dispatch(action)
       this.setState({
         login: true,
         backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)'
@@ -99,7 +100,10 @@ class App extends Component {
       startGame: true,
       backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
     })
-
+    let action = {
+      type: 'SETCLICKEDTOTRUE'
+    }
+    this.props.dispatch(action)
 
 
   }
@@ -174,7 +178,7 @@ class App extends Component {
 
       localStorage.setItem('token', player.token)
       let action = {
-        type: 'LOCALPLAYER',
+        type: 'OPERATIONGETLOCALPLAYER',
         payload: player
       }
       this.props.dispatch(action)
@@ -336,7 +340,7 @@ class App extends Component {
       }
       this.props.dispatch(action);
 
-      console.log('playerone', player)
+      // console.log('playerone', player)
     } else if (this.props.playerTwo == null) {
       // let player = atob(localStorage.getItem('token').split('.')[1])
       // let bestPlayer = JSON.parse(player)
@@ -345,7 +349,7 @@ class App extends Component {
         payload: player
       }
       this.props.dispatch(action)
-      console.log('playertwo', player)
+      // console.log('playertwo', player)
     }
 
 
@@ -368,8 +372,8 @@ class App extends Component {
 
 
   render() {
-    console.log('player One', this.props.playerOne)
-    console.log('player two', this.props.playerTwo)
+    // console.log('player One', this.props.playerOne)
+    // console.log('player two', this.props.playerTwo)
     return (
       <div className="App" style={{backgroundImage: this.state.backgroundImage}}>
         <ActionCable
@@ -412,7 +416,8 @@ const mapStateToProps = (state) => {
     time: state.playerCoordinates.time,
     logout: state.playerCoordinates.logOut,
     playerOne: state.playerCoordinates.player,
-    playerTwo: state.secondPlayerCoordinates.secondplayer
+    playerTwo: state.secondPlayerCoordinates.secondplayer,
+    clicked: state.playerCoordinates.clicked
   }
 }
 

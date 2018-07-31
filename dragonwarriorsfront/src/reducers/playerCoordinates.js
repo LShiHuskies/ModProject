@@ -35,7 +35,8 @@
         enemyAttackTop2: null,
         enemyAttackLeft2: null,
         enemyAttack2: false,
-        localplayer: null
+        localplayer: null,
+        clicked: false
     }
 
 
@@ -369,7 +370,7 @@ export default function playMovements(state = defaultState, action) {
     case 'TELEPORTRIGHT':
 
     return {
-      ...state, top: Math.random() * 800,
+      ...state, top: 400,
       left: 1400,
       playerHealth: state.playerHealth - 2.5
     }
@@ -377,7 +378,7 @@ export default function playMovements(state = defaultState, action) {
     case 'TELEPORTLEFT':
 
     return {
-      ...state, top: Math.random() * 900,
+      ...state, top: 600,
       left: 150,
       playerHealth: state.playerHealth - 2.5
     }
@@ -511,6 +512,12 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, localplayer: action.payload
+    }
+
+    case 'SETCLICKEDTOTRUE':
+
+    return {
+      ...state, clicked: true
     }
 
 

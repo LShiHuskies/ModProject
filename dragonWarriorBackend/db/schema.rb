@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_000357) do
+ActiveRecord::Schema.define(version: 2018_07_31_000014) do
 
   create_table "games", force: :cascade do |t|
     t.string "name", default: "Dragon Ball Warriors"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "scores"
+  end
+
+  create_table "move_twos", force: :cascade do |t|
+    t.integer "top"
+    t.integer "left"
+    t.integer "user_id"
+  end
+
+  create_table "moves", force: :cascade do |t|
+    t.integer "top"
+    t.integer "left"
+    t.integer "user_id"
   end
 
   create_table "user_games", force: :cascade do |t|
