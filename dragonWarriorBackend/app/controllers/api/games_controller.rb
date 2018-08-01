@@ -60,7 +60,7 @@
 
 class Api::GamesController < ApplicationController
 
-  # before_action :requires_login, only: [:index]
+  before_action :requires_login, only: [:index]
 
 
 
@@ -130,10 +130,18 @@ class Api::GamesController < ApplicationController
       @game.scores = params['scores']
     end
     if params['username']
-      @user = User.find_by(id: params['username']['id'])
+      @user = User.find_by(username: params['username'])
       @game.users << @user
     end
+    if params['otherUserName']
+      @otherUser = User.find_by(username: params['otherUserName']['username'])
+      @game.users << @otherUser
+    end
     @game.save
+
+    ActionCable.server.broadcast 'GamesChannel', {
+      scores: params['scores']
+    }
     render json: @game
 
   end

@@ -36,7 +36,8 @@
         enemyAttackLeft2: null,
         enemyAttack2: false,
         localplayer: null,
-        clicked: false
+        clicked: false,
+        game_id: 100
     }
 
 
@@ -609,6 +610,17 @@ export default function playMovements(state = defaultState, action) {
         enemyLeft: action.payload.playerTwoLeft + 150
       }
     }
+
+    case 'SETGAMEID':
+
+    if (action.payload == undefined || action.payload == null ) {
+      return state
+    }
+
+    return {
+      ...state, game_id: action.payload
+    }
+
 
 
 

@@ -15,37 +15,23 @@ class GameOver extends React.Component {
         'Accept': 'application/json',
         'Authorization': localStorage.getItem('token')
       },
-      body:JSON.stringify({scores: this.props.score})
+      body:JSON.stringify({scores: this.props.score, username: (this.props.player.username !== undefined ?
+      this.props.player.username :
+      this.props.player.name),
+      otherUserName: this.props.second_player  })
     }
 
-    fetch(`http://localhost:3000/api/games/374`, config).then(r => r.json())
-    .then(res => {
-
-      const otherConfig = {
-        method: 'PATCH',
-        headers: {
-          'Content-type': 'application/json',
-          'Authorization': localStorage.getItem('token')
-        },
-        body:JSON.stringify({
-          game_id: res.id,
-          username: (this.props.player.username !== undefined ?
-          this.props.player.username :
-          this.props.player.name)
-        })
-      }
-
-      fetch(`http://localhost:3000/api/users/${this.props.player.id}`, otherConfig).then(r => r.json())
-    })
-
-
+    fetch(`http://localhost:3000/api/games/${this.props.game_id}`, config).then(r => r.json())
 
   }
 
-  handleUser = (event) => {
-    debugger;
-    alert(event)
-  }
+  // handleEndGame = (event) => {
+  //   let action = {
+  //     type: 'GAMEENDED'
+  //   }
+  //   debugger;
+  //
+  // }
 
 
 
@@ -53,10 +39,7 @@ class GameOver extends React.Component {
     let user = this.props.player.username !== undefined ? this.props.player.username : this.props.player.name
     return (
       <React.Fragment>
-      <ActionCable
-        channel={{ channel: 'UsersChannel'}}
-        onReceived={this.handleUser}
-        />
+      
       <div style={{color: 'red', display: 'inline', fontFamily: 'cursive', fontSize: '100px'}}>
       <div style={{float: 'left', fontSize: '30px'}}> <Logout/> </div>
         Game Over
@@ -79,7 +62,9 @@ class GameOver extends React.Component {
 const mapStateToProps = (state) => {
   return {
     score: state.playerCoordinates.score,
-    player: state.playerCoordinates.player
+    player: state.playerCoordinates.player,
+    game_id: state.playerCoordinates.game_id,
+    second_player: state.secondPlayerCoordinates.secondplayer
   }
 }
 

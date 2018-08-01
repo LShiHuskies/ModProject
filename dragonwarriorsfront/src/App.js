@@ -11,8 +11,6 @@ import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayer from './containers/SecondPlayer';
 
 
-
-// https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg
 let count = 0;
 let otherCount = 0;
 let thirdCount = 0;
@@ -166,7 +164,14 @@ class App extends Component {
       this.makeFetchForScore()
     } else if ( this.props.time < 6 && scoreCount < 10 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-      scoreCount = 0
+    } else if ( this.props.time < 4 && scoreCount < 11 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 3 && scoreCount < 12 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 1 && scoreCount < 13 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 0 && scoreCount < 14 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
     }
 
 
@@ -194,7 +199,7 @@ class App extends Component {
       startGame: true,
       backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
     })
-    let action = {
+      let action = {
       type: 'SETCLICKEDTOTRUE'
     }
     this.props.dispatch(action)
@@ -220,11 +225,6 @@ class App extends Component {
       })
       .then( res => res.json() )
       .then(player => this.handlePlayer(player) )
-
-
-
-
-
 
     } else if (event.target.value == "Create New Account") {
       // need to make a fetch request in order to create a new account
@@ -256,11 +256,6 @@ class App extends Component {
       alert(result['errors'])
     }
 
-
-
-
-
-
   }
 
 
@@ -277,25 +272,12 @@ class App extends Component {
       }
       this.props.dispatch(action)
 
-      // fetch('http://localhost:3000/api/games').then(r => r.json()).then(data => this.doStuffWithData(data, player))
-
         this.setState({
           login: true,
           backgroundImage: 'url(https://wallpapertag.com/wallpaper/full/8/d/1/202872-vertical-dbz-background-1920x1080-for-retina.jpg)',
           username: '',
           password: ''
         })
-
-      // let action = {
-      //   type: 'OPERATIONGETPLAYER',
-      //   payload: player
-      // }
-      //
-      // this.props.dispatch(action);
-
-      // localStorage.setItem('token', player.token)
-
-
 
       const config = {
         method: 'PATCH',
@@ -310,115 +292,35 @@ class App extends Component {
       fetch(`http://localhost:3000/api/users/${player.id}`, config).then(r => r.json())
 
 
-      // if (this.props.playerOne == null) {
-      //   let action = {
-      //     type: 'OPERATIONGETPLAYER',
-      //     payload: player
-      //   }
-      //   this.props.dispatch(action);
-      // } else if (this.props.playerTwo == null) {
-      //   let action = {
-      //     type: 'OPERATIONGETSECONDPLAYER',
-      //     payload: player
-      //   }
-      //   this.props.dispatch(action)
-      // }
-
-
-
-      // const config = {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-type': 'application/json',
-      //     'Authorization': localStorage.getItem('token')
-      //   },
-      //   body:JSON.stringify({user: player})
-      // }
-      //
-      // fetch(`http://localhost:3000/api/games`, config).then(r => r.json())
-
-
-
-
-
     } else if (player['errors'] !== undefined) {
       alert(player['errors'])
     }
 
 
-
   }
-
-
-  doStuffWithData = (data, player) => {
-
-    // let lastGame = data.pop()
-    // if (lastGame.scores == null) {
-    //
-    //
-    //   const otherConfig = {
-    //     method: 'PATCH',
-    //     headers: {
-    //       'Content-type': 'application/json',
-    //       'Authorization': localStorage.getItem('token')
-    //     },
-    //     body:JSON.stringify({
-    //       game_id: lastGame.id,
-    //       username: player
-    //     })
-    //   }
-    //   fetch(`http://localhost:3000/api/games/${lastGame.id}`, otherConfig).then(r => r.json())
-    //
-    // } else {
-
-      const config = {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json',
-          'Authorization': localStorage.getItem('token')
-        },
-        body:JSON.stringify({
-          username: player
-        })
-      }
-      fetch(`http://localhost:3000/api/games/`, config).then(r => r.json())
-
-
-     // end of the else statement
-
-
-
-
-
-
-
-
-  } // end of the doStuffWithData function
 
 
 
   // this is the function when we initiate a new game.
 
   handleReceived = (event) => {
-    // let action = {
-    //   type: 'OPERATIONGETSECONDPLAYER'
-    // }
-    // this.props.dispatch(action)
-    // fourthCount = fourthCount + 1
-    // alert(fourthCount)
-    // if (fourthCount == 2) {
-    //   let action = {
-    //     type: 'OPERATIONGETSECONDPLAYER'
-    //   }
-    //
-    //   alert('we are here')
-    //   this.props.dispatch(action)
-    // }
+    if (event.id) {
+      let action = {
+        type: 'SETGAMEID',
+        payload: event.id
+      }
+
+    this.props.dispatch(action)
 
     this.setState({
       startGame: true,
       backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
     })
+  } else if (event.scores) {
+    this.setState({
+      gameOver: true
+    })
+  }
 
   }
 
@@ -509,7 +411,8 @@ class App extends Component {
           />
       </div> :
       this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
-      (!(this.props.playerHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) ) )
+      (!(this.props.playerHealth > 0) || !(this.props.playerTwoHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) )
+      || this.state.gameOver == true)
       ? <GameOver />
       : <World />
     }

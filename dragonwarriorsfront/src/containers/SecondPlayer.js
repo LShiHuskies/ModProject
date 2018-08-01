@@ -22,6 +22,9 @@ class SecondPlayer extends React.Component {
       leftAttack: null,
       topAttack: null,
       degree: this.props.degree,
+      attack2: false,
+      leftAttack2: null,
+      topAttack2: null
     }
   }
 
@@ -354,6 +357,30 @@ class SecondPlayer extends React.Component {
         })
       };
       fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+
+    } else if ( this.props.characterdirection == 'LEFT' && this.state.attack == true
+    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+      action = {
+        type: "ATTACKLEFT TWO SECONDONE"
+      }
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+
+
     }
 
     if (this.props.characterdirection == 'RIGHT' && this.state.attack == false ) {
@@ -526,7 +553,7 @@ class SecondPlayer extends React.Component {
         else if ( (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 30)
           && (this.state.topAttack < this.props.enemyTop + 80 && this.state.topAttack > this.props.enemyTop - 30)
        ) {
-         
+
          let action = {
            type: 'HITFRIEZARIGHT'
          }
