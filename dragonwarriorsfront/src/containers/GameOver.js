@@ -21,7 +21,7 @@ class GameOver extends React.Component {
       otherUserName: this.props.second_player  })
     }
 
-    fetch(`http://localhost:3000/api/games/${this.props.game_id}`, config).then(r => r.json())
+    fetch(`${window.location.hostname}:3000/api/games/${this.props.game_id}`, config).then(r => r.json())
 
   }
 

@@ -90,7 +90,7 @@ class Player extends React.Component {
             })
           };
 
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -118,7 +118,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -145,7 +145,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -170,7 +170,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -195,7 +195,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -220,7 +220,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -244,7 +244,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -269,7 +269,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -295,7 +295,7 @@ class Player extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
         break;
 
@@ -320,7 +320,7 @@ class Player extends React.Component {
             type: action
           })
         };
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -347,7 +347,7 @@ class Player extends React.Component {
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -372,7 +372,7 @@ class Player extends React.Component {
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -402,7 +402,7 @@ class Player extends React.Component {
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
           // HERE
 
     //     this.setState({
@@ -529,7 +529,7 @@ class Player extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
     //   this.setState({
@@ -663,7 +663,7 @@ config = {
     type: action
   })
 };
-fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
+fetch(`${window.location.hostname}:3000/api/moves`, config).then(r => r.json())
 
 
 //   this.setState({
@@ -783,7 +783,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -858,7 +858,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
        type: action
      })
    };
-   fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+   fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -942,7 +942,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
        type: action
      })
    };
-   fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+   fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1018,7 +1018,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1152,7 +1152,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       // this.setState({
@@ -1287,7 +1287,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1421,7 +1421,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
               type: action
             })
           };
-          fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+          fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1493,7 +1493,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
                 type: action
               })
             };
-            fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+            fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1568,7 +1568,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
               type: action
             })
           };
-          fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+          fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1648,7 +1648,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -1674,7 +1674,7 @@ fetch(`http://localhost:3000/api/moves`, config).then(r => r.json())
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
       }
       break;
 

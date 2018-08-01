@@ -60,7 +60,7 @@ class SecondPlayer extends React.Component {
             })
           };
 
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
 
@@ -87,7 +87,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
 
@@ -113,7 +113,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -137,7 +137,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -161,7 +161,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -185,7 +185,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
       break;
 
@@ -208,7 +208,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
       break;
 
@@ -232,7 +232,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
       break;
 
@@ -257,7 +257,7 @@ class SecondPlayer extends React.Component {
           })
         };
 
-    fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
         break;
 
@@ -281,7 +281,7 @@ class SecondPlayer extends React.Component {
             type: action
           })
         };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -307,7 +307,7 @@ class SecondPlayer extends React.Component {
       //       type: action
       //     })
       //   };
-      //   fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      //   fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
       //
       // break;
 
@@ -331,7 +331,7 @@ class SecondPlayer extends React.Component {
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
       break;
 
@@ -357,7 +357,7 @@ class SecondPlayer extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } else if ( this.props.characterdirection == 'LEFT' && this.state.attack == true
     && this.state.attack2 == false && this.state.leftAttack2 == null ) {
@@ -379,7 +379,7 @@ class SecondPlayer extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
     }
@@ -403,7 +403,7 @@ class SecondPlayer extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
     }  // end of the else if statement for first right attack for vegeta
 
     else if ( this.props.characterdirection == 'RIGHT' && this.state.attack == true
@@ -425,7 +425,7 @@ class SecondPlayer extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
     }
@@ -456,7 +456,7 @@ class SecondPlayer extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
     } else if (this.props.left < 750) {
@@ -479,7 +479,7 @@ class SecondPlayer extends React.Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
     }
