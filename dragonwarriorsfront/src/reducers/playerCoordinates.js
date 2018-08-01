@@ -550,9 +550,65 @@ export default function playMovements(state = defaultState, action) {
     case 'SETSCORETOALL':
 
     return {
-      ...state, score: action.payload.score, enemyHealth: action.payload.enemyHealth
+      ...state, score: action.payload.score, enemyHealth: action.payload.enemyHealth, playerHealth: action.payload.playerHealth,
+      time: action.payload.time, enemyCoordinates: {
+        enemyTop: action.payload.enemyTop, enemyLeft: action.payload.enemyLeft
+      }
     }
 
+    case 'RESTORELEVEL3':
+
+    return {
+      ...state, enemyHealth: 100, playerHealth: 100, level: 'THREE', time: 60
+    }
+
+    case 'RESTORELEVEL4':
+
+    return {
+      ...state, enemyHealth: 100, playerHealth: 100, level: 'FOUR', time: 60
+    }
+
+    case 'GINYUGOTVEGETA':
+
+    return {
+      ...state, enemyHealth: state.enemyHealth + 5,
+        ginyuLeft: 0,
+        ginyuTop: 0
+    }
+
+    case 'TELEPORTTOGOKULEFT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.top, enemyLeft: state.left - 150
+      }
+    }
+
+    case 'TELEPORTTOGOKURIGHT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: state.top, enemyLeft: state.left + 150
+      }
+    }
+
+    case 'TELEPORTTOVEGETALEFT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: action.payload.playerTwoTop,
+        enemyLeft: action.payload.playerTwoLeft - 150
+      }
+    }
+
+    case 'TELEPORTTOVEGETARIGHT':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: action.payload.playerTwoTop,
+        enemyLeft: action.payload.playerTwoLeft + 150
+      }
+    }
 
 
 

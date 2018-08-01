@@ -17,6 +17,7 @@ let count = 0;
 let otherCount = 0;
 let thirdCount = 0;
 let fourthCount = 0;
+let fifthCount = 0;
 
 let scoreCount = 0;
 
@@ -36,7 +37,12 @@ class App extends Component {
     scoreCount = scoreCount + 1;
     let object = {
       score: this.props.score,
-      enemyHealth: this.props.enemyHealth
+      enemyHealth: this.props.enemyHealth,
+      playerHealth: this.props.playerHealth,
+      playerTwoHealth: this.props.playerTwoHealth,
+      time: this.props.time,
+      enemyLeft: this.props.enemyLeft,
+      enemyTop: this.props.enemyTop
     };
     let action = {
       type: 'SETSCORETOALL',
@@ -93,7 +99,6 @@ class App extends Component {
       otherCount = otherCount + 1
     } else if ( this.props.enemyHealth < 1 && thirdCount < 1 ) {
       this.setState({
-        gameOver: true,
         backgroundImage: 'url(https://i.pinimg.com/originals/0f/18/c4/0f18c45e07a7212f4d49e71213833e01.jpg)'
       })
       let action = {
@@ -101,7 +106,47 @@ class App extends Component {
       }
       this.props.dispatch(action)
       thirdCount = thirdCount + 1;
-    } else if ( this.props.time < 51 && scoreCount < 1 && this.state.gameOver !== true ) {
+    } else if ( this.props.enemyHealth < 1 && fourthCount < 1 && thirdCount == 1) {
+      fourthCount = fourthCount + 1;
+
+      let action = {
+        type: 'RESTORELEVEL3'
+      }
+
+      let config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          type: action
+        })
+      };
+      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+
+
+    } else if ( this.props.enemyHealth < 1 && fifthCount < 1 && fourthCount == 1 ) {
+        let action = {
+          type: 'RESTORELEVEL4'
+        }
+
+        let config = {
+          method: 'POST',
+          headers: {
+          'Accepts': 'application/json',
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({
+            type: action
+          })
+        };
+        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+
+
+
+    }
+    else if ( this.props.time < 51 && scoreCount < 1 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
     } else if ( this.props.time < 46 && scoreCount < 2 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
@@ -422,6 +467,16 @@ class App extends Component {
   handleScoreAndEnemyHealth = (event) => {
     if (event.type.type == 'SETSCORETOALL' ) {
       this.props.dispatch(event.type)
+    } else if (event.type.type == 'RESTORELEVEL3' ) {
+      this.props.dispatch(event.type)
+      this.setState({
+        backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-background-namek-5467.jpg)'
+      })
+    } else if (event.type.type == 'RESTORELEVEL4') {
+      this.props.dispatch(event.type)
+      this.setState({
+        backgroundImage: 'url(https://img00.deviantart.net/342f/i/2017/015/a/5/saga_of_freezer___namek_screen_by_saodvd-davkgjo.png)'
+      })
     }
   }
 
@@ -477,7 +532,10 @@ const mapStateToProps = (state) => {
     playerOne: state.playerCoordinates.player,
     playerTwo: state.secondPlayerCoordinates.secondplayer,
     clicked: state.playerCoordinates.clicked,
-    score: state.playerCoordinates.score
+    score: state.playerCoordinates.score,
+    playerTwoHealth: state.secondPlayerCoordinates.playerHealth,
+    enemyTop: state.playerCoordinates.enemyCoordinates.enemyTop,
+    enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft
   }
 }
 

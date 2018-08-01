@@ -7,10 +7,14 @@ class Ginyu extends React.Component {
 
   componentDidMount() {
     if (this.props.level == 'ONE') {
-    ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 30 ))
-  } else if (this.props.level == 'TWO') {
-    ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 10 ))
-  }
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 30 ))
+    } else if (this.props.level == 'TWO') {
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 20 ))
+    } else if (this.props.level == 'THREE') {
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 15 ))
+    } else {
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 10 ))
+    }
 
   }
 
@@ -22,37 +26,76 @@ class Ginyu extends React.Component {
   }
 
   handleGinyu = () => {
-    if(this.props.playerLeft < this.props.ginyuLeft) {
+    if(this.props.time > 25) {
+      if(this.props.playerLeft < this.props.ginyuLeft) {
+        let action = {
+          type: 'GINYUGOLEFT'
+        };
+        this.props.dispatch(action)
+      }
+      if(this.props.playerLeft > this.props.ginyuLeft) {
+        let action = {
+          type: 'GINYUGORIGHT'
+        }
+        this.props.dispatch(action)
+      }
+      if(this.props.playerTop > this.props.ginyuTop) {
+        let action = {
+          type: 'GINYUGODOWN'
+        }
+        this.props.dispatch(action)
+      }
+      if(this.props.playerTop < this.props.ginyuTop) {
+        let action = {
+          type: 'GINYUGOUP'
+        }
+        this.props.dispatch(action)
+      }
+      if ( (this.props.ginyuTop < this.props.playerTop + 120 && this.props.ginyuTop > this.props.playerTop - 100)
+      && (this.props.playerLeft < this.props.ginyuLeft + 60 && this.props.playerLeft > this.props.ginyuLeft - 25)
+    ) {
+      let action = {
+        type: 'GINYUGOTGOKU'
+      }
+      this.props.dispatch(action)
+    }
+  } else {
+
+    if(this.props.playerTwoLeft < this.props.ginyuLeft) {
       let action = {
         type: 'GINYUGOLEFT'
       };
       this.props.dispatch(action)
     }
-    if(this.props.playerLeft > this.props.ginyuLeft) {
+    if(this.props.playerTwoLeft > this.props.ginyuLeft) {
       let action = {
         type: 'GINYUGORIGHT'
       }
       this.props.dispatch(action)
     }
-    if(this.props.playerTop > this.props.ginyuTop) {
+    if(this.props.playerTwoTop > this.props.ginyuTop) {
       let action = {
         type: 'GINYUGODOWN'
       }
       this.props.dispatch(action)
     }
-    if(this.props.playerTop < this.props.ginyuTop) {
+    if(this.props.playerTwoTop < this.props.ginyuTop) {
       let action = {
         type: 'GINYUGOUP'
       }
       this.props.dispatch(action)
     }
-    if ( (this.props.ginyuTop < this.props.playerTop + 120 && this.props.ginyuTop > this.props.playerTop - 100)
-    && (this.props.playerLeft < this.props.ginyuLeft + 60 && this.props.playerLeft > this.props.ginyuLeft - 25)
+    if ( (this.props.ginyuTop < this.props.playerTwoTop + 120 && this.props.ginyuTop > this.props.playerTwoTop - 100)
+    && (this.props.playerTwoLeft < this.props.ginyuLeft + 60 && this.props.playerTwoLeft > this.props.ginyuLeft - 25)
   ) {
     let action = {
-      type: 'GINYUGOTGOKU'
+      type: 'GINYUGOTVEGETA'
     }
     this.props.dispatch(action)
+  }
+
+
+
   }
 
   }
@@ -78,7 +121,10 @@ const mapStateToProps = (state) => {
     ginyuLeft: state.playerCoordinates.ginyuLeft,
     playerTop: state.playerCoordinates.top,
     playerLeft: state.playerCoordinates.left,
-    level: state.playerCoordinates.level
+    level: state.playerCoordinates.level,
+    time: state.playerCoordinates.time,
+    playerTwoTop: state.secondPlayerCoordinates.top,
+    playerTwoLeft: state.secondPlayerCoordinates.left
   }
 }
 

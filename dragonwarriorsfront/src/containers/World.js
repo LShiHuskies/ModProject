@@ -7,6 +7,7 @@ import Ginyu from './Ginyu';
 import ginyuAttackIntervalArray from '../reducers/ginyuAttackInterval';
 import SecondPlayer from './SecondPlayer';
 import { ActionCable } from 'react-actioncable-provider';
+import OtherHealthBar from './OtherHealthBar';
 
 
 
@@ -25,7 +26,11 @@ class World extends React.Component {
       <Player />
       <SecondPlayer />
       <Enemy />
-      {this.props.time < 20 && this.props.time > 8 ? <Ginyu /> : null}
+      <OtherHealthBar/>
+      {this.props.level == 'ONE' && (this.props.time < 30 && this.props.time > 20) ? <Ginyu /> : null}
+      {this.props.level == 'TWO' && (this.props.time < 40 && this.props.time > 20) ? <Ginyu /> : null}
+      {this.props.level == 'THREE' && (this.props.time < 45 && this.props.time > 15) ? <Ginyu /> : null}
+      {this.props.level == 'FOUR' && (this.props.time < 45 && this.props.time > 5) ? <Ginyu /> : null}
     </div>
     )
   }
@@ -35,7 +40,8 @@ class World extends React.Component {
 const mapStateToProps = (state) => {
 
   return {
-    time: state.playerCoordinates.time
+    time: state.playerCoordinates.time,
+    level: state.playerCoordinates.level
   }
 }
 

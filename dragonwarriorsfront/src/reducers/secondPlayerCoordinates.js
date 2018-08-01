@@ -162,6 +162,31 @@ export default function secondPlayMovements(state = defaultState, action) {
       ...state, top: 800, left: 1100, playerHealth: state.playerHealth - 2.5
     }
 
+    case 'GINYUGOTVEGETA':
+
+    return {
+      ...state, playerHealth: state.playerHealth - 10
+    }
+
+    case 'SETSCORETOALL':
+
+    return {
+      ...state, playerHealth: action.payload.playerTwoHealth
+    }
+
+    case 'RESTORELEVEL3':
+
+    return {
+      ...state, playerHealth: 100
+    }
+
+    case 'RESTORELEVEL4':
+
+    return {
+      ...state, playerHealth: 100
+    }
+
+
 
 
 
