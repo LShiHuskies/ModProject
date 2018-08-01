@@ -1,1 +1,1 @@
-export const API_WS_ROOT = 'ws://localhost:3000/cable';
+export const API_WS_ROOT = `ws://${window.location.hostname}:3000/cable`;
