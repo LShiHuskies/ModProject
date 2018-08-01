@@ -47,7 +47,7 @@ class App extends Component {
       playerTwoLeft: this.props.playerTwoLeft
     };
     let action = {
-      type: 'SETSCORETOALL',
+      type: '',
       payload: object
     }
 
@@ -61,7 +61,7 @@ class App extends Component {
         type: action
       })
     };
-    fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
   }
 
@@ -125,7 +125,7 @@ class App extends Component {
           type: action
         })
       };
-      fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
     } else if ( this.props.enemyHealth < 1 && fifthCount < 1 && fourthCount == 1 ) {
@@ -143,7 +143,7 @@ class App extends Component {
             type: action
           })
         };
-        fetch(`http://localhost:3000/api/moves`, config).then(r=> r.json())
+        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -198,7 +198,7 @@ class App extends Component {
         playerTwo: this.props.playerTwo
       })
     }
-    fetch(`http://localhost:3000/api/games/`, config).then(r => r.json())
+    fetch(`${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
 
     this.setState({
       startGame: true,
@@ -221,7 +221,7 @@ class App extends Component {
     if (event.target.value == "Login") {
 
       // trying to the link the back end with the front end--
-      fetch(`http://localhost:3000/api/sessions`, {
+      fetch(`${window.location.hostname}:3000/api/sessions`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
@@ -233,7 +233,7 @@ class App extends Component {
 
     } else if (event.target.value == "Create New Account") {
       // need to make a fetch request in order to create a new account
-      fetch(`http://localhost:3000/api/users`, {
+      fetch(`${window.location.hostname}:3000/api/users`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
@@ -294,7 +294,7 @@ class App extends Component {
           username: player
         })
       }
-      fetch(`http://localhost:3000/api/users/${player.id}`, config).then(r => r.json())
+      fetch(`${window.location.hostname}:3000/api/users/${player.id}`, config).then(r => r.json())
 
 
     } else if (player['errors'] !== undefined) {
@@ -373,7 +373,7 @@ class App extends Component {
   }
 
   handleScoreAndEnemyHealth = (event) => {
-    if (event.type.type == 'SETSCORETOALL' ) {
+    if (event.type.type == '' ) {
       this.props.dispatch(event.type)
     } else if (event.type.type == 'RESTORELEVEL3' ) {
       this.props.dispatch(event.type)
