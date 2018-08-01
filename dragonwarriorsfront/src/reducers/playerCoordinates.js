@@ -554,7 +554,7 @@ export default function playMovements(state = defaultState, action) {
       ...state, score: action.payload.score, enemyHealth: action.payload.enemyHealth, playerHealth: action.payload.playerHealth,
       time: action.payload.time, enemyCoordinates: {
         enemyTop: action.payload.enemyTop, enemyLeft: action.payload.enemyLeft
-      }
+      }, top: action.payload.playerOneTop, left: action.payload.playerOneLeft
     }
 
     case 'RESTORELEVEL3':

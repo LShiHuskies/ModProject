@@ -16,132 +16,132 @@ class Enemy extends React.Component {
   }
 
   handleThatKey = () => {
-    // if (this.props.time >= 45) {
-    //   if (this.props.playerTop > this.props.enemyTop) {
-    //     let action = {
-    //       type: 'ENEMYMOVEDOWN'
-    //     }
-    //     this.props.dispatch(action)
-    //
-    //   }  // if the player is closer to the bottom of the screen than the computer
-    //    if (this.props.playerLeft > this.props.enemyLeft) {
-    //
-    //      let action = {
-    //        type: 'ENEMYMOVERIGHT'
-    //      }
-    //      this.props.dispatch(action)
-    //
-    //    } // if the player is closer to the left of the screen than the computer
-    //    if (this.props.playerTop < this.props.enemyTop) {
-    //      let action = {
-    //        type: 'ENEMYMOVEUP'
-    //      }
-    //      this.props.dispatch(action)
-    //    } // if the player is closer to the top of the screen than the computer
-    //
-    //    if (this.props.playerLeft < this.props.enemyLeft) {
-    //      let action = {
-    //        type: 'ENEMYMOVELEFT'
-    //      }
-    //      this.props.dispatch(action)
-    //    } // if the player is closer to the left of the screen than the computer
-    //  } else if (this.props.time < 45 && this.props.time > 30) {
-    //
-    //    if (this.props.playerTwoTop > this.props.enemyTop) {
-    //      let action = {
-    //        type: 'ENEMYMOVEDOWN'
-    //      }
-    //      this.props.dispatch(action)
-    //
-    //    }  // if the player is closer to the bottom of the screen than the computer
-    //     if (this.props.playerTwoLeft > this.props.enemyLeft) {
-    //
-    //       let action = {
-    //         type: 'ENEMYMOVERIGHT'
-    //       }
-    //       this.props.dispatch(action)
-    //
-    //     } // if the player is closer to the left of the screen than the computer
-    //     if (this.props.playerTwoTop < this.props.enemyTop) {
-    //       let action = {
-    //         type: 'ENEMYMOVEUP'
-    //       }
-    //       this.props.dispatch(action)
-    //     } // if the player is closer to the top of the screen than the computer
-    //
-    //     if (this.props.playerTwoLeft < this.props.enemyLeft) {
-    //       let action = {
-    //         type: 'ENEMYMOVELEFT'
-    //       }
-    //       this.props.dispatch(action)
-    //     } // if the player is closer to the left of the screen than the computer
-    //
-    //  } else if ( this.props.time <= 30 && this.props.time > 15 ) {
-    //
-    //    if (this.props.playerTop > this.props.enemyTop) {
-    //      let action = {
-    //        type: 'ENEMYMOVEDOWN'
-    //      }
-    //      this.props.dispatch(action)
-    //
-    //    }  // if the player is closer to the bottom of the screen than the computer
-    //     if (this.props.playerLeft > this.props.enemyLeft) {
-    //
-    //       let action = {
-    //         type: 'ENEMYMOVERIGHT'
-    //       }
-    //       this.props.dispatch(action)
-    //
-    //     } // if the player is closer to the left of the screen than the computer
-    //     if (this.props.playerTop < this.props.enemyTop) {
-    //       let action = {
-    //         type: 'ENEMYMOVEUP'
-    //       }
-    //       this.props.dispatch(action)
-    //     } // if the player is closer to the top of the screen than the computer
-    //
-    //     if (this.props.playerLeft < this.props.enemyLeft) {
-    //       let action = {
-    //         type: 'ENEMYMOVELEFT'
-    //       }
-    //       this.props.dispatch(action)
-    //     } // if the player is closer to the left of the screen than the computer
-    //
-    //  } else if ( this.props.time <= 15 && this.props.time >= 0 ) {
-    //
-    //
-    //    if (this.props.playerTwoTop > this.props.enemyTop) {
-    //      let action = {
-    //        type: 'ENEMYMOVEDOWN'
-    //      }
-    //      this.props.dispatch(action)
-    //
-    //    }  // if the player is closer to the bottom of the screen than the computer
-    //     if (this.props.playerTwoLeft > this.props.enemyLeft) {
-    //
-    //       let action = {
-    //         type: 'ENEMYMOVERIGHT'
-    //       }
-    //       this.props.dispatch(action)
-    //
-    //     } // if the player is closer to the left of the screen than the computer
-    //     if (this.props.playerTwoTop < this.props.enemyTop) {
-    //       let action = {
-    //         type: 'ENEMYMOVEUP'
-    //       }
-    //       this.props.dispatch(action)
-    //     } // if the player is closer to the top of the screen than the computer
-    //
-    //     if (this.props.playerTwoLeft < this.props.enemyLeft) {
-    //       let action = {
-    //         type: 'ENEMYMOVELEFT'
-    //       }
-    //       this.props.dispatch(action)
-    //     } // if the player is closer to the left of the screen than the computer
-    //
-    //
-    //
-    //  }
+    if (this.props.time >= 45) {
+      if (this.props.playerTop > this.props.enemyTop) {
+        let action = {
+          type: 'ENEMYMOVEDOWN'
+        }
+        this.props.dispatch(action)
+
+      }  // if the player is closer to the bottom of the screen than the computer
+       if (this.props.playerLeft > this.props.enemyLeft) {
+
+         let action = {
+           type: 'ENEMYMOVERIGHT'
+         }
+         this.props.dispatch(action)
+
+       } // if the player is closer to the left of the screen than the computer
+       if (this.props.playerTop < this.props.enemyTop) {
+         let action = {
+           type: 'ENEMYMOVEUP'
+         }
+         this.props.dispatch(action)
+       } // if the player is closer to the top of the screen than the computer
+
+       if (this.props.playerLeft < this.props.enemyLeft) {
+         let action = {
+           type: 'ENEMYMOVELEFT'
+         }
+         this.props.dispatch(action)
+       } // if the player is closer to the left of the screen than the computer
+     } else if (this.props.time < 45 && this.props.time > 30) {
+
+       if (this.props.playerTwoTop > this.props.enemyTop) {
+         let action = {
+           type: 'ENEMYMOVEDOWN'
+         }
+         this.props.dispatch(action)
+
+       }  // if the player is closer to the bottom of the screen than the computer
+        if (this.props.playerTwoLeft > this.props.enemyLeft) {
+
+          let action = {
+            type: 'ENEMYMOVERIGHT'
+          }
+          this.props.dispatch(action)
+
+        } // if the player is closer to the left of the screen than the computer
+        if (this.props.playerTwoTop < this.props.enemyTop) {
+          let action = {
+            type: 'ENEMYMOVEUP'
+          }
+          this.props.dispatch(action)
+        } // if the player is closer to the top of the screen than the computer
+
+        if (this.props.playerTwoLeft < this.props.enemyLeft) {
+          let action = {
+            type: 'ENEMYMOVELEFT'
+          }
+          this.props.dispatch(action)
+        } // if the player is closer to the left of the screen than the computer
+
+     } else if ( this.props.time <= 30 && this.props.time > 15 ) {
+
+       if (this.props.playerTop > this.props.enemyTop) {
+         let action = {
+           type: 'ENEMYMOVEDOWN'
+         }
+         this.props.dispatch(action)
+
+       }  // if the player is closer to the bottom of the screen than the computer
+        if (this.props.playerLeft > this.props.enemyLeft) {
+
+          let action = {
+            type: 'ENEMYMOVERIGHT'
+          }
+          this.props.dispatch(action)
+
+        } // if the player is closer to the left of the screen than the computer
+        if (this.props.playerTop < this.props.enemyTop) {
+          let action = {
+            type: 'ENEMYMOVEUP'
+          }
+          this.props.dispatch(action)
+        } // if the player is closer to the top of the screen than the computer
+
+        if (this.props.playerLeft < this.props.enemyLeft) {
+          let action = {
+            type: 'ENEMYMOVELEFT'
+          }
+          this.props.dispatch(action)
+        } // if the player is closer to the left of the screen than the computer
+
+     } else if ( this.props.time <= 15 && this.props.time >= 0 ) {
+
+
+       if (this.props.playerTwoTop > this.props.enemyTop) {
+         let action = {
+           type: 'ENEMYMOVEDOWN'
+         }
+         this.props.dispatch(action)
+
+       }  // if the player is closer to the bottom of the screen than the computer
+        if (this.props.playerTwoLeft > this.props.enemyLeft) {
+
+          let action = {
+            type: 'ENEMYMOVERIGHT'
+          }
+          this.props.dispatch(action)
+
+        } // if the player is closer to the left of the screen than the computer
+        if (this.props.playerTwoTop < this.props.enemyTop) {
+          let action = {
+            type: 'ENEMYMOVEUP'
+          }
+          this.props.dispatch(action)
+        } // if the player is closer to the top of the screen than the computer
+
+        if (this.props.playerTwoLeft < this.props.enemyLeft) {
+          let action = {
+            type: 'ENEMYMOVELEFT'
+          }
+          this.props.dispatch(action)
+        } // if the player is closer to the left of the screen than the computer
+
+
+
+     }
 
      if ((this.props.time < 50 && this.props.time > 48) && this.props.level !== 'ONE'
    ) {

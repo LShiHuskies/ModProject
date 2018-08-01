@@ -40,7 +40,11 @@ class App extends Component {
       playerTwoHealth: this.props.playerTwoHealth,
       time: this.props.time,
       enemyLeft: this.props.enemyLeft,
-      enemyTop: this.props.enemyTop
+      enemyTop: this.props.enemyTop,
+      playerOneTop: this.props.playerOneTop,
+      playerOneLeft: this.props.playerOneLeft,
+      playerTwoTop: this.props.playerTwoTop,
+      playerTwoLeft: this.props.playerTwoLeft
     };
     let action = {
       type: 'SETSCORETOALL',
@@ -83,7 +87,7 @@ class App extends Component {
 
   componentDidUpdate() {
 
-    if( (this.props.playerHealth < 1 && count < 1) || ( !(this.props.enemyHealth < 1 ) && (this.props.time < 1) && (count < 1) ) ){
+    if( ((this.props.playerHealth < 1 || this.props.playerTwoHealth < 1) && count < 1) || ( !(this.props.enemyHealth < 1 ) && (this.props.time < 1) && (count < 1) ) ){
       this.setState({
         gameOver: true,
         backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)'
@@ -143,34 +147,35 @@ class App extends Component {
 
 
 
-    }
-    else if ( this.props.time < 51 && scoreCount < 1 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 55 && scoreCount < 1 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 46 && scoreCount < 2 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 51 && scoreCount < 2 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 41 && scoreCount < 3 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 46 && scoreCount < 3 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 36 && scoreCount < 4 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 41 && scoreCount < 4 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 31 && scoreCount < 5 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 36 && scoreCount < 5 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 26 && scoreCount < 6 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 31 && scoreCount < 6 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 21 && scoreCount < 7 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 26 && scoreCount < 7 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 16 && scoreCount < 8 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 21 && scoreCount < 8 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 11 && scoreCount < 9 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 16 && scoreCount < 9 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 6 && scoreCount < 10 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 11 && scoreCount < 10 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 4 && scoreCount < 11 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 6 && scoreCount < 11 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 3 && scoreCount < 12 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 4 && scoreCount < 12 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 1 && scoreCount < 13 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 3 && scoreCount < 13 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 0 && scoreCount < 14 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 1 && scoreCount < 14 && this.state.gameOver !== true ) {
+      this.makeFetchForScore()
+    } else if ( this.props.time < 0 && scoreCount < 15 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
     }
 
@@ -439,7 +444,11 @@ const mapStateToProps = (state) => {
     score: state.playerCoordinates.score,
     playerTwoHealth: state.secondPlayerCoordinates.playerHealth,
     enemyTop: state.playerCoordinates.enemyCoordinates.enemyTop,
-    enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft
+    enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft,
+    playerOneLeft: state.playerCoordinates.left,
+    playerOneTop: state.playerCoordinates.top,
+    playerTwoLeft: state.secondPlayerCoordinates.left,
+    playerTwoTop: state.secondPlayerCoordinates.top
   }
 }
 

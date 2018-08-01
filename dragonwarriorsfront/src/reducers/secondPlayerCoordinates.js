@@ -173,7 +173,7 @@ export default function secondPlayMovements(state = defaultState, action) {
     case 'SETSCORETOALL':
 
     return {
-      ...state, playerHealth: action.payload.playerTwoHealth
+      ...state, playerHealth: action.payload.playerTwoHealth, top: action.payload.playerTwoTop, left: action.payload.playerTwoLeft
     }
 
     case 'RESTORELEVEL3':
