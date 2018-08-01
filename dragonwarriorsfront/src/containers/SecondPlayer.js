@@ -8,9 +8,10 @@ import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2'
 
 var leftAttackProjectile = [];
-var upAttackProjectile = [];
-var downAttackProjectile = [];
 var rightAttackProjectile = [];
+
+let leftAttackProjectile2 = [];
+let rightAttackProjectile2 = [];
 
 
 class SecondPlayer extends React.Component {
@@ -383,7 +384,7 @@ class SecondPlayer extends React.Component {
 
     }
 
-    if (this.props.characterdirection == 'RIGHT' && this.state.attack == false ) {
+    else if (this.props.characterdirection == 'RIGHT' && this.state.attack == false ) {
       action = {
         type: "ATTACKRIGHT TWO"
       }
@@ -403,7 +404,34 @@ class SecondPlayer extends React.Component {
         })
       };
       fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+    }  // end of the else if statement for first right attack for vegeta
+
+    else if ( this.props.characterdirection == 'RIGHT' && this.state.attack == true
+    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+      action = {
+        type: "ATTACKRIGHT TWO SECONDONE"
+      }
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://localhost:3000/api/move_twos`, config).then(r=> r.json())
+
+
     }
+
+
+
 
     break;
 
@@ -455,8 +483,6 @@ class SecondPlayer extends React.Component {
 
 
     }
-
-
 
 
 
@@ -531,6 +557,102 @@ class SecondPlayer extends React.Component {
   })
 
     } // end of the if statement for the attack left two
+    else if (event.type.type == 'ATTACKLEFT TWO SECONDONE' ) {
+
+      this.setState({
+        attack2: true,
+        leftAttack2: this.props.attackLeft2,
+        topAttack2: this.props.attackTop2,
+        degree: this.props.degree
+      }, () => {
+
+        leftAttackProjectile2.push(setInterval(
+          () =>  this.setState({
+          leftAttack2: this.state.leftAttack2 - 5,
+          topAttack2: this.state.topAttack2
+        }, () => { if (this.state.leftAttack2 < 0) {
+          this.setState({
+            attack2: false,
+            leftAttack2: null,
+            topAttack2: null
+          })
+        } else if (  (this.state.leftAttack2 < this.props.enemyLeft + 20 && this.state.leftAttack2 > this.props.enemyLeft - 20)
+          && (this.state.topAttack2 > this.props.enemyTop - 50 && this.state.topAttack2 < this.props.enemyTop + 105  )
+                ) {
+
+                  let action = {
+                    type: 'HITFRIEZALEFT'
+                  }
+                this.props.dispatch(action)
+
+          this.setState({
+            attack2: false,
+            leftAttack2: null,
+            topAttack2: null
+          })
+
+        } // end of the else if statement for left attack
+        else if (( this.state.topAttack2 > this.props.enemyAttackTop - 30 && this.state.topAttack2 < this.props.enemyAttackTop + 30 )
+        && ( this.state.leftAttack2 < this.props.enemyAttackLeft + 5 && this.state.leftAttack2 > this.props.enemyAttackLeft - 5 )
+      ) {
+        let action = {
+          type: 'SETENEMYATTACKTOFALSE'
+        };
+        this.props.dispatch(action);
+
+        this.setState({
+          attack2: false,
+          leftAttack2: null,
+          topAttack2: null
+        });
+
+        let anotheraction = {
+          type: 'BLOCKFRIEZAATTACKLEFT'
+        };
+        this.props.dispatch(anotheraction);
+
+
+        let misslelandLeft = enemyAttackIntervalArray.pop()
+        clearInterval(misslelandLeft)
+
+
+      } // end of the else if statement for the top attack2--
+      else if (
+        ( this.state.topAttack2 > this.props.enemyAttackTop2 - 30 && this.state.topAttack2 < this.props.enemyAttackTop2 + 30 )
+        && ( this.state.leftAttack2 < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack2 > this.props.enemyAttackLeft2 - 5 )
+      ) {
+
+        let action = {
+          type: 'SETENEMYATTACK2TOFALSE'
+        };
+        this.props.dispatch(action);
+
+        this.setState({
+          attack2: false,
+          leftAttack2: null,
+          topAttack2: null
+        });
+
+        let anotheraction = {
+          type: 'BLOCKFRIEZAATTACKLEFT'
+        };
+        this.props.dispatch(anotheraction);
+
+
+        let misslelandLeft = enemyAttackIntervalArray2.pop()
+        clearInterval(misslelandLeft)
+
+      }
+
+    }), 7 ) // end of the set Interval for left attack
+      ) // end of the leftAttackProjectile push
+      }) // end of the setState
+
+
+    } // left attack second one for player 2
+
+
+
   else if (event.type.type == 'ATTACKRIGHT TWO') {
 
     this.setState({
@@ -633,9 +755,112 @@ class SecondPlayer extends React.Component {
     }
 
     )
+  } // closing for the else if for the right attack one for vegeta
+  else if ( event.type.type == 'ATTACKRIGHT TWO SECONDONE' ) {
 
 
-  }
+    this.setState({
+      attack2: true,
+      leftAttack2: this.props.attackLeft2,
+      topAttack2: this.props.attackTop2,
+      degree: this.props.degree
+    }, () => {
+      rightAttackProjectile2.push(setInterval(
+        () => this.setState({
+          leftAttack2: this.state.leftAttack2 + 5,
+          topAttack2: this.state.topAttack2
+        }, () => { if (this.state.leftAttack2 > window.innerWidth) {
+          this.setState({
+            attack2: false,
+            leftAttack2: null,
+            topAttack2: null
+          })
+        }  // end of the if
+        else if ( (this.state.leftAttack2 > this.props.enemyLeft - 30 && this.state.leftAttack2 < this.props.enemyLeft + 30)
+          && (this.state.topAttack2 < this.props.enemyTop + 80 && this.state.topAttack2 > this.props.enemyTop - 30)
+       ) {
+
+         let action = {
+           type: 'HITFRIEZARIGHT'
+         }
+       this.props.dispatch(action)
+
+       this.setState({
+         attack2: false,
+         leftAttack2: null,
+         topAttack2: null
+       })
+       clearInterval(rightAttackProjectile2.pop()) // clears the interval if it touches frieza
+
+        } // end of the else if
+        else if (
+          ( this.state.topAttack2 > this.props.enemyAttackTop - 35 && this.state.topAttack2 < this.props.enemyAttackTop + 35 )
+        && ( this.state.leftAttack2 < this.props.enemyAttackLeft + 40 && this.state.leftAttack2 > this.props.enemyAttackLeft - 40 )
+       ) {
+
+         let action = {
+           type: 'SETENEMYATTACKTOFALSE'
+         };
+         this.props.dispatch(action);
+
+         this.setState({
+           attack2: false,
+           leftAttack2: null,
+           topAttack2: null
+         });
+
+         let anotheraction = {
+           type: 'BLOCKFRIEZAATTACKRIGHT'
+         };
+         this.props.dispatch(anotheraction);
+
+
+         let misslelandRight = enemyAttackIntervalArray.pop()
+         clearInterval(misslelandRight)
+         clearInterval(rightAttackProjectile2.pop()) // clears the interval if it touches frieza's attack
+
+        } // end of the else if for the frieza attack and player attack collision
+
+
+        else if (
+          ( this.state.topAttack2 > this.props.enemyAttackTop2 - 35 && this.state.topAttack2 < this.props.enemyAttackTop2 + 35 )
+        && ( this.state.leftAttack2 < this.props.enemyAttackLeft2 + 40 && this.state.leftAttack2 > this.props.enemyAttackLeft2 - 40 )
+
+        ) {
+
+          let action = {
+            type: 'SETENEMYATTACK2TOFALSE'
+          };
+          this.props.dispatch(action);
+
+          this.setState({
+            attack2: false,
+            leftAttack2: null,
+            topAttack2: null
+          });
+
+          let anotheraction = {
+            type: 'BLOCKFRIEZAATTACKRIGHT'
+          };
+          this.props.dispatch(anotheraction);
+
+
+          let misslelandRight = enemyAttackIntervalArray2.pop()
+          clearInterval(misslelandRight)
+          clearInterval(rightAttackProjectile2.pop()) // clears the interval if it touches frieza's attack
+
+
+        }
+
+
+      } ), 7 )) // end of the push into the rightAttackProjectile
+    }
+
+    )
+
+
+
+  } // closing for the else if for the right attack 2 for vegeta
 
 
 
@@ -660,7 +885,19 @@ class SecondPlayer extends React.Component {
         let rightattackInstance = rightAttackProjectile.pop()
         clearInterval(rightattackInstance)
       }
+    }   else if (this.state.leftAttack2 > window.innerWidth) {
+      while(rightAttackProjectile2.length > 0) {
+        let rightattackInstance = rightAttackProjectile2.pop()
+        clearInterval(rightattackInstance)
+      }
     }
+    else if (this.state.leftAttack2 < 0) {
+
+        while(leftAttackProjectile2.length > 0) {
+          let leftattackInstance = leftAttackProjectile2.pop()
+          clearInterval(leftattackInstance)
+        }
+      }
 
     return (
       <React.Fragment>
@@ -670,6 +907,8 @@ class SecondPlayer extends React.Component {
           />
         <img src={this.props.image} style={{position: 'absolute', top: `${this.props.top}px`, left: `${this.props.left}px`, width: `${this.props.width}%`}} />
         {this.state.attack == true ? <SecondPlayerAttack leftAttack={this.state.leftAttack} topAttack={this.state.topAttack} degree={this.state.degree}/> : null}
+        {this.state.attack2 == true ? <SecondPlayerAttack leftAttack={this.state.leftAttack2} topAttack={this.state.topAttack2} degree={this.state.degree}/> : null}
+
       </React.Fragment>
     )
   }
@@ -695,7 +934,9 @@ class SecondPlayer extends React.Component {
       enemyAttackLeft2: state.playerCoordinates.enemyAttackLeft2,
       enemyAttackTop2: state.playerCoordinates.enemyAttackTop2,
       enemyTop: state.playerCoordinates.enemyCoordinates.enemyTop,
-      enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft
+      enemyLeft: state.playerCoordinates.enemyCoordinates.enemyLeft,
+      attackLeft2: state.secondPlayerCoordinates.attackLeft2,
+      attackTop2: state.secondPlayerCoordinates.attackTop2
     }
   }
 

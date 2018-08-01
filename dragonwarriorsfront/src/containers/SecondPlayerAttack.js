@@ -6,8 +6,15 @@ import { ActionCable } from 'react-actioncable-provider';
 
 class SecondPlayerAttack extends React.Component {
 
+  state = {
+    degree: null
+  }
 
-
+  componentDidMount() {
+    this.setState({
+      degree: this.props.degree
+    })
+  }
 
   render() {
 
@@ -22,7 +29,7 @@ class SecondPlayerAttack extends React.Component {
       style={{
                     width: "6%",
                     position: "absolute",
-                    transform: `rotate(${this.props.degree}deg)`,
+                    transform: `rotate(${this.state.degree}deg)`,
                     left: `${this.props.leftAttack}px`,
                     top: `${this.props.topAttack}px`}}
       />
