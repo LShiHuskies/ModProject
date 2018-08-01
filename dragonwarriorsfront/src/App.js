@@ -318,6 +318,7 @@ class App extends Component {
     })
   } else if (event.scores) {
     this.setState({
+      backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)',
       gameOver: true
     })
   }
