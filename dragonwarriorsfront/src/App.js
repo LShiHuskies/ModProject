@@ -47,7 +47,7 @@ class App extends Component {
       playerTwoLeft: this.props.playerTwoLeft
     };
     let action = {
-      type: '',
+      type: 'SETSCORETOALL',
       payload: object
     }
 
@@ -61,7 +61,7 @@ class App extends Component {
         type: action
       })
     };
-    fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
   }
 
@@ -100,14 +100,24 @@ class App extends Component {
       })
       otherCount = otherCount + 1
     } else if ( this.props.enemyHealth < 1 && thirdCount < 1 ) {
-      this.setState({
-        backgroundImage: 'url(https://i.pinimg.com/originals/0f/18/c4/0f18c45e07a7212f4d49e71213833e01.jpg)'
-      })
       let action = {
         type: 'RESTORE'
       }
-      this.props.dispatch(action)
+
+      let config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+        'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+
       thirdCount = thirdCount + 1;
+      scoreCount = 0;
     } else if ( this.props.enemyHealth < 1 && fourthCount < 1 && thirdCount == 1) {
       fourthCount = fourthCount + 1;
 
@@ -125,8 +135,8 @@ class App extends Component {
           type: action
         })
       };
-      fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
+      fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+      scoreCount = 0;
 
     } else if ( this.props.enemyHealth < 1 && fifthCount < 1 && fourthCount == 1 ) {
         let action = {
@@ -143,9 +153,8 @@ class App extends Component {
             type: action
           })
         };
-        fetch(`${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
-
+        fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        scoreCount = 0;
 
     } else if ( this.props.time < 55 && scoreCount < 1 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
@@ -173,10 +182,9 @@ class App extends Component {
       this.makeFetchForScore()
     } else if ( this.props.time < 3 && scoreCount < 13 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 1 && scoreCount < 14 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 2 && scoreCount < 14 && this.state.gameOver !== true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 0 && scoreCount < 15 && this.state.gameOver !== true ) {
-      this.makeFetchForScore()
+      scoreCount = 0;
     }
 
 
@@ -198,7 +206,7 @@ class App extends Component {
         playerTwo: this.props.playerTwo
       })
     }
-    fetch(`${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
+    fetch(`http://${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
 
     this.setState({
       startGame: true,
@@ -221,7 +229,8 @@ class App extends Component {
     if (event.target.value == "Login") {
 
       // trying to the link the back end with the front end--
-      fetch(`${window.location.hostname}:3000/api/sessions`, {
+
+      fetch(`http://${window.location.hostname}:3000/api/sessions`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
@@ -233,7 +242,7 @@ class App extends Component {
 
     } else if (event.target.value == "Create New Account") {
       // need to make a fetch request in order to create a new account
-      fetch(`${window.location.hostname}:3000/api/users`, {
+      fetch(`http://${window.location.hostname}:3000/api/users`, {
         method: 'POST',
         headers: {
           'Content-Type': "application/json"
@@ -294,7 +303,7 @@ class App extends Component {
           username: player
         })
       }
-      fetch(`${window.location.hostname}:3000/api/users/${player.id}`, config).then(r => r.json())
+      fetch(`http://${window.location.hostname}:3000/api/users/${player.id}`, config).then(r => r.json())
 
 
     } else if (player['errors'] !== undefined) {
@@ -373,8 +382,14 @@ class App extends Component {
   }
 
   handleScoreAndEnemyHealth = (event) => {
-    if (event.type.type == '' ) {
+    if (event.type.type == 'SETSCORETOALL') {
       this.props.dispatch(event.type)
+    }
+    else if (event.type.type == 'RESTORE' ) {
+      this.props.dispatch(event.type)
+      this.setState({
+        backgroundImage: 'url(https://i.pinimg.com/originals/0f/18/c4/0f18c45e07a7212f4d49e71213833e01.jpg)'
+      })
     } else if (event.type.type == 'RESTORELEVEL3' ) {
       this.props.dispatch(event.type)
       this.setState({

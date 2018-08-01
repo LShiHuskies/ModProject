@@ -263,9 +263,18 @@ export default function playMovements(state = defaultState, action) {
         enemyTop: 300,
         enemyLeft: 1400,
       },
-      playerHealth: state.playerHealth - 20,
+      playerHealth: state.playerHealth - 10,
       top: 480,
       left: 500
+    }
+
+    case 'TELEPORTVEGETAANDPLAYER':
+
+    return {
+      ...state, enemyCoordinates: {
+        enemyTop: 300,
+        enemyLeft: 1400,
+      }
     }
 
     case 'ENEMYATTACKLEFT':
@@ -303,7 +312,7 @@ export default function playMovements(state = defaultState, action) {
     case 'ENEMYSUCCESSFULATTACKLEFT':
 
     return {
-      ...state, playerHealth: Number(state.playerHealth) - 10,
+      ...state, playerHealth: Number(state.playerHealth) - 5,
       left: state.left - 40
     }
 
@@ -342,7 +351,7 @@ export default function playMovements(state = defaultState, action) {
     case 'ENEMYSUCCESSFULATTACKRIGHT':
 
     return {
-      ...state, playerHealth: Number(state.playerHealth) - 10,
+      ...state, playerHealth: Number(state.playerHealth) - 5,
       left: state.left + 40
     }
 
@@ -373,7 +382,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, top: 400,
       left: 1400,
-      playerHealth: state.playerHealth - 2.5
+      playerHealth: state.playerHealth - 1
     }
 
     case 'TELEPORTLEFT':
@@ -381,7 +390,7 @@ export default function playMovements(state = defaultState, action) {
     return {
       ...state, top: 600,
       left: 150,
-      playerHealth: state.playerHealth - 2.5
+      playerHealth: state.playerHealth - 1
     }
 
     case 'BLOCKFRIEZAATTACKLEFT':
@@ -573,8 +582,8 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, enemyHealth: state.enemyHealth + 5,
-        ginyuLeft: 0,
-        ginyuTop: 0
+        ginyuLeft: 800,
+        ginyuTop: 800
     }
 
     case 'TELEPORTTOGOKULEFT':

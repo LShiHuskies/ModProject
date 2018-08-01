@@ -155,25 +155,31 @@ export default function secondPlayMovements(state = defaultState, action) {
     case 'TELEPORTVEGETALEFT':
 
     return {
-      ...state, top: 100, left: 300, playerHealth: state.playerHealth - 2.5
+      ...state, top: 100, left: 300, playerHealth: state.playerHealth - 1
     }
 
     case 'TELEPORTVEGETARIGHT':
 
     return {
-      ...state, top: 800, left: 1100, playerHealth: state.playerHealth - 2.5
+      ...state, top: 800, left: 1100, playerHealth: state.playerHealth - 1
     }
 
     case 'GINYUGOTVEGETA':
 
     return {
-      ...state, playerHealth: state.playerHealth - 10
+      ...state, playerHealth: state.playerHealth - 2.5
     }
 
     case 'SETSCORETOALL':
 
     return {
       ...state, playerHealth: action.payload.playerTwoHealth, top: action.payload.playerTwoTop, left: action.payload.playerTwoLeft
+    }
+
+    case 'RESTORE':
+
+    return {
+      ...state, playerHealth: 100
     }
 
     case 'RESTORELEVEL3':
@@ -200,6 +206,12 @@ export default function secondPlayMovements(state = defaultState, action) {
       ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) + 42, degree: '0'
     }
 
+    case 'TELEPORTVEGETAANDPLAYER':
+
+    return {
+      ...state, playerHealth: state.playerHealth - 10,
+      top: 480, left: 500
+    }
 
 
 

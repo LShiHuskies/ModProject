@@ -143,8 +143,11 @@ class Enemy extends React.Component {
 
      }
 
-     if ((this.props.time < 50 && this.props.time > 48) && this.props.level !== 'ONE'
+     if (( (this.props.time < 50 && this.props.time > 48) ||
+     (this.props.enemyHealth < 40 && this.props.enemyHealth > 15))
+     && this.props.level !== 'ONE'
    ) {
+
        if (this.props.playerLeft < 700 && this.props.playerLeft > 200) {
          let action = {
            type: 'TELEPORTTOGOKULEFT'
@@ -159,7 +162,8 @@ class Enemy extends React.Component {
 
      }
 
-     if ( ( this.props.time < 40 && this.props.time > 38 ) && this.props.level !== 'ONE' ){
+     if ( (( this.props.time < 40 && this.props.time > 38 ) || ( this.props.enemyHealth < 15))
+     && this.props.level !== 'ONE' ) {
 
        if (this.props.playerTwoLeft < 700 && this.props.playerTwoLeft > 200) {
          let action = {
@@ -184,6 +188,54 @@ class Enemy extends React.Component {
      }
 
 
+
+     if (( (this.props.time < 28 && this.props.time > 26) ||
+     (this.props.enemyHealth < 40 && this.props.enemyHealth > 15))
+     && (this.props.level == 'THREE' || this.props.level == 'FOUR')
+   ) {
+
+       if (this.props.playerLeft < 700 && this.props.playerLeft > 200) {
+         let action = {
+           type: 'TELEPORTTOGOKULEFT'
+         }
+         this.props.dispatch(action)
+       } else if (this.props.playerLeft > 700 && this.props.playerLeft < window.innerWidth - 200) {
+         let action = {
+           type: 'TELEPORTTOGOKURIGHT'
+         }
+         this.props.dispatch(action)
+       }
+
+     }
+
+     if ( (( this.props.time < 20 && this.props.time > 18 ) || ( this.props.enemyHealth < 15))
+     && (this.props.level == 'THREE' || this.props.level == 'FOUR')
+      ) {
+
+       if (this.props.playerTwoLeft < 700 && this.props.playerTwoLeft > 200) {
+         let action = {
+           type: 'TELEPORTTOVEGETALEFT',
+           payload: {
+             playerTwoLeft: this.props.playerTwoLeft,
+             playerTwoTop: this.props.playerTwoTop
+           }
+         }
+         this.props.dispatch(action)
+       } else if (this.props.playerTwoLeft > 700 && this.props.playerTwoLeft < window.innerWidth - 200) {
+         let action = {
+           type: 'TELEPORTTOVEGETARIGHT',
+           payload: {
+             playerTwoLeft: this.props.playerTwoLeft,
+             playerTwoTop: this.props.playerTwoTop
+           }
+         }
+         this.props.dispatch(action)
+       }
+
+     }
+
+
+
      if (
        (this.props.playerTop + 90 > this.props.enemyTop && this.props.playerTop - 70 < this.props.enemyTop)
         && (this.props.playerLeft + 50 > this.props.enemyLeft && this.props.playerLeft - 50 < this.props.enemyLeft )
@@ -195,6 +247,17 @@ class Enemy extends React.Component {
        this.props.dispatch(action)
      } // if the player is same need to teleport to detect the collision first
 
+
+     if (
+       (this.props.playerTwoTop + 90 > this.props.enemyTop && this.props.playerTwoTop - 70 < this.props.enemyTop)
+        && (this.props.playerTwoLeft + 50 > this.props.enemyLeft && this.props.playerTwoLeft - 50 < this.props.enemyLeft )
+
+     ) {
+       let action = {
+         type: 'TELEPORTVEGETAANDPLAYER'
+       }
+       this.props.dispatch(action)
+     } // if the player is same need to teleport to detect the collision first
 
 
      if (
@@ -554,7 +617,8 @@ const mapStateToProps = (state) => {
       playerTwoTop: state.secondPlayerCoordinates.top,
       playerTwoLeft: state.secondPlayerCoordinates.left,
       time: state.playerCoordinates.time,
-      level: state.playerCoordinates.level
+      level: state.playerCoordinates.level,
+      enemyHealth: state.playerCoordinates.enemyHealth
   }
 }
 

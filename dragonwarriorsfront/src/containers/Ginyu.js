@@ -9,11 +9,11 @@ class Ginyu extends React.Component {
     if (this.props.level == 'ONE') {
         ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 30 ))
     } else if (this.props.level == 'TWO') {
-        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 20 ))
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 26 ))
     } else if (this.props.level == 'THREE') {
-        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 15 ))
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 23 ))
     } else {
-        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 10 ))
+        ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 20 ))
     }
 
   }

@@ -21,7 +21,7 @@ class GameOver extends React.Component {
       otherUserName: this.props.second_player  })
     }
 
-    fetch(`${window.location.hostname}:3000/api/games/${this.props.game_id}`, config).then(r => r.json())
+    fetch(`http://${window.location.hostname}:3000/api/games/${this.props.game_id}`, config).then(r => r.json())
 
   }
 
@@ -39,7 +39,7 @@ class GameOver extends React.Component {
     let user = this.props.player.username !== undefined ? this.props.player.username : this.props.player.name
     return (
       <React.Fragment>
-      
+
       <div style={{color: 'red', display: 'inline', fontFamily: 'cursive', fontSize: '100px'}}>
       <div style={{float: 'left', fontSize: '30px'}}> <Logout/> </div>
         Game Over
