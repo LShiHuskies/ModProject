@@ -12,7 +12,8 @@ class CharacterDetail extends Component {
          transition: '0.3s',
          backgroundColor: 'rgba(0, 120, 100, 0.7)',
          float: 'left',
-         marginLeft: '600px', marginRight: '600px'
+         marginLeft: '600px', marginRight: '600px',
+         marginTop: '40px'
        }}>
         <h3 style={{textAlign: 'center', fontFamily: 'cursive', color: 'blue'}}> Character Name : {this.props.character.selectedCharacter.name}
           <img src={this.props.character.selectedCharacter.imageTwo} style={{width: '10%', float: 'right'}} />

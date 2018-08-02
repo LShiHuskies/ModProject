@@ -12,6 +12,7 @@
 
 
 #title {
+  margin-top: 30px;
   font-size: 40px;
   color: rgba(170, 30, 40, 1);
   font-family: 'Knewave', cursive;
@@ -20,7 +21,7 @@
   height: 30px;
   width: 200px;
   font-size: 30px;
-  font-family: sans-serif;
+  font-family: 'Domine', serif;
   color: black;
 }
 
@@ -44,7 +45,7 @@
   height: 30px;
   width: 200px;
   font-size: 30px;
-  font-family: normal;
+  font-family: 'Domine', serif;
   color: black;
 }
 
@@ -87,9 +88,17 @@
   margin-top: 10px;
 }
 
+#show button:hover {
+  color: red;
+}
+
 #button {
   margin-bottom: 10px;
+  font-size: 20px;
+  font-family: 'Domine', serif;
+  color: black;
 }
+
 
 .card {
   background-color: rgba(0, 0, 120, 1);
@@ -179,4 +188,8 @@
   font-family: cursive;
   font-size: 30px;
   color: rgba(110, 40, 170, 0.8)
+}
+
+.profile-thing button:hover {
+  color: blue;
 }

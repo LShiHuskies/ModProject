@@ -31,20 +31,26 @@ class Profile extends Component {
     return (
       <React.Fragment>
 
-      <div style={{float: 'left', display: 'inline' }}>
+      <div className='profile-thing' style={{float: 'left', display: 'inline'}}>
         <Logout />
-        <button style={{marginLeft: '10px', backgroundColor: 'rgba(128, 128, 128, 0.7)', color: 'rgba(0, 0, 0, 0.6)', fontFamily: 'cursive'}} onClick={this.props.handleStartGame} > Start Game </button>
-        <button style={{
+        <button
+          style={{marginLeft: '10px',
+          backgroundColor: 'rgba(128, 128, 128, 0.7)',
+          fontFamily: 'cursive'
+        }} onClick={this.props.handleStartGame} > Start Game </button>
+      <button
+          style={{
             marginLeft: '10px',
             backgroundColor: 'rgba(128, 128, 128, 0.7)',
-            fontFamily: 'cursive'}}> View High Scores </button>
+            fontFamily: 'cursive'}}> High Scores </button>
           <div style={{float: 'right', marginLeft: '150px', fontFamily: 'cursive', color: 'green'}}> Welcome {this.props.player !== null ?
             this.props.player.username !== undefined ? this.props.player.username : this.props.player.name
              : null} </div>
-           <button style={{marginLeft: '10px',
+           <button
+             style={{marginLeft: '10px',
              fontFamily: 'cursive',
              backgroundColor: 'rgba(128, 128, 128, 0.7)'
-           }}> View Controls </button>
+           }}> Controls </button>
       </div>
 
       <div style={{float: 'left', marginLeft: '150px', fontFamily: 'cursive', color: 'green'}}> Welcome {this.props.secondPlayer !== null ?

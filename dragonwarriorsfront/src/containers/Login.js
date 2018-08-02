@@ -36,7 +36,7 @@ class Login extends React.Component {
                 }
                 this.props.dispatch(action)
               }
-            }> Display characters
+            }> Display Characters
         </button>
           {(this.props.counter%2 !== 0) ? <CharacterList /> : null }
         </div>

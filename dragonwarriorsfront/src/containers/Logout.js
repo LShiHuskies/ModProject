@@ -17,7 +17,7 @@ class Logout extends React.Component {
 
   render() {
     return (
-      <button onClick={this.handleTheLogout} style={{backgroundColor: 'rgba(128, 128, 128, 0.7)', color: 'rgba(0, 0, 0, 0.6)', fontFamily: 'cursive'}}>
+      <button onClick={this.handleTheLogout} style={{backgroundColor: 'rgba(128, 128, 128, 0.7)', fontFamily: 'cursive'}}>
         Log Out
       </button>
     )
