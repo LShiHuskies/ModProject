@@ -11,6 +11,17 @@ import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayer from './containers/SecondPlayer';
 
 
+
+import DragonBallZSoundTrack from './assets/DragonBallZSoundTrack.mp3';
+
+let gameMusic = document.createElement('audio');
+gameMusic.src = `${DragonBallZSoundTrack}`;
+gameMusic.setAttribute('preload', 'auto');
+gameMusic.setAttribute('controls', 'none');
+gameMusic.style.display = 'none';
+
+
+
 let count = 0;
 let otherCount = 0;
 let thirdCount = 0;
@@ -18,6 +29,10 @@ let fourthCount = 0;
 let fifthCount = 0;
 
 let scoreCount = 0;
+
+
+
+
 
 class App extends Component {
   state = {
@@ -187,6 +202,11 @@ class App extends Component {
       scoreCount = 0;
     }
 
+    if (this.state.gameOver == false && this.state.startGame == true) {
+      document.body.appendChild(gameMusic);
+      gameMusic.play();
+    }
+
 
 
   }
@@ -260,7 +280,7 @@ class App extends Component {
   handleTheResult = (result) => {
 
     if (result['errors'] == undefined) {
-      alert('Your Account has been processed, Please give about 1 second to 3 seconds to process. I appreciate your patient and you can go ahead and type your credientials again and login in.')
+      alert('Your Account has been processed, Please give about 1 second to 3 seconds to process. I appreciate your patience and you can go ahead and type your credientials again and login in.')
       this.setState({
         username: '',
         password: ''
@@ -331,6 +351,11 @@ class App extends Component {
       backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
     })
   } else if (event.scores) {
+
+    let action = {
+      type: 'SETSCORE',
+      payload: event.scores
+    }
     this.setState({
       backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)',
       gameOver: true

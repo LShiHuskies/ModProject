@@ -11,11 +11,7 @@ import OtherHealthBar from './OtherHealthBar';
 
 
 
-
-
 class World extends React.Component {
-
-
 
   render() {
 

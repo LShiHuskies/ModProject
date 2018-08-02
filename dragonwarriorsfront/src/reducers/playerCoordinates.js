@@ -630,10 +630,11 @@ export default function playMovements(state = defaultState, action) {
       ...state, game_id: action.payload
     }
 
+    case 'SETSCORE':
 
-
-
-
+    return {
+      ...state, score: action.payload
+    }
 
     break;
 

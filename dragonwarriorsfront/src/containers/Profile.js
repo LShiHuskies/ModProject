@@ -4,18 +4,26 @@ import Logout from './Logout';
 import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayer from './SecondPlayer';
 
+
+import DBZProfileBackgroundMusic from '../assets/DBZProfileBackgroundMusic.mp3';
+
+let backgroundProfileMusic = document.createElement('audio');
+backgroundProfileMusic.src = `${DBZProfileBackgroundMusic}`;
+backgroundProfileMusic.setAttribute('preload', 'auto');
+backgroundProfileMusic.setAttribute('controls', 'none');
+backgroundProfileMusic.style.display = 'none';
+
+
+
 class Profile extends Component {
 
+  componentDidMount() {
+    document.body.appendChild(backgroundProfileMusic);
+    backgroundProfileMusic.play();
+  }
 
-  // handleClick = () => {
-  //   let action = {
-  //     type: 'STARTGAME'
-  //   }
-  //   this.props.dispatch(action)
-  // }
-
-  handleReceived = (event) => {
-
+  componentWillUnmount() {
+    backgroundProfileMusic.remove()
   }
 
   render() {
@@ -50,7 +58,7 @@ class Profile extends Component {
       <img src='https://media.giphy.com/media/R8mLRyn4T1dcY/giphy.gif'
         style={{position: 'absolute', width: '20%', top: '490px', left: '1000px'}}
          />
-       
+
 
     </React.Fragment>
     )
