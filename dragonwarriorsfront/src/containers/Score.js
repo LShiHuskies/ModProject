@@ -12,7 +12,7 @@ class Score extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  state
+
   return {
     score: state.playerCoordinates.score
   }
