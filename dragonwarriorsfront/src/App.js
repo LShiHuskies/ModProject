@@ -12,13 +12,13 @@ import SecondPlayer from './containers/SecondPlayer';
 
 
 
-import DragonBallZSoundTrack from './assets/DragonBallZSoundTrack.mp3';
-
-let gameMusic = document.createElement('audio');
-gameMusic.src = `${DragonBallZSoundTrack}`;
-gameMusic.setAttribute('preload', 'auto');
-gameMusic.setAttribute('controls', 'none');
-gameMusic.style.display = 'none';
+// import DragonBallZSoundTrack from './assets/DragonBallZSoundTrack.mp3';
+//
+// let gameMusic = document.createElement('audio');
+// gameMusic.src = `${DragonBallZSoundTrack}`;
+// gameMusic.setAttribute('preload', 'auto');
+// gameMusic.setAttribute('controls', 'none');
+// gameMusic.style.display = 'none';
 
 
 
@@ -202,10 +202,10 @@ class App extends Component {
       scoreCount = 0;
     }
 
-    if (this.state.gameOver == false && this.state.startGame == true) {
-      document.body.appendChild(gameMusic);
-      gameMusic.play();
-    }
+    // if (this.state.gameOver == false && this.state.startGame == true) {
+    //   document.body.appendChild(gameMusic);
+    //   gameMusic.play();
+    // }
 
 
 

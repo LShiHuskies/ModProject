@@ -7,13 +7,13 @@ import HighScores from './HighScores';
 import Controls from './Controls';
 
 
-import DBZProfileBackgroundMusic from '../assets/DBZProfileBackgroundMusic.mp3';
-
-let backgroundProfileMusic = document.createElement('audio');
-backgroundProfileMusic.src = `${DBZProfileBackgroundMusic}`;
-backgroundProfileMusic.setAttribute('preload', 'auto');
-backgroundProfileMusic.setAttribute('controls', 'none');
-backgroundProfileMusic.style.display = 'none';
+// import DBZProfileBackgroundMusic from '../assets/DBZProfileBackgroundMusic.mp3';
+//
+// let backgroundProfileMusic = document.createElement('audio');
+// backgroundProfileMusic.src = `${DBZProfileBackgroundMusic}`;
+// backgroundProfileMusic.setAttribute('preload', 'auto');
+// backgroundProfileMusic.setAttribute('controls', 'none');
+// backgroundProfileMusic.style.display = 'none';
 
 
 
@@ -24,14 +24,14 @@ class Profile extends Component {
     controls: null
   }
 
-  componentDidMount() {
-    document.body.appendChild(backgroundProfileMusic);
-    backgroundProfileMusic.play();
-  }
-
-  componentWillUnmount() {
-    backgroundProfileMusic.remove()
-  }
+  // componentDidMount() {
+  //   document.body.appendChild(backgroundProfileMusic);
+  //   backgroundProfileMusic.play();
+  // }
+  //
+  // componentWillUnmount() {
+  //   backgroundProfileMusic.remove()
+  // }
 
   handleHighScores = () =>{
     if(this.state.games == null) {
