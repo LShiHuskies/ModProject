@@ -1,4 +1,4 @@
-# ModProject
+# Z Warriors Action Game
 
 This is a 2 Player Action Pack Game. 2 Players- Player One Goku and Player Two Vegeta battles against a computer Frieza for fight to the death.
 
@@ -16,6 +16,23 @@ To create an account on the login page, just enter the username and password and
 
 Once logged in, when there are two players on the profile page, whoever clicks start game will be Goku and the other player will be Vegeta.
 
-Please remember to Full Screen your Screen when playing the game. 
+Please remember to Full Screen your Screen when playing the game.
 
 Have fun working together and good luck!
+
+
+# How to Install & Run Program
+1. Fork and clone this repository to your local environment.
+2. Navigate to the file directory from your terminal.
+3. Have one terminal for the back end of the project and another terminal for the front end of the project.
+3. Run 'bundle install' to install all required gems at the backend's directory.
+4. Run 'rails db:migrate' to set up database.
+5. Run 'rails db:seed' to seed the database.
+6. Run 'rails s' to start the server.
+7. Navigate to http://localhost:3000/.
+For the terminal for the front end's directory.
+8. NPM install react, and NPM install redux and then NPM start.
+9. The clip of the project should look like this https://www.youtube.com/watch?v=Ytv4ZeIXPnQ&list=PLk-IEKBQRLf7quNBmnUb1vsDWr6vMQzkz.
+10. Create an Account or Login
+11. Once logged in, please follow the instructions and buttons to follow along.
+12. Log Out once you are finished playing the game.

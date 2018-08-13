@@ -13,10 +13,8 @@ class HighScores extends React.Component {
        transition: '0.3s',
        float: 'top',
        textAlign: 'left',
-       marginTop: '70px',
-       marginLeft: '300px',
-       marginRight: '1400px',
-       backgroundColor: 'rgba(0, 0, 255, 0.3)'
+       paddingLeft: '20px',
+       backgroundColor: 'rgba(255, 255, 255, 0.7)'
      }} >
      <h4 style={{color: 'red', fontSize: '20px'}}>{game.name}</h4>
      <p id="user" style={{color: 'black', fontSize: '16px'}}>Player One: {game.users[0].username}</p>
@@ -28,7 +26,11 @@ class HighScores extends React.Component {
    </div>
  )
     return (
-       <div>
+       <div style={{overflow: 'scroll', height: '600px',
+         marginTop: '70px',
+         marginLeft: '400px',
+         marginRight: '700px'
+       }}>
          {cards}
        </div>
     )

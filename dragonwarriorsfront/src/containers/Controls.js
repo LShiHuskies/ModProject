@@ -11,9 +11,12 @@ class Controls extends React.Component {
        float: 'top',
        textAlign: 'left',
        marginTop: '70px',
-       marginLeft: '300px',
-       marginRight: '1300px',
-       backgroundColor: 'rgba(0, 0, 255, 0.3)'
+       marginLeft: '500px',
+       marginRight: '500px',
+       paddingBottom: '0px',
+       overflow: 'scroll',
+       backgroundColor: 'rgba(255, 255, 255, 0.5)',
+       height: '350px'
      }} >
      <h4>Player Movements</h4>
      <ul style={{fontSize: '16px'}}>
@@ -39,7 +42,6 @@ class Controls extends React.Component {
         <li>Teleportation: Enter</li>
         <li>FYI the direction you are facing will determine which direction you are firing</li>
       </ul>
-    
 
 
    </div>
