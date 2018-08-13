@@ -14,6 +14,8 @@ For the player to look at the direction he/she needs to sheet, it is the arrow k
 
 To create an account on the login page, just enter the username and password and then click create account and enter credentials again to login.
 
+<img width="600" height="400" alt="screen shot 2018-08-13 at 2 35 54 pm" src="https://user-images.githubusercontent.com/34640293/44062347-eec91bb0-9f29-11e8-8b8d-dac2c4a0bcb1.png">
+
 Once logged in, when there are two players on the profile page, whoever clicks start game will be Goku and the other player will be Vegeta.
 
 Please remember to Full Screen your Screen when playing the game.
