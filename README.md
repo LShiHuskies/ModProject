@@ -22,6 +22,7 @@ Please remember to Full Screen your Screen when playing the game.
 
 Have fun working together and good luck!
 
+9. The clip of the project should look like this https://www.youtube.com/watch?v=Ytv4ZeIXPnQ&list=PLk-IEKBQRLf7quNBmnUb1vsDWr6vMQzkz.
 
 # How to Install & Run Program
 1. Fork and clone this repository to your local environment.
@@ -32,9 +33,20 @@ Have fun working together and good luck!
 5. Run 'rails db:seed' to seed the database.
 6. Run 'rails s' to start the server.
 7. Navigate to http://localhost:3000/.
-For the terminal for the front end's directory.
+
+Next, for the terminal for the front end's directory.
 8. NPM install react, and NPM install redux and then NPM start.
-9. The clip of the project should look like this https://www.youtube.com/watch?v=Ytv4ZeIXPnQ&list=PLk-IEKBQRLf7quNBmnUb1vsDWr6vMQzkz.
+9. Navigate to http://localhost:3001/.
 10. Create an Account or Login
-11. Once logged in, please follow the instructions and buttons to follow along.
+11. Once logged in, you will be directed to the profile page.
+<div display="inline">
+
+<img width="290" height="280" alt="screen shot 2018-08-13 at 6 58 46 pm" src="https://user-images.githubusercontent.com/34640293/44062590-fd87c7a4-9f2a-11e8-83ad-c17287a0d1f8.png">
+
+<img width="290" height="280" alt="screen shot 2018-08-13 at 8 00 01 pm" src="https://user-images.githubusercontent.com/34640293/44064540-8994d3ec-9f33-11e8-9f0f-afaa0d05b92e.png">
+
+<img width="290" height="280" alt="screen shot 2018-08-13 at 8 03 55 pm" src="https://user-images.githubusercontent.com/34640293/44064625-0d086338-9f34-11e8-81c1-970cfaf8c316.png">
+
+</div>
+
 12. Log Out once you are finished playing the game.
