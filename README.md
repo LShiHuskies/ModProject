@@ -28,17 +28,21 @@ Have fun working together and good luck!
 1. Fork and clone this repository to your local environment.
 2. Navigate to the file directory from your terminal.
 3. Have one terminal for the back end of the project and another terminal for the front end of the project.
-3. Run 'bundle install' to install all required gems at the backend's directory.
-4. Run 'rails db:migrate' to set up database.
-5. Run 'rails db:seed' to seed the database.
-6. Run 'rails s' to start the server.
-7. Navigate to http://localhost:3000/.
+4. Run 'bundle install' to install all required gems at the backend's directory.
+5. Run 'rails db:migrate' to set up database.
+6. Run 'rails db:seed' to seed the database.
+7. Run 'rails s' to start the server.
+8. Navigate to http://localhost:3000/.
 
 Next, for the terminal for the front end's directory.
-8. NPM install react, and NPM install redux and then NPM start.
-9. Navigate to http://localhost:3001/.
-10. Create an Account or Login
-11. Once logged in, you will be directed to the profile page.
+
+9. NPM install react, and NPM install redux and then NPM start.
+
+10. Navigate to http://localhost:3001/.
+
+11. Create an Account or Login
+
+12. Once logged in, you will be directed to the profile page.
 <div display="inline">
 
 <img width="290" height="280" alt="screen shot 2018-08-13 at 6 58 46 pm" src="https://user-images.githubusercontent.com/34640293/44062590-fd87c7a4-9f2a-11e8-83ad-c17287a0d1f8.png">
@@ -49,4 +53,4 @@ Next, for the terminal for the front end's directory.
 
 </div>
 
-12. Log Out once you are finished playing the game.
+13. Log Out once you are finished playing the game.

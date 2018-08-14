@@ -114,7 +114,7 @@ class App extends Component {
         backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-z-namek-background-5521.jpg)'
       })
       otherCount = otherCount + 1
-    } else if ( this.props.enemyHealth < 1 && thirdCount < 1 ) {
+    } else if ( this.props.enemyHealth < 1 && thirdCount < 1 && this.props.time < 59 ) {
       let action = {
         type: 'RESTORE'
       }
@@ -133,7 +133,7 @@ class App extends Component {
 
       thirdCount = thirdCount + 1;
       scoreCount = 0;
-    } else if ( this.props.enemyHealth < 1 && fourthCount < 1 && thirdCount == 1) {
+    } else if ( this.props.enemyHealth < 1 && fourthCount < 1 && thirdCount == 1 && this.props.time < 59) {
       fourthCount = fourthCount + 1;
 
       let action = {
@@ -153,7 +153,7 @@ class App extends Component {
       fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
       scoreCount = 0;
 
-    } else if ( this.props.enemyHealth < 1 && fifthCount < 1 && fourthCount == 1 ) {
+    } else if ( this.props.enemyHealth < 1 && fifthCount < 1 && fourthCount == 1 && this.props.time < 59 ) {
         let action = {
           type: 'RESTORELEVEL4'
         }

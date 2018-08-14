@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class OtherHealthBar extends React.Component {
   render() {
     return (
-      <div id='top-health' style={{marginTop: '47%'}}>
+      <div id='top-health' style={{marginTop: '45%'}}>
         {this.props.clicked == false ? 'Player: Goku' : 'Player: Vegeta' }
         <div className="health">
           {this.props.clicked == false ? <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
