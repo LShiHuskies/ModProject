@@ -5,6 +5,7 @@ import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayer from './SecondPlayer';
 import HighScores from './HighScores';
 import Controls from './Controls';
+import GameLobby from './GameLobby';
 
 
 // import DBZProfileBackgroundMusic from '../assets/DBZProfileBackgroundMusic.mp3';
@@ -34,7 +35,12 @@ class Profile extends Component {
   // }
 
   handleHighScores = () =>{
-    if(this.state.games == null) {
+    if (this.state.controls !== null) {
+      this.setState({
+        controls: null
+      })
+    }
+    if (this.state.games == null) {
       fetch(`http://${window.location.hostname}:3000/api/games/`).then(r=>r.json()).then(gameInstances => this.iterateThroughGames(gameInstances))
     } else {
       this.setState({
@@ -113,6 +119,7 @@ class Profile extends Component {
 
        {this.state.games !== null ? <HighScores games={this.state.games}/> : null }
        {this.state.controls !== null ? <Controls/> : null}
+       <GameLobby />
 
 
     </React.Fragment>
