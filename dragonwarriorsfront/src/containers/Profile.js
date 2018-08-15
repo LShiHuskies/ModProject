@@ -8,31 +8,15 @@ import Controls from './Controls';
 import GameLobby from './GameLobby';
 
 
-// import DBZProfileBackgroundMusic from '../assets/DBZProfileBackgroundMusic.mp3';
-//
-// let backgroundProfileMusic = document.createElement('audio');
-// backgroundProfileMusic.src = `${DBZProfileBackgroundMusic}`;
-// backgroundProfileMusic.setAttribute('preload', 'auto');
-// backgroundProfileMusic.setAttribute('controls', 'none');
-// backgroundProfileMusic.style.display = 'none';
-
-
-
 class Profile extends Component {
 
   state = {
     games: null,
-    controls: null
+    controls: null,
+    gameLobby: null,
+    gokuTaken: false,
+    vegetaTaken: false
   }
-
-  // componentDidMount() {
-  //   document.body.appendChild(backgroundProfileMusic);
-  //   backgroundProfileMusic.play();
-  // }
-  //
-  // componentWillUnmount() {
-  //   backgroundProfileMusic.remove()
-  // }
 
   handleHighScores = () =>{
     if (this.state.controls !== null) {
@@ -41,7 +25,12 @@ class Profile extends Component {
       })
     }
     if (this.state.games == null) {
-      fetch(`http://${window.location.hostname}:3000/api/games/`).then(r=>r.json()).then(gameInstances => this.iterateThroughGames(gameInstances))
+
+      fetch(`http://${window.location.hostname}:3000/api/games/`,
+        {headers: {
+          'Content-type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        }}).then(r=>r.json()).then(gameInstances => this.iterateThroughGames(gameInstances))
     } else {
       this.setState({
         games: null
@@ -78,10 +67,93 @@ class Profile extends Component {
 
   }
 
+  handleUser = (event) => {
+
+    if (this.state.games !== null) {
+      this.setState({
+        games: null
+      })
+    }
+
+    if (this.state.controls !== null) {
+      this.setState({
+        controls: null
+      })
+    }
+
+    this.setState({
+      gameLobby: true
+    })
+
+    if (event.character == 'Goku') {
+      this.setState({
+        gokuTaken: true
+      })
+    }
+     if (event.character == 'Vegeta') {
+      this.setState({
+        vegetaTaken: true
+      })
+    }
+
+
+  }
+
+
+  handleStartGame = (event) => {
+    event.preventDefault()
+
+    const config = {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      },
+      body:JSON.stringify({
+        username: this.props.player
+      })
+    }
+    fetch(`http://${window.location.hostname}:3000/api/users/${this.props.player.id}`, config).then(r => r.json())
+
+
+  }
+
+
+  handleClick = (event) => {
+    if (event.target.innerText == 'Goku') {
+        let action = {
+        type: 'SETCLICKEDTOTRUE'
+      }
+      this.props.dispatch(action)
+    }
+    if (event.target.innerText == 'Goku' || event.target.innerText == 'Vegeta' ) {
+        const config = {
+          method: 'PATCH',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+          },
+          body:JSON.stringify({
+            username: this.props.player,
+            character: event.target.innerText
+          })
+        }
+        fetch(`http://${window.location.hostname}:3000/api/users/${this.props.player.id}`, config).then(r => r.json())
+      }
+      else {
+        alert('player has been taken')
+      }
+    }
+
   render() {
 
     return (
       <React.Fragment>
+
+      <ActionCable
+        channel={{ channel: 'UsersChannel'}}
+        onReceived={this.handleUser}
+        />
 
       <div className='profile-thing' style={{float: 'left', display: 'inline'}}>
         <Logout />
@@ -89,7 +161,7 @@ class Profile extends Component {
           style={{marginLeft: '10px',
           backgroundColor: 'rgba(128, 128, 128, 0.7)',
           fontFamily: 'cursive'
-        }} onClick={this.props.handleStartGame} > Start Game </button>
+        }} onClick={this.handleStartGame} > Co-Op Game </button>
       <button onClick={this.handleHighScores}
           style={{
             marginLeft: '10px',
@@ -119,7 +191,8 @@ class Profile extends Component {
 
        {this.state.games !== null ? <HighScores games={this.state.games}/> : null }
        {this.state.controls !== null ? <Controls/> : null}
-       <GameLobby />
+       {this.state.gameLobby !== null ? <GameLobby handleClick={this.handleClick} gokuTaken={this.state.gokuTaken} vegetaTaken={this.state.vegetaTaken}/> : null}
+
 
 
     </React.Fragment>

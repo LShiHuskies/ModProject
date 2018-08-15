@@ -12,16 +12,6 @@ import SecondPlayer from './containers/SecondPlayer';
 
 
 
-// import DragonBallZSoundTrack from './assets/DragonBallZSoundTrack.mp3';
-//
-// let gameMusic = document.createElement('audio');
-// gameMusic.src = `${DragonBallZSoundTrack}`;
-// gameMusic.setAttribute('preload', 'auto');
-// gameMusic.setAttribute('controls', 'none');
-// gameMusic.style.display = 'none';
-
-
-
 let count = 0;
 let otherCount = 0;
 let thirdCount = 0;
@@ -202,12 +192,6 @@ class App extends Component {
       scoreCount = 0;
     }
 
-    // if (this.state.gameOver == false && this.state.startGame == true) {
-    //   document.body.appendChild(gameMusic);
-    //   gameMusic.play();
-    // }
-
-
 
   }
 
@@ -215,27 +199,27 @@ class App extends Component {
     event.preventDefault();
 
 
-    const config = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': localStorage.getItem('token')
-      },
-      body:JSON.stringify({
-        playerOne: this.props.playerOne,
-        playerTwo: this.props.playerTwo
-      })
-    }
-    fetch(`http://${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
+    // const config = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-type': 'application/json',
+    //     'Authorization': localStorage.getItem('token')
+    //   },
+    //   body:JSON.stringify({
+    //     playerOne: this.props.playerOne,
+    //     playerTwo: this.props.playerTwo
+    //   })
+    // }
+    // fetch(`http://${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
+    //
+    //
+    //
+    //   let action = {
+    //   type: 'SETCLICKEDTOTRUE'
+    // }
+    // this.props.dispatch(action)
 
-    this.setState({
-      startGame: true,
-      backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
-    })
-      let action = {
-      type: 'SETCLICKEDTOTRUE'
-    }
-    this.props.dispatch(action)
+
 
 
   }
@@ -301,7 +285,7 @@ class App extends Component {
 
       localStorage.setItem('token', player.token)
       let action = {
-        type: 'OPERATIONGETLOCALPLAYER',
+        type: 'OPERATIONGETPLAYER',
         payload: player
       }
       this.props.dispatch(action)
@@ -313,17 +297,17 @@ class App extends Component {
           password: ''
         })
 
-      const config = {
-        method: 'PATCH',
-        headers: {
-          'Content-type': 'application/json',
-          'Authorization': localStorage.getItem('token')
-        },
-        body:JSON.stringify({
-          username: player
-        })
-      }
-      fetch(`http://${window.location.hostname}:3000/api/users/${player.id}`, config).then(r => r.json())
+      // const config = {
+      //   method: 'PATCH',
+      //   headers: {
+      //     'Content-type': 'application/json',
+      //     'Authorization': localStorage.getItem('token')
+      //   },
+      //   body:JSON.stringify({
+      //     username: player
+      //   })
+      // }
+      // fetch(`http://${window.location.hostname}:3000/api/users/${player.id}`, config).then(r => r.json())
 
 
     } else if (player['errors'] !== undefined) {
@@ -338,58 +322,60 @@ class App extends Component {
   // this is the function when we initiate a new game.
 
   handleReceived = (event) => {
-    if (event.id) {
-      let action = {
-        type: 'SETGAMEID',
-        payload: event.id
-      }
+    if (this.state.login == true) {
+      if (event.id) {
+        let action = {
+          type: 'SETGAMEID',
+          payload: event.id
+        }
 
-    this.props.dispatch(action)
-
-    this.setState({
-      startGame: true,
-      backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
-    })
-  } else if (event.scores) {
-
-    let action = {
-      type: 'SETSCORE',
-      payload: event.scores
-    }
-    this.setState({
-      backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)',
-      gameOver: true
-    })
-  }
-
-  }
-
-
-  handleUser = (player) => {
-
-    if (this.props.playerOne == null) {
-      // let player = atob(localStorage.getItem('token').split('.')[1])
-      // let bestPlayer = JSON.parse(player)
-      let action = {
-        type: 'OPERATIONGETPLAYER',
-        payload: player
-      }
-      this.props.dispatch(action);
-
-      // console.log('playerone', player)
-    } else if (this.props.playerTwo == null) {
-      // let player = atob(localStorage.getItem('token').split('.')[1])
-      // let bestPlayer = JSON.parse(player)
-      let action = {
-        type: 'OPERATIONGETSECONDPLAYER',
-        payload: player
-      }
       this.props.dispatch(action)
-      // console.log('playertwo', player)
-    }
 
+      this.setState({
+        startGame: true,
+        backgroundImage: 'url(https://images7.alphacoders.com/677/thumb-1920-677266.png)'
+      })
+    } else if (event.scores) {
+
+      let action = {
+        type: 'SETSCORE',
+        payload: event.scores
+      }
+      this.setState({
+        backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)',
+        gameOver: true
+      })
+    }
+  }
 
   }
+
+
+  // handleUser = (player) => {
+  //
+  //   if (this.props.playerOne == null) {
+  //     // let player = atob(localStorage.getItem('token').split('.')[1])
+  //     // let bestPlayer = JSON.parse(player)
+  //     let action = {
+  //       type: 'OPERATIONGETPLAYER',
+  //       payload: player
+  //     }
+  //     this.props.dispatch(action);
+  //
+  //     // console.log('playerone', player)
+  //   } else if (this.props.playerTwo == null) {
+  //     // let player = atob(localStorage.getItem('token').split('.')[1])
+  //     // let bestPlayer = JSON.parse(player)
+  //     let action = {
+  //       type: 'OPERATIONGETSECONDPLAYER',
+  //       payload: player
+  //     }
+  //     this.props.dispatch(action)
+  //     // console.log('playertwo', player)
+  //   }
+  //
+  //
+  // }
 
 
 
@@ -430,22 +416,25 @@ class App extends Component {
 
 
   render() {
-    // console.log('player One', this.props.playerOne)
-    // console.log('player two', this.props.playerTwo)
+
     return (
       <div className="App" style={{backgroundImage: this.state.backgroundImage}}>
+
+
         <ActionCable
           channel={{ channel: 'MovesChannel' }}
           onReceived={this.handleScoreAndEnemyHealth}
           />
+
         <ActionCable
-          channel={{ channel: 'GamesChannel' }}
+          channel={{ channel: 'GamesChannel'}}
           onReceived={this.handleReceived}
           />
         <ActionCable
           channel={{ channel: 'UsersChannel'}}
           onReceived={this.handleUser}
           />
+
         {this.state.login == false ? <div id="Login">
           <Login login={this.state.login}
             username={this.state.username}
@@ -455,6 +444,7 @@ class App extends Component {
             passwordChange={this.handlePasswordChange}
             loginError={this.state.loginError}
           />
+
       </div> :
       this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
       (!(this.props.playerHealth > 0) || !(this.props.playerTwoHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) )

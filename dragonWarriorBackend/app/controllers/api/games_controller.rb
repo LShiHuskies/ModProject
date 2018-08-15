@@ -60,7 +60,7 @@
 
 class Api::GamesController < ApplicationController
 
-  # before_action :requires_login, only: [:index]
+  before_action :requires_login, only: [:index]
 
 
 
@@ -84,6 +84,7 @@ class Api::GamesController < ApplicationController
   end
 
   def create
+    
 
     @game = Game.new
     # @user = User.find_by(id: params[:user][:id])

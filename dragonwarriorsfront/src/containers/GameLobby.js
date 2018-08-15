@@ -1,32 +1,62 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { ActionCable } from 'react-actioncable-provider';
 
 class GameLobby extends Component {
 
+    handleStartGameforReal = (event) => {
+      event.preventDefault();
+      const config = {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': localStorage.getItem('token')
+        },
+        body:JSON.stringify({
+          player: this.props.player
+        })
+      }
+      fetch(`http://${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
+
+    }
+
   render() {
-    console.log(this.props.localPlayer)
-    console.log(this.props.player)
+    let characters = this.props.characters.filter( character => {
+      return character.name == 'Goku' || character.name == 'Vegeta'
+    })
+    let characterImage = characters.map(he => <img src={he.image} style={{width: '135px', height: '150px', marginTop: '10px', marginLeft: '10px', marginRight: '10px', marginBottom: '10px'}}/>)
     return (
+        <React.Fragment>
         <div id='description' style={{boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
            transition: '0.3s',
            backgroundColor: 'rgba(0, 120, 100, 0.7)',
            float: 'left',
-           position:'relative', top:'10%', right: '15%', color: 'black'
+           position:'relative', top:'20%', left: '0%', right: '10%', color: 'black'
          }}>
-         Players Ready to Play
+         Choose your character
          <h3>
-
+           {characterImage}
+           <br></br>
+           <button onClick={this.props.handleClick} style={{float: 'left'}}>
+             {this.props.gokuTaken == false ? 'Goku' : 'TAKEN'}
+           </button>
+           <button onClick={this.props.handleClick} style={{float: 'right'}}>
+             {this.props.vegetaTaken == false ? 'Vegeta' : 'TAKEN'} </button>
+           <br></br>
+           <button onClick={this.handleStartGameforReal}>Start Game</button>
          </h3>
 
        </div>
+
+       </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    localPlayer: state.playerCoordinates.localplayer,
-    player: state.playerCoordinates.player
+    player: state.playerCoordinates.player,
+    characters: state.characters.characters
   }
 }
 

@@ -133,7 +133,8 @@ class Api::UsersController < ApplicationController
     ActionCable.server.broadcast 'UsersChannel', {
       username: @user.username,
       id: @user.id,
-      games: @user.games
+      games: @user.games,
+      character: params['character']
     }
 
     render json: @user.games
