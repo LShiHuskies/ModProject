@@ -125,7 +125,13 @@ class Profile extends Component {
         type: 'SETCLICKEDTOTRUE'
       }
       this.props.dispatch(action)
+    } else if (event.target.innerText == "Vegeta") {
+      let action = {
+      type: 'SETCLICKEDTOFALSE'
     }
+    this.props.dispatch(action)
+  }
+
     if (event.target.innerText == 'Goku' || event.target.innerText == 'Vegeta' ) {
         const config = {
           method: 'PATCH',
@@ -139,8 +145,9 @@ class Profile extends Component {
           })
         }
         fetch(`http://${window.location.hostname}:3000/api/users/${this.props.player.id}`, config).then(r => r.json())
-      }
-      else {
+      } else if (event.target.innerText == 'Close Game Lobby') {
+        window.location.reload()
+      } else {
         alert('player has been taken')
       }
     }

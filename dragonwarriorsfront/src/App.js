@@ -21,9 +21,6 @@ let fifthCount = 0;
 let scoreCount = 0;
 
 
-
-
-
 class App extends Component {
   state = {
     backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-z-namek-background-5521.jpg)',
@@ -49,7 +46,8 @@ class App extends Component {
       playerOneTop: this.props.playerOneTop,
       playerOneLeft: this.props.playerOneLeft,
       playerTwoTop: this.props.playerTwoTop,
-      playerTwoLeft: this.props.playerTwoLeft
+      playerTwoLeft: this.props.playerTwoLeft,
+      scoreCounter: scoreCount
     };
     let action = {
       type: 'SETSCORETOALL',
@@ -161,65 +159,36 @@ class App extends Component {
         fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
         scoreCount = 0;
 
-    } else if ( this.props.time < 55 && scoreCount < 1 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 55 && scoreCount < 1 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 51 && scoreCount < 2 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 51 && scoreCount < 2 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 46 && scoreCount < 3 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 46 && scoreCount < 3 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 41 && scoreCount < 4 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 41 && scoreCount < 4 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 36 && scoreCount < 5 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 36 && scoreCount < 5 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 31 && scoreCount < 6 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 31 && scoreCount < 6 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 26 && scoreCount < 7 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 26 && scoreCount < 7 && this.state.gameOver !== true && this.state.login == true ) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 21 && scoreCount < 8 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 21 && scoreCount < 8 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 16 && scoreCount < 9 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 16 && scoreCount < 9 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 11 && scoreCount < 10 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 11 && scoreCount < 10 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 6 && scoreCount < 11 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 6 && scoreCount < 11 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 4 && scoreCount < 12 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 4 && scoreCount < 12 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 3 && scoreCount < 13 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 3 && scoreCount < 13 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
-    } else if ( this.props.time < 2 && scoreCount < 14 && this.state.gameOver !== true ) {
+    } else if ( this.props.time < 2 && scoreCount < 14 && this.state.gameOver !== true && this.state.login == true) {
       this.makeFetchForScore()
       scoreCount = 0;
     }
-
-
-  }
-
-  handleStartGame = (event) => {
-    event.preventDefault();
-
-
-    // const config = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-type': 'application/json',
-    //     'Authorization': localStorage.getItem('token')
-    //   },
-    //   body:JSON.stringify({
-    //     playerOne: this.props.playerOne,
-    //     playerTwo: this.props.playerTwo
-    //   })
-    // }
-    // fetch(`http://${window.location.hostname}:3000/api/games/`, config).then(r => r.json())
-    //
-    //
-    //
-    //   let action = {
-    //   type: 'SETCLICKEDTOTRUE'
-    // }
-    // this.props.dispatch(action)
-
-
 
 
   }
@@ -297,18 +266,6 @@ class App extends Component {
           password: ''
         })
 
-      // const config = {
-      //   method: 'PATCH',
-      //   headers: {
-      //     'Content-type': 'application/json',
-      //     'Authorization': localStorage.getItem('token')
-      //   },
-      //   body:JSON.stringify({
-      //     username: player
-      //   })
-      // }
-      // fetch(`http://${window.location.hostname}:3000/api/users/${player.id}`, config).then(r => r.json())
-
 
     } else if (player['errors'] !== undefined) {
       alert(player['errors'])
@@ -351,35 +308,6 @@ class App extends Component {
   }
 
 
-  // handleUser = (player) => {
-  //
-  //   if (this.props.playerOne == null) {
-  //     // let player = atob(localStorage.getItem('token').split('.')[1])
-  //     // let bestPlayer = JSON.parse(player)
-  //     let action = {
-  //       type: 'OPERATIONGETPLAYER',
-  //       payload: player
-  //     }
-  //     this.props.dispatch(action);
-  //
-  //     // console.log('playerone', player)
-  //   } else if (this.props.playerTwo == null) {
-  //     // let player = atob(localStorage.getItem('token').split('.')[1])
-  //     // let bestPlayer = JSON.parse(player)
-  //     let action = {
-  //       type: 'OPERATIONGETSECONDPLAYER',
-  //       payload: player
-  //     }
-  //     this.props.dispatch(action)
-  //     // console.log('playertwo', player)
-  //   }
-  //
-  //
-  // }
-
-
-
-
   handleUserNameChange = (event) => {
     this.setState({
       username: event.target.value
@@ -393,24 +321,27 @@ class App extends Component {
   }
 
   handleScoreAndEnemyHealth = (event) => {
-    if (event.type.type == 'SETSCORETOALL') {
-      this.props.dispatch(event.type)
-    }
-    else if (event.type.type == 'RESTORE' ) {
-      this.props.dispatch(event.type)
-      this.setState({
-        backgroundImage: 'url(https://i.pinimg.com/originals/0f/18/c4/0f18c45e07a7212f4d49e71213833e01.jpg)'
-      })
-    } else if (event.type.type == 'RESTORELEVEL3' ) {
-      this.props.dispatch(event.type)
-      this.setState({
-        backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-background-namek-5467.jpg)'
-      })
-    } else if (event.type.type == 'RESTORELEVEL4') {
-      this.props.dispatch(event.type)
-      this.setState({
-        backgroundImage: 'url(https://img00.deviantart.net/342f/i/2017/015/a/5/saga_of_freezer___namek_screen_by_saodvd-davkgjo.png)'
-      })
+    if (this.state.login == true) {
+      if (event.type.type == 'SETSCORETOALL') {
+        this.props.dispatch(event.type)
+        scoreCount = event.type.payload.scoreCounter
+      }
+      else if (event.type.type == 'RESTORE' ) {
+        this.props.dispatch(event.type)
+        this.setState({
+          backgroundImage: 'url(https://i.pinimg.com/originals/0f/18/c4/0f18c45e07a7212f4d49e71213833e01.jpg)'
+        })
+      } else if (event.type.type == 'RESTORELEVEL3' ) {
+        this.props.dispatch(event.type)
+        this.setState({
+          backgroundImage: 'url(http://backgroundcheckall.com/wp-content/uploads/2017/12/dragon-ball-background-namek-5467.jpg)'
+        })
+      } else if (event.type.type == 'RESTORELEVEL4') {
+        this.props.dispatch(event.type)
+        this.setState({
+          backgroundImage: 'url(https://img00.deviantart.net/342f/i/2017/015/a/5/saga_of_freezer___namek_screen_by_saodvd-davkgjo.png)'
+        })
+      }
     }
   }
 
@@ -430,10 +361,6 @@ class App extends Component {
           channel={{ channel: 'GamesChannel'}}
           onReceived={this.handleReceived}
           />
-        <ActionCable
-          channel={{ channel: 'UsersChannel'}}
-          onReceived={this.handleUser}
-          />
 
         {this.state.login == false ? <div id="Login">
           <Login login={this.state.login}
@@ -446,7 +373,7 @@ class App extends Component {
           />
 
       </div> :
-      this.state.startGame == false ? <Profile handleStartGame={this.handleStartGame}/> :
+      this.state.startGame == false ? <Profile /> :
       (!(this.props.playerHealth > 0) || !(this.props.playerTwoHealth > 0) || (!(this.props.enemyHealth < 1 ) && (this.props.time < 1) )
       || this.state.gameOver == true)
       ? <GameOver />

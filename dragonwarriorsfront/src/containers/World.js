@@ -17,7 +17,6 @@ class World extends React.Component {
 
     return (
     <div>
-
       <Timer />
       <Player />
       <SecondPlayer />

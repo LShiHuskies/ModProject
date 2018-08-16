@@ -381,14 +381,14 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, top: 400,
-      left: 1400,
+      left: 1000,
       playerHealth: state.playerHealth - 1
     }
 
     case 'TELEPORTLEFT':
 
     return {
-      ...state, top: 600,
+      ...state, top: 500,
       left: 150,
       playerHealth: state.playerHealth - 1
     }
@@ -634,6 +634,12 @@ export default function playMovements(state = defaultState, action) {
 
     return {
       ...state, score: action.payload
+    }
+
+    case 'SETCLICKEDTOFALSE':
+
+    return {
+      ...state, clicked: false
     }
 
     break;
