@@ -21,9 +21,10 @@ class CharacterList extends Component {
       boxShadow: '0px 4px 8px 0 rgba(0, 0, 0, 1)',
       transition: '0.3s',
       float: 'left',
-      marginLeft: '90px',
+      marginLeft: '1.7%',
       textAlign: 'left',
       marginTop: '30px',
+      marginRight: '1.5%'
     }} >
       <img src={character.image} style={{width: '135px', height: '150px'}}/>
       <p id="characterName">{character.name}</p>

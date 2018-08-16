@@ -15,11 +15,11 @@ class CharacterDetail extends Component {
          marginLeft: '600px', marginRight: '600px',
          marginTop: '40px'
        }}>
-        <h3 style={{textAlign: 'center', fontFamily: 'cursive', color: 'blue'}}> Character Name : {this.props.character.selectedCharacter.name}
-          <img src={this.props.character.selectedCharacter.imageTwo} style={{width: '10%', float: 'right'}} />
+        <h3 style={{textAlign: 'center', fontFamily: 'cursive', color: 'blue'}}> Character Name: {this.props.character.selectedCharacter.name}
+          <img src={this.props.character.selectedCharacter.imageTwo} style={{width: '10%', float: 'right', marginBottom: '10px'}} />
 
     </h3>
-        <div style={{backgroundColor: 'rgba(0, 40, 100, 0.8)', fontFamily: 'cursive', fontSize: '20px'}}> Brief Description:
+        <div style={{backgroundColor: 'rgba(0, 40, 100, 0.8)', fontFamily: 'cursive', fontSize: '20px', height: '140px', overflow: 'scroll', color: 'white'}}> Brief Description:
             {this.props.character.selectedCharacter.description}
         </div>
 

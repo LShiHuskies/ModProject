@@ -34,16 +34,16 @@ class GameLobby extends Component {
            position:'relative', top:'20%', left: '0%', right: '10%', color: 'black',
            fontSize: '23px'
          }}>
-         Choose your character
+         Choose Character
          <br></br>
          <p style={{fontSize: '20px'}}>Default: Vegeta</p>
          <h3 style={{marginTop: '0'}}>
            {characterImage}
            <br></br>
-           <button onClick={this.props.handleClick} style={{float: 'left', marginLeft: '16%', fontSize: '17px'}}>
+           <button onClick={this.props.count == 0 ? this.props.handleClick : null} style={{float: 'left', marginLeft: '16%', fontSize: '17px'}}>
              {this.props.gokuTaken == false ? 'Goku' : 'TAKEN'}
            </button>
-           <button onClick={this.props.handleClick} style={{float: 'right', marginRight: '14%',fontSize: '17px'}}>
+           <button onClick={this.props.count == 0 ? this.props.handleClick : null} style={{float: 'right', marginRight: '14%',fontSize: '17px'}}>
              {this.props.vegetaTaken == false ? 'Vegeta' : 'TAKEN'} </button>
            <br></br>
            <button onClick={this.handleStartGameforReal} style={{fontSize: '17px'}}>Start Game</button>

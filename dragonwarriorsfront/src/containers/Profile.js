@@ -15,7 +15,8 @@ class Profile extends Component {
     controls: null,
     gameLobby: null,
     gokuTaken: false,
-    vegetaTaken: false
+    vegetaTaken: false,
+    count: 0
   }
 
   handleHighScores = () =>{
@@ -125,11 +126,17 @@ class Profile extends Component {
         type: 'SETCLICKEDTOTRUE'
       }
       this.props.dispatch(action)
+      this.setState({
+        count: 1
+      })
     } else if (event.target.innerText == "Vegeta") {
       let action = {
       type: 'SETCLICKEDTOFALSE'
     }
     this.props.dispatch(action)
+    this.setState({
+      count: 1
+    })
   }
 
     if (event.target.innerText == 'Goku' || event.target.innerText == 'Vegeta' ) {
@@ -198,7 +205,7 @@ class Profile extends Component {
 
        {this.state.games !== null ? <HighScores games={this.state.games}/> : null }
        {this.state.controls !== null ? <Controls/> : null}
-       {this.state.gameLobby !== null ? <GameLobby handleClick={this.handleClick} gokuTaken={this.state.gokuTaken} vegetaTaken={this.state.vegetaTaken}/> : null}
+       {this.state.gameLobby !== null ? <GameLobby handleClick={this.handleClick} gokuTaken={this.state.gokuTaken} vegetaTaken={this.state.vegetaTaken} count={this.state.count}/> : null}
 
 
 
