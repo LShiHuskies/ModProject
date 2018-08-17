@@ -405,6 +405,7 @@ class Player extends React.Component {
         fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
           // HERE
 
+
     //     this.setState({
     //       attack: true,
     //       leftAttack: this.props.attackLeft,
@@ -1695,75 +1696,46 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 handleReceived = (event) => {
   this.props.dispatch(event.type)
   if (event.type.type == 'ATTACKLEFT') {
-    this.setState({
-      attack: true,
-      leftAttack: this.props.attackLeft,
-      topAttack: this.props.attackTop,
-      degree: this.props.degree
-    }, () => {
-
-      leftAttackProjectile.push(setInterval(
-        () =>  this.setState({
-        leftAttack: this.state.leftAttack - 5,
-        topAttack: this.state.topAttack
-      }, () => { if (this.state.leftAttack < 0) {
-        this.setState({
-          attack: false,
-          leftAttack: null,
-          topAttack: null
-        })
-      } else if (  (this.state.leftAttack < this.props.enemyLeft + 20 && this.state.leftAttack > this.props.enemyLeft - 20)
-        && (this.state.topAttack > this.props.enemyTop - 50 && this.state.topAttack < this.props.enemyTop + 105  )
-              ) {
-
-                let action = {
-                  type: 'HITFRIEZALEFT'
-                }
-              this.props.dispatch(action)
-
-        this.setState({
-          attack: false,
-          leftAttack: null,
-          topAttack: null
-        })
-
-      } // end of the else if statement for left attack
-      else if (( this.state.topAttack > this.props.enemyAttackTop - 30 && this.state.topAttack < this.props.enemyAttackTop + 30 )
-      && ( this.state.leftAttack < this.props.enemyAttackLeft + 5 && this.state.leftAttack > this.props.enemyAttackLeft - 5 )
-    ) {
-      let action = {
-        type: 'SETENEMYATTACKTOFALSE'
-      };
-      this.props.dispatch(action);
+    if (this.props.left > 90) {
 
       this.setState({
-        attack: false,
-        leftAttack: null,
-        topAttack: null
-      });
+        attack: true,
+        leftAttack: this.props.attackLeft,
+        topAttack: this.props.attackTop,
+        degree: this.props.degree
+      }, () => {
 
-      let anotheraction = {
-        type: 'BLOCKFRIEZAATTACKLEFT'
-      };
-      this.props.dispatch(anotheraction);
+        leftAttackProjectile.push(setInterval(
+          () =>  this.setState({
+          leftAttack: this.state.leftAttack - 5,
+          topAttack: this.state.topAttack
+        }, () => { if (this.state.leftAttack < 0) {
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          })
+        } else if (  (this.state.leftAttack < this.props.enemyLeft + 20 && this.state.leftAttack > this.props.enemyLeft - 20)
+          && (this.state.topAttack > this.props.enemyTop - 50 && this.state.topAttack < this.props.enemyTop + 105  )
+                ) {
 
+                  let action = {
+                    type: 'HITFRIEZALEFT'
+                  }
+                this.props.dispatch(action)
 
-      let misslelandLeft = enemyAttackIntervalArray.pop()
-      clearInterval(misslelandLeft)
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          })
 
-
-    } // end of the else if for the attack left 1
-    // start of the else if for the attack left 2
-
-    else if (
-      ( this.state.topAttack > this.props.enemyAttackTop2 - 30 && this.state.topAttack < this.props.enemyAttackTop2 + 30 )
-      && ( this.state.leftAttack < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack > this.props.enemyAttackLeft2 - 5 )
+        } // end of the else if statement for left attack
+        else if (( this.state.topAttack > this.props.enemyAttackTop - 30 && this.state.topAttack < this.props.enemyAttackTop + 30 )
+        && ( this.state.leftAttack < this.props.enemyAttackLeft + 5 && this.state.leftAttack > this.props.enemyAttackLeft - 5 )
       ) {
-
-
-
         let action = {
-          type: 'SETENEMYATTACK2TOFALSE'
+          type: 'SETENEMYATTACKTOFALSE'
         };
         this.props.dispatch(action);
 
@@ -1779,17 +1751,49 @@ handleReceived = (event) => {
         this.props.dispatch(anotheraction);
 
 
-        let misslelandLeft = enemyAttackIntervalArray2.pop()
+        let misslelandLeft = enemyAttackIntervalArray.pop()
         clearInterval(misslelandLeft)
 
 
-    }
+      } // end of the else if for the attack left 1
+      // start of the else if for the attack left 2
 
-    // end of the else if for the blocking frieza's attack
+      else if (
+        ( this.state.topAttack > this.props.enemyAttackTop2 - 30 && this.state.topAttack < this.props.enemyAttackTop2 + 30 )
+        && ( this.state.leftAttack < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack > this.props.enemyAttackLeft2 - 5 )
+        ) {
 
-  }), 7 ) // end of the set Interval for left attack
-  ) // end of the leftAttackProjectile push
-})
+
+
+          let action = {
+            type: 'SETENEMYATTACK2TOFALSE'
+          };
+          this.props.dispatch(action);
+
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          });
+
+          let anotheraction = {
+            type: 'BLOCKFRIEZAATTACKLEFT'
+          };
+          this.props.dispatch(anotheraction);
+
+
+          let misslelandLeft = enemyAttackIntervalArray2.pop()
+          clearInterval(misslelandLeft)
+
+
+      }
+
+      // end of the else if for the blocking frieza's attack
+
+    }), 7 ) // end of the set Interval for left attack
+    ) // end of the leftAttackProjectile push
+  }) // end of the setState for leftAttack1
+}
 } else if (event.type.type == 'ATTACKLEFT2') {
 
   this.setState({
@@ -2677,8 +2681,8 @@ else if (event.type.type == 'ATTACKUP') {
         <div>
           <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`}} />
         </div>
-        <Score />
-        <Healthbar />
+        {/*<Score />
+        <Healthbar />*/}
         {this.state.attack == true ?
             <PlayerAttack leftAttackCoordinates={this.state.leftAttack}
             topAttackCoordinates={this.state.topAttack}

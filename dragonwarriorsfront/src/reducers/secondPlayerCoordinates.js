@@ -125,16 +125,16 @@ export default function secondPlayMovements(state = defaultState, action) {
     case 'ATTACKLEFT TWO':
 
     return {
-      ...state, attackTop: state.top,
-      attackLeft: state.left - 60,
+      ...state, attackTop: state.top + 15,
+      attackLeft: state.left - 50,
       degree: 180
     }
 
     case 'ATTACKRIGHT TWO':
 
     return {
-      ...state, attackTop: state.top,
-      attackLeft: state.left + 60,
+      ...state, attackTop: state.top + 15,
+      attackLeft: state.left + 42,
       degree: 0
     }
 
@@ -197,13 +197,13 @@ export default function secondPlayMovements(state = defaultState, action) {
     case 'ATTACKLEFT TWO SECONDONE':
 
     return {
-      ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) - 80, degree: '180'
+      ...state, attackTop2: Number(state.top) + 15, attackLeft2: Number(state.left) - 50, degree: '180'
     }
 
     case 'ATTACKRIGHT TWO SECONDONE':
 
     return {
-      ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) + 42, degree: '0'
+      ...state, attackTop2: Number(state.top) + 15, attackLeft2: Number(state.left) + 42, degree: '0'
     }
 
     case 'TELEPORTVEGETAANDPLAYER':

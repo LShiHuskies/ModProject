@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Score from './Score';
 import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayerAttack from './SecondPlayerAttack';
 import playerTwoAttackInterval from '../reducers/playerTwoAttackInterval';
@@ -61,9 +60,6 @@ class SecondPlayer extends React.Component {
           };
 
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
-
-
 
       break;
 
@@ -429,9 +425,6 @@ class SecondPlayer extends React.Component {
 
 
     }
-
-
-
 
     break;
 

@@ -1,3 +1,6 @@
+  // original look down image for goku and original default image
+  // http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png
+  // width is 5%
 
     const defaultState = {
         top: 500,
@@ -5,8 +8,8 @@
         playerHealth: 100,
         enemyHealth: 100,
         defaultDirection: {
-          image: 'http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png',
-          width: '5',
+          image: 'https://vignette.wikia.nocookie.net/fictional-battle-omniverse/images/8/8b/Goku_Dragon_Ball_Z.png/revision/latest?cb=20150508010447',
+          width: '2.8',
           characterdirection: 'DOWN'
         },
         attackTop: null,
@@ -14,7 +17,7 @@
         degree: '0',
         enemyCoordinates: {
           enemyTop: 300,
-          enemyLeft: 1500
+          enemyLeft: 1300
         },
         score: 0,
         enemyAttackTop: null,
@@ -135,8 +138,8 @@ export default function playMovements(state = defaultState, action) {
     return {
       // DEFAULT DOWN IMAGE
       ...state, defaultDirection: {
-        image: 'http://www.pngmart.com/files/2/Goku-PNG-Transparent-Image.png',
-        width: '5',
+        image: 'https://vignette.wikia.nocookie.net/fictional-battle-omniverse/images/8/8b/Goku_Dragon_Ball_Z.png/revision/latest?cb=20150508010447',
+        width: '2.8',
         characterdirection: 'DOWN'
       }
     }
@@ -161,7 +164,7 @@ export default function playMovements(state = defaultState, action) {
     case 'ATTACKDOWN':
 
     return {
-      ...state, attackTop: Number(state.top) + 130, attackLeft: Number(state.left) - 10, degree: '90'
+      ...state, attackTop: Number(state.top) + 130, attackLeft: Number(state.left) - 28.5, degree: '90'
     }
 
     case 'ATTACKRIGHT':
@@ -472,7 +475,7 @@ export default function playMovements(state = defaultState, action) {
     case 'ATTACKDOWN2':
 
     return {
-      ...state, attackTop2: Number(state.top) + 130, attackLeft2: Number(state.left) - 2, degree: '90'
+      ...state, attackTop2: Number(state.top) + 130, attackLeft2: Number(state.left) - 28.5, degree: '90'
     }
 
     case 'ATTACKRIGHT2':
@@ -496,7 +499,7 @@ export default function playMovements(state = defaultState, action) {
     case 'ATTACKDOWN3':
 
     return {
-      ...state, attackTop3: Number(state.top) + 130, attackLeft3: Number(state.left) - 2, degree: '90'
+      ...state, attackTop3: Number(state.top) + 130, attackLeft3: Number(state.left) - 22, degree: '90'
     }
 
     case 'ATTACKRIGHT3':

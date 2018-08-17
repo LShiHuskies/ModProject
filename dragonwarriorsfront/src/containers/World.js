@@ -8,6 +8,8 @@ import ginyuAttackIntervalArray from '../reducers/ginyuAttackInterval';
 import SecondPlayer from './SecondPlayer';
 import { ActionCable } from 'react-actioncable-provider';
 import OtherHealthBar from './OtherHealthBar';
+import Score from './Score';
+import Healthbar from './Healthbar';
 
 
 
@@ -18,14 +20,18 @@ class World extends React.Component {
     return (
     <div>
       <Timer />
+      <Score />
+      <Healthbar />
       <Player />
       <SecondPlayer />
       <Enemy />
       <OtherHealthBar/>
+
       {this.props.level == 'ONE' && (this.props.time < 30 && this.props.time > 20) ? <Ginyu /> : null}
       {this.props.level == 'TWO' && (this.props.time < 40 && this.props.time > 20) ? <Ginyu /> : null}
       {this.props.level == 'THREE' && (this.props.time < 45 && this.props.time > 15) ? <Ginyu /> : null}
       {this.props.level == 'FOUR' && (this.props.time < 45 && this.props.time > 5) ? <Ginyu /> : null}
+
     </div>
     )
   }
