@@ -14,7 +14,9 @@ const defaultState = {
     degree: 0,
     attack: false,
     attackTop2: null,
-    attackLeft2: null
+    attackLeft2: null,
+    attackTop3: null,
+    attackLeft3: null
   }
 
 
@@ -211,6 +213,20 @@ export default function secondPlayMovements(state = defaultState, action) {
     return {
       ...state, playerHealth: state.playerHealth - 10,
       top: 480, left: 500
+    }
+
+    case 'ATTACKRIGHT TWO THIRDONE':
+
+    return {
+      ...state, attackTop3: Number(state.top) + 15, attackLeft3: Number(state.left) + 42, degree: '0'
+    }
+
+    case 'ATTACKLEFT TWO THIRDONE':
+  
+    return {
+      ...state, attackTop3: state.top + 15,
+      attackLeft3: state.left - 50,
+      degree: 180
     }
 
 

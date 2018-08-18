@@ -1715,6 +1715,7 @@ handleReceived = (event) => {
             leftAttack: null,
             topAttack: null
           })
+          clearInterval(leftAttackProjectile.pop())
         } else if (  (this.state.leftAttack < this.props.enemyLeft + 20 && this.state.leftAttack > this.props.enemyLeft - 20)
           && (this.state.topAttack > this.props.enemyTop - 50 && this.state.topAttack < this.props.enemyTop + 105  )
                 ) {
@@ -1729,6 +1730,7 @@ handleReceived = (event) => {
             leftAttack: null,
             topAttack: null
           })
+          clearInterval(leftAttackProjectile.pop())
 
         } // end of the else if statement for left attack
         else if (( this.state.topAttack > this.props.enemyAttackTop - 30 && this.state.topAttack < this.props.enemyAttackTop + 30 )
@@ -1751,8 +1753,9 @@ handleReceived = (event) => {
         this.props.dispatch(anotheraction);
 
 
-        let misslelandLeft = enemyAttackIntervalArray.pop()
-        clearInterval(misslelandLeft)
+        let misslelandLeft = enemyAttackIntervalArray.pop();
+        clearInterval(misslelandLeft);
+        clearInterval(leftAttackProjectile.pop());
 
 
       } // end of the else if for the attack left 1
@@ -1784,6 +1787,7 @@ handleReceived = (event) => {
 
           let misslelandLeft = enemyAttackIntervalArray2.pop()
           clearInterval(misslelandLeft)
+          clearInterval(leftAttackProjectile.pop())
 
 
       }
@@ -1813,6 +1817,7 @@ handleReceived = (event) => {
         leftAttack2: null,
         topAttack2: null
       })
+      clearInterval(leftAttackProjectile2.pop())
     } else if (  (this.state.leftAttack2 < this.props.enemyLeft + 20 && this.state.leftAttack2 > this.props.enemyLeft - 20)
       && (this.state.topAttack2 > this.props.enemyTop - 50 && this.state.topAttack2 < this.props.enemyTop + 105  )
             ) {
@@ -1827,7 +1832,7 @@ handleReceived = (event) => {
         leftAttack2: null,
         topAttack2: null
       })
-
+      clearInterval(leftAttackProjectile2.pop())
     } // end of the else if statement for left attack
     else if (( this.state.topAttack2 > this.props.enemyAttackTop - 30 && this.state.topAttack2 < this.props.enemyAttackTop + 30 )
     && ( this.state.leftAttack2 < this.props.enemyAttackLeft + 5 && this.state.leftAttack2 > this.props.enemyAttackLeft - 5 )
@@ -1851,6 +1856,7 @@ handleReceived = (event) => {
 
     let misslelandLeft = enemyAttackIntervalArray.pop()
     clearInterval(misslelandLeft)
+    clearInterval(leftAttackProjectile2.pop())
 
 
   } // end of the else if statement for the top attack2--
@@ -1878,6 +1884,7 @@ handleReceived = (event) => {
 
     let misslelandLeft = enemyAttackIntervalArray2.pop()
     clearInterval(misslelandLeft)
+    clearInterval(leftAttackProjectile2.pop())
 
   }
 
@@ -1907,6 +1914,7 @@ else if (event.type.type == 'ATTACKLEFT3') {
         leftAttack3: null,
         topAttack3: null
       })
+      clearInterval(leftAttackProjectile3.pop())
     } else if (  (this.state.leftAttack3 < this.props.enemyLeft + 20 && this.state.leftAttack3 > this.props.enemyLeft - 20)
       && (this.state.topAttack3 > this.props.enemyTop - 50 && this.state.topAttack3 < this.props.enemyTop + 105  )
             ) {
@@ -1921,7 +1929,7 @@ else if (event.type.type == 'ATTACKLEFT3') {
         leftAttack3: null,
         topAttack3: null
       })
-
+      clearInterval(leftAttackProjectile3.pop())
     } // end of the else if statement for left attack
     else if (( this.state.topAttack3 > this.props.enemyAttackTop - 30 && this.state.topAttack3 < this.props.enemyAttackTop + 30 )
     && ( this.state.leftAttack3 < this.props.enemyAttackLeft + 5 && this.state.leftAttack3 > this.props.enemyAttackLeft - 5 )
@@ -1945,7 +1953,7 @@ else if (event.type.type == 'ATTACKLEFT3') {
 
     let misslelandLeft = enemyAttackIntervalArray.pop()
     clearInterval(misslelandLeft)
-
+    clearInterval(leftAttackProjectile3.pop())
 
   }  else if (
     ( this.state.topAttack3 > this.props.enemyAttackTop2 - 30 && this.state.topAttack3 < this.props.enemyAttackTop2 + 30 )
@@ -1971,7 +1979,7 @@ else if (event.type.type == 'ATTACKLEFT3') {
 
     let misslelandLeft = enemyAttackIntervalArray2.pop()
     clearInterval(misslelandLeft)
-
+    clearInterval(leftAttackProjectile3.pop())
 
   }
 
