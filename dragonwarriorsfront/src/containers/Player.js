@@ -2158,11 +2158,13 @@ else if (event.type.type == 'ATTACKDOWN') {
           leftAttack: this.state.leftAttack + 5,
           topAttack: this.state.topAttack
         }, () => { if (this.state.leftAttack > window.innerWidth) {
+
           this.setState({
             attack: false,
             leftAttack: null,
             topAttack: null
           })
+          clearInterval(rightAttackProjectile.pop())
         }  // end of the if
         else if ( (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 30)
           && (this.state.topAttack < this.props.enemyTop + 80 && this.state.topAttack > this.props.enemyTop - 30)
@@ -2267,6 +2269,7 @@ else if (event.type.type == 'ATTACKDOWN') {
             leftAttack2: null,
             topAttack2: null
           })
+          clearInterval(rightAttackProjectile2.pop())
         }  // end of the if
         else if ( (this.state.leftAttack2 > this.props.enemyLeft - 30 && this.state.leftAttack2 < this.props.enemyLeft + 30)
           && (this.state.topAttack2 < this.props.enemyTop + 80 && this.state.topAttack2 > this.props.enemyTop - 30)
@@ -2373,6 +2376,7 @@ else if (event.type.type == 'ATTACKDOWN') {
             leftAttack3: null,
             topAttack3: null
           })
+          clearInterval(rightAttackProjectile3.pop())
         }  // end of the if
         else if ( (this.state.leftAttack3 > this.props.enemyLeft - 30 && this.state.leftAttack3 < this.props.enemyLeft + 30)
           && (this.state.topAttack3 < this.props.enemyTop + 80 && this.state.topAttack3 > this.props.enemyTop - 30)
