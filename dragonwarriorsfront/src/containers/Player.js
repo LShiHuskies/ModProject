@@ -2710,7 +2710,7 @@ else if (event.type.type == 'ATTACKUP') {
         }
 
         {this.state.attack3 == true ?
-          <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack3}
+          <PlayerAttack leftAttackCoordinates={this.state.leftAttack3}
           topAttackCoordinates={this.state.topAttack3}
           degree={this.state.degree}/>
         : null
@@ -2753,7 +2753,8 @@ const mapStateToProps = (state) => {
       enemyAttackLeft2: state.playerCoordinates.enemyAttackLeft2,
       enemyAttackTop2: state.playerCoordinates.enemyAttackTop2,
       enemyAttack2Direction: state.playerCoordinates.enemyAttack2Direction,
-      clicked: state.playerCoordinates.clicked
+      clicked: state.playerCoordinates.clicked,
+      level: state.playerCoordinates.level
   }
 }
 

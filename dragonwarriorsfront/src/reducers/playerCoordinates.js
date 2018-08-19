@@ -158,7 +158,7 @@ export default function playMovements(state = defaultState, action) {
 
 
     return {
-      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) - 80, degree: '180'
+      ...state, attackTop: Number(state.top) + 30, attackLeft: Number(state.left) - 80, degree: '180'
     }
 
     case 'ATTACKDOWN':
@@ -170,7 +170,7 @@ export default function playMovements(state = defaultState, action) {
     case 'ATTACKRIGHT':
 
     return {
-      ...state, attackTop: Number(state.top) + 20, attackLeft: Number(state.left) + 42, degree: '0'
+      ...state, attackTop: Number(state.top) + 30, attackLeft: Number(state.left) + 38, degree: '0'
     }
 
     case 'ATTACKUP':
@@ -481,13 +481,13 @@ export default function playMovements(state = defaultState, action) {
     case 'ATTACKRIGHT2':
 
     return {
-      ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) + 42, degree: '0'
+      ...state, attackTop2: Number(state.top) + 30, attackLeft2: Number(state.left) + 38, degree: '0'
     }
 
     case 'ATTACKUP2':
 
     return {
-      ...state, attackTop2: Number(state.top) - 75, attackLeft2: Number(state.left) + 5, degree: '270'
+      ...state, attackTop2: Number(state.top) - 75, attackLeft2: Number(state.left) - 5, degree: '270'
     }
 
     case 'ATTACKLEFT3':
@@ -499,19 +499,19 @@ export default function playMovements(state = defaultState, action) {
     case 'ATTACKDOWN3':
 
     return {
-      ...state, attackTop3: Number(state.top) + 130, attackLeft3: Number(state.left) - 22, degree: '90'
+      ...state, attackTop3: Number(state.top) + 130, attackLeft3: Number(state.left) - 28.5, degree: '90'
     }
 
     case 'ATTACKRIGHT3':
 
     return {
-      ...state, attackTop3: Number(state.top) + 30, attackLeft3: Number(state.left) + 42, degree: '0'
+      ...state, attackTop3: Number(state.top) + 30, attackLeft3: Number(state.left) + 38, degree: '0'
     }
 
     case 'ATTACKUP3':
 
     return {
-      ...state, attackTop3: Number(state.top) - 75, attackLeft3: Number(state.left) + 5, degree: '270'
+      ...state, attackTop3: Number(state.top) - 75, attackLeft3: Number(state.left) - 5, degree: '270'
     }
 
     case 'RESTORE':
