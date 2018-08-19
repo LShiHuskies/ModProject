@@ -265,12 +265,12 @@ class Enemy extends React.Component {
        && (this.props.enemyTop > this.props.playerTop - 80 && this.props.enemyTop < this.props.playerTop + 80)
        && (this.props.enemyAttack !== true)
      ) {
-
-       let action = {
-         type: 'ENEMYATTACKLEFT'
+       if (this.props.enemyLeft > 30) {
+         let action = {
+           type: 'ENEMYATTACKLEFT'
+         }
+         this.props.dispatch(action)
        }
-       this.props.dispatch(action)
-
 
 
      } // end of the if statement for the attack left
@@ -283,12 +283,12 @@ class Enemy extends React.Component {
        && (this.props.enemyTop > this.props.playerTwoTop - 80 && this.props.enemyTop < this.props.playerTwoTop + 80)
        && (this.props.enemyAttack !== true)
      ) {
-
+      if (this.props.enemyLeft > 30) {
        let action = {
          type: 'ENEMYATTACKLEFTVEGETA'
        }
        this.props.dispatch(action)
-
+     }
 
 
      } // end of the if statement for the attack left against vegeta
@@ -302,12 +302,12 @@ class Enemy extends React.Component {
        && (this.props.enemyTop > this.props.playerTop - 80 && this.props.enemyTop < this.props.playerTop + 80)
        && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
      ) {
-
+      if (this.props.enemyLeft > 30) {
        let action = {
          type: 'ENEMYATTACKLEFT2'
        }
        this.props.dispatch(action)
-
+      }
      }
      // end of the if statement of the attack left 2
 
@@ -317,12 +317,13 @@ class Enemy extends React.Component {
        && (this.props.enemyTop > this.props.playerTwoTop - 80 && this.props.enemyTop < this.props.playerTwoTop + 80)
        && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
      ) {
+      if (this.props.enemyLeft > 30) {
 
        let action = {
          type: 'ENEMYATTACKLEFT2VEGETA'
        }
        this.props.dispatch(action)
-
+      }
      }
      // end of the if statement of the attack left 2 against vegeta
 
@@ -334,12 +335,13 @@ class Enemy extends React.Component {
        && (this.props.enemyTop < this.props.playerTop + 80 && this.props.enemyTop > this.props.playerTop - 80)
        && (this.props.enemyAttack !== true)
      ) {
+      if (this.props.enemyLeft < window.innerWidth - 30) {
 
        let action = {
          type: 'ENEMYATTACKRIGHT'
        }
        this.props.dispatch(action)
-
+     }
 
      } // end of the if statement for the right attack against goku
 
@@ -348,11 +350,12 @@ class Enemy extends React.Component {
        && (this.props.enemyTop < this.props.playerTwoTop + 80 && this.props.enemyTop > this.props.playerTwoTop - 80)
        && (this.props.enemyAttack !== true)
      ) {
-
+    if (this.props.enemyLeft < window.innerWidth - 30) {
        let action = {
          type: 'ENEMYATTACKRIGHTVEGETA'
        }
        this.props.dispatch(action)
+     }
 
 
      } // end of the if statement for the right attack against vegeta
@@ -367,13 +370,31 @@ class Enemy extends React.Component {
        && (this.props.enemyTop < this.props.playerTop + 80 && this.props.enemyTop > this.props.playerTop - 80)
        && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
      ) {
-
+      if (this.props.enemyLeft < window.innerWidth - 30) {
        let action = {
          type: 'ENEMYATTACKRIGHT2'
        }
        this.props.dispatch(action)
-
      }
+   } // end of the enemyattackright2
+
+
+   if (
+     (this.props.playerTwoLeft > this.props.enemyLeft)
+     && (this.props.enemyTop < this.props.playerTwoTop + 80 && this.props.enemyTop > this.props.playerTwoTop - 80)
+     && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+   ) {
+    if (this.props.enemyLeft < window.innerWidth - 30) {
+    
+     let action = {
+       type: 'ENEMYATTACKRIGHT2VEGETA'
+     }
+     this.props.dispatch(action)
+   }
+ }
+
+
+    // end of the enemyattackright 2 against vegeta
 
      if ( (this.props.playerTop + 110 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 50 < this.props.enemyAttackLeft )

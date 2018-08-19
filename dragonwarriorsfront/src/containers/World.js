@@ -30,7 +30,6 @@ class World extends React.Component {
       {this.props.level == 'TWO' && (this.props.time < 40 && this.props.time > 20) ? <Ginyu /> : null}
       {this.props.level == 'THREE' && (this.props.time < 45 && this.props.time > 15) ? <Ginyu /> : null}
       {this.props.level == 'FOUR' && (this.props.time < 45 && this.props.time > 5) ? <Ginyu /> : null}
-
     </div>
     )
   }

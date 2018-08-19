@@ -597,10 +597,38 @@ class SecondPlayer extends React.Component {
 
 
     } // end of the else if for the attack left 1
+    else if (( this.state.topAttack > this.props.enemyAttackTop2 - 30 && this.state.topAttack < this.props.enemyAttackTop2 + 30 )
+    && ( this.state.leftAttack < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack > this.props.enemyAttackLeft2 - 5 )
+  ) {
+
+    
+        let action = {
+          type: 'SETENEMYATTACK2TOFALSE'
+        };
+        this.props.dispatch(action);
+
+        this.setState({
+          attack: false,
+          leftAttack: null,
+          topAttack: null
+        });
+
+        let anotheraction = {
+          type: 'BLOCKFRIEZAATTACKLEFT'
+        };
+        this.props.dispatch(anotheraction);
+
+
+        let misslelandLeft = enemyAttackIntervalArray2.pop()
+        clearInterval(misslelandLeft)
+        clearInterval(leftAttackProjectile.pop())
+
+
+  } // end of the else if statement for the attack 2 for vegeta
 
   }), 7 ) // end of the set Interval for left attack
   ) // end of the leftAttackProjectile push
-  })
+}) // end of the setState
 
     } // end of the if statement for the attack left two
     else if (event.type.type == 'ATTACKLEFT TWO SECONDONE' ) {
@@ -925,7 +953,7 @@ class SecondPlayer extends React.Component {
             leftAttack2: null,
             topAttack2: null
           })
-          clearInterval(rightAttackProjectile2.pop())  
+          clearInterval(rightAttackProjectile2.pop())
         }  // end of the if
         else if ( (this.state.leftAttack2 > this.props.enemyLeft - 30 && this.state.leftAttack2 < this.props.enemyLeft + 30)
           && (this.state.topAttack2 < this.props.enemyTop + 80 && this.state.topAttack2 > this.props.enemyTop - 30)

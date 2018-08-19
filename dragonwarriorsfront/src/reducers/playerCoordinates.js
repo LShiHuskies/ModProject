@@ -560,6 +560,15 @@ export default function playMovements(state = defaultState, action) {
       enemyAttack: true
     }
 
+    case 'ENEMYATTACKRIGHT2VEGETA':
+    
+    return {
+      ...state, enemyAttackTop2: state.enemyCoordinates.enemyTop,
+      enemyAttackLeft2: state.enemyCoordinates.enemyLeft + 35,
+      enemyAttack2Direction: 'RIGHT',
+      enemyAttack2: true
+    }
+
     case 'SETSCORETOALL':
 
     return {
