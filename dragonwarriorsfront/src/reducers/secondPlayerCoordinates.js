@@ -143,14 +143,14 @@ export default function secondPlayMovements(state = defaultState, action) {
     case 'ENEMYSUCCESSFULATTACKLEFTVEGETA':
 
     return {
-      ...state, playerHealth: Number(state.playerHealth) - 10,
+      ...state, playerHealth: Number(state.playerHealth) - 5,
       left: state.left - 40
     }
 
     case 'ENEMYSUCCESSFULATTACKRIGHTVEGETA':
 
     return {
-      ...state, playerHealth: Number(state.playerHealth) - 10,
+      ...state, playerHealth: Number(state.playerHealth) - 5,
       left: state.left + 40
     }
 
@@ -222,7 +222,7 @@ export default function secondPlayMovements(state = defaultState, action) {
     }
 
     case 'ATTACKLEFT TWO THIRDONE':
-  
+
     return {
       ...state, attackTop3: state.top + 15,
       attackLeft3: state.left - 50,

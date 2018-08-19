@@ -460,7 +460,7 @@ export default function playMovements(state = defaultState, action) {
     case 'GINYUGOTGOKU':
 
     return {
-      ...state, playerHealth: state.playerHealth - 10,
+      ...state, playerHealth: state.playerHealth - 2.5,
       enemyHealth: state.enemyHealth + 5,
       ginyuLeft: 1200,
       ginyuTop: 800
@@ -561,7 +561,7 @@ export default function playMovements(state = defaultState, action) {
     }
 
     case 'ENEMYATTACKRIGHT2VEGETA':
-    
+
     return {
       ...state, enemyAttackTop2: state.enemyCoordinates.enemyTop,
       enemyAttackLeft2: state.enemyCoordinates.enemyLeft + 35,
