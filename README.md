@@ -6,7 +6,7 @@ The objective of the game is to stay alive for as long as you can. If either Veg
 
 As the level goes higher, the difficulty gets harder.
 
-Ginyu another computer will appear at durations of the game and will be getting Goku or Vegeta depending on the time, as the levels progress up, Ginyu will increase in speed and appear for longer durations. If Ginyu touches either players, the health decreases 10% and Frieza's health goes up 5% and Ginyu's location will reset and then chase the player again or chase the other player.
+Ginyu another computer will appear at durations of the game and will be getting Goku or Vegeta depending on the time, as the levels progress up, Ginyu will increase in speed and appear for longer durations. If Ginyu touches either players, the health decreases 2.5% and Frieza's health goes up 5% and Ginyu's location will reset and then chase the player again or chase the other player.
 
 The keys of the same is the ASWD keys to move. A is to move left, S is to move down, D is to move right and W is to move up. Q is to move left up and E is to move right up and Z is to move left down and C is to move right down.
 
@@ -15,8 +15,6 @@ For the player to look at the direction he/she needs to sheet, it is the arrow k
 To create an account on the login page, just enter the username and password and then click create account and enter credentials again to login.
 
 <img width="600" height="400" alt="screen shot 2018-08-13 at 2 35 54 pm" src="https://user-images.githubusercontent.com/34640293/44062347-eec91bb0-9f29-11e8-8b8d-dac2c4a0bcb1.png">
-
-Once logged in, when there are two players on the profile page, whoever clicks start game will be Goku and the other player will be Vegeta.
 
 Please remember to Full Screen your Screen when playing the game.
 
@@ -45,7 +43,7 @@ Next, for the terminal for the front end's directory.
 12. Once logged in, you will be directed to the profile page.
 <div display="inline">
 
-<img width="290" height="280" alt="screen shot 2018-08-13 at 6 58 46 pm" src="https://user-images.githubusercontent.com/34640293/44062590-fd87c7a4-9f2a-11e8-83ad-c17287a0d1f8.png">
+<img width="290" height="280" alt="screen shot 2018-08-20 at 10 25 11 am" src="https://user-images.githubusercontent.com/34640293/44346232-75362380-a463-11e8-84e6-986c6765db6a.png">
 
 <img width="290" height="280" alt="screen shot 2018-08-13 at 8 00 01 pm" src="https://user-images.githubusercontent.com/34640293/44064540-8994d3ec-9f33-11e8-9f0f-afaa0d05b92e.png">
 
