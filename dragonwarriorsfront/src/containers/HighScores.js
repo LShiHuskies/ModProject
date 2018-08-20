@@ -7,6 +7,7 @@ class HighScores extends React.Component {
 
 
     let cards = this.props.games.map(game =>
+
       <div id='highscores'
      style={{
        boxShadow: '0px 4px 8px 0 rgba(0, 0, 0, 1)',
@@ -18,13 +19,14 @@ class HighScores extends React.Component {
      }} >
      <h4 style={{color: 'red', fontSize: '20px'}}>{game.name}</h4>
      <p id="user" style={{color: 'black', fontSize: '16px'}}>Player One: {game.users[0].username}</p>
-     <p id="user"style={{color: 'black', fontSize: '16px'}}>Player Two: {game.users[1].username}</p>
+     <p id="user"style={{color: 'black', fontSize: '16px'}}>Player Two: {game.users.length > 1 ? game.users[1].username : 'none'}</p>
 
      <p id="scores" style={{color: 'orange', fontSize: '16px'}}>score: {game.scores} </p>
 
 
    </div>
  )
+
     return (
        <div style={{overflow: 'scroll', height: '600px',
          marginTop: '70px',

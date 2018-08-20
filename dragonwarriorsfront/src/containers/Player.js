@@ -2696,21 +2696,27 @@ else if (event.type.type == 'ATTACKUP') {
         {/*<Score />
         <Healthbar />*/}
         {this.state.attack == true ?
-            <PlayerAttack leftAttackCoordinates={this.state.leftAttack}
+            this.props.level !== 'FOUR' ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack}
+            topAttackCoordinates={this.state.topAttack}
+            degree={this.state.degree}/> : <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack}
             topAttackCoordinates={this.state.topAttack}
             degree={this.state.degree}/>
           : null
         }
 
         {this.state.attack2 == true ?
-          <PlayerAttack leftAttackCoordinates={this.state.leftAttack2}
+          this.props.level !== 'FOUR' ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack2}
+          topAttackCoordinates={this.state.topAttack2}
+          degree={this.state.degree}/> : <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack2}
           topAttackCoordinates={this.state.topAttack2}
           degree={this.state.degree}/>
         : null
         }
 
         {this.state.attack3 == true ?
-          <PlayerAttack leftAttackCoordinates={this.state.leftAttack3}
+          this.props.level !== 'FOUR' ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack3}
+          topAttackCoordinates={this.state.topAttack3}
+          degree={this.state.degree}/> : <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack3}
           topAttackCoordinates={this.state.topAttack3}
           degree={this.state.degree}/>
         : null
