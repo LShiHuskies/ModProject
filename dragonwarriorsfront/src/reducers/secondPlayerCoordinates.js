@@ -140,6 +140,14 @@ export default function secondPlayMovements(state = defaultState, action) {
       degree: 0
     }
 
+    case 'ATTACKDOWN TWO':
+
+    return {
+      ...state, attackTop: state.top + 120,
+      attackLeft: state.left + 19,
+      degree: 90
+    }
+
     case 'ENEMYSUCCESSFULATTACKLEFTVEGETA':
 
     return {
@@ -206,6 +214,14 @@ export default function secondPlayMovements(state = defaultState, action) {
 
     return {
       ...state, attackTop2: Number(state.top) + 15, attackLeft2: Number(state.left) + 42, degree: '0'
+    }
+
+    case 'ATTACKDOWN TWO SECONDONE':
+
+    return {
+      ...state, attackTop2: state.top + 120,
+      attackLeft2: state.left + 19,
+      degree: 90
     }
 
     case 'TELEPORTVEGETAANDPLAYER':

@@ -2012,6 +2012,7 @@ else if (event.type.type == 'ATTACKDOWN') {
         leftAttack: null,
         topAttack: null
       })
+      clearInterval(downAttackProjectile.pop())
     }  // end of the if statement
     else if ( (this.state.topAttack > this.props.enemyTop - 30 && this.state.topAttack < this.props.enemyTop + 30)
           && (this.state.leftAttack < this.props.enemyLeft + 40 && this.state.leftAttack > this.props.enemyLeft - 60 )

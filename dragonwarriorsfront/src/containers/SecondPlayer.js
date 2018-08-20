@@ -15,6 +15,9 @@ let rightAttackProjectile2 = [];
 let leftAttackProjectile3 = [];
 let rightAttackProjectile3= [];
 
+let downAttackProjectile = [];
+let downAttackProjectile2 = []
+
 
 class SecondPlayer extends React.Component {
   constructor (props) {
@@ -474,6 +477,55 @@ class SecondPlayer extends React.Component {
       };
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
+    } else if ( this.props.characterdirection == 'DOWN' && this.state.attack == false && this.state.leftAttack == null) {
+      action = {
+        type: "ATTACKDOWN TWO"
+      }
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+    } // end of the else if for the downattack 1 for vegeta
+    else if (this.props.characterdirection == 'DOWN' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+      // this is the start of the copy and paste for the downward direction
+
+
+      action = {
+        type: "ATTACKDOWN TWO SECONDONE"
+      }
+      // this.props.dispatch(action)
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+
+
     }
 
     break;
@@ -601,7 +653,7 @@ class SecondPlayer extends React.Component {
     && ( this.state.leftAttack < this.props.enemyAttackLeft2 + 5 && this.state.leftAttack > this.props.enemyAttackLeft2 - 5 )
   ) {
 
-    
+
         let action = {
           type: 'SETENEMYATTACK2TOFALSE'
         };
@@ -1148,7 +1200,100 @@ class SecondPlayer extends React.Component {
 
 
   } // end of the else if for the right attack 3
+  else if (event.type.type === 'ATTACKDOWN TWO') {
 
+
+
+    this.setState({
+      attack: true,
+      leftAttack: this.props.leftAttack,
+      topAttack: this.props.topAttack,
+      degree: this.props.degree
+    }, () => {
+      downAttackProjectile.push(setInterval(
+        () =>  this.setState({
+        leftAttack: this.state.leftAttack,
+        topAttack: this.state.topAttack + 5
+      }, () => { if (this.state.topAttack > window.innerHeight) {
+        this.setState({
+          attack: false,
+          leftAttack: null,
+          topAttack: null
+        })
+        clearInterval(downAttackProjectile.pop())
+      }  // end of the if statement
+      else if ( (this.state.topAttack > this.props.enemyTop - 30 && this.state.topAttack < this.props.enemyTop + 30)
+            && (this.state.leftAttack < this.props.enemyLeft + 40 && this.state.leftAttack > this.props.enemyLeft - 60 )
+
+       ) {
+
+
+           let action = {
+             type: 'HITFRIEZADOWN'
+           }
+         this.props.dispatch(action)
+
+         this.setState({
+           attack: false,
+           leftAttack: null,
+           topAttack: null
+         })
+
+         clearInterval(downAttackProjectile.pop())
+      }  // end of the else if statement
+
+
+    }), 7 ) // end of the set interval for the downAttackProjectile
+  ) // end of the push into the downAttackProjectile array
+  }) // end of the setState for the down attack
+
+
+} // end of th else if for the downattack 2
+else if (event.type.type === 'ATTACKDOWN TWO SECONDONE') {
+
+  this.setState({
+    attack2: true,
+    leftAttack2: this.props.attackLeft2,
+    topAttack2: this.props.attackTop2,
+    degree: this.props.degree
+  }, () => {
+    downAttackProjectile2.push(setInterval(
+      () =>  this.setState({
+      leftAttack2: this.state.leftAttack2,
+      topAttack2: this.state.topAttack2 + 5
+    }, () => { if (this.state.topAttack2 > window.innerHeight) {
+      this.setState({
+        attack2: false,
+        leftAttack2: null,
+        topAttack2: null
+      })
+      clearInterval(downAttackProjectile2.pop())
+    }  // end of the if statement
+    else if ( (this.state.topAttack2 > this.props.enemyTop - 30 && this.state.topAttack2 < this.props.enemyTop + 30)
+          && (this.state.leftAttack2 < this.props.enemyLeft + 40 && this.state.leftAttack2 > this.props.enemyLeft - 60 )
+
+     ) {
+
+
+         let action = {
+           type: 'HITFRIEZADOWN'
+         }
+       this.props.dispatch(action)
+
+       this.setState({
+         attack2: false,
+         leftAttack2: null,
+         topAttack2: null
+       })
+
+       clearInterval(downAttackProjectile2.pop())
+    }  // end of the else if statement
+
+
+  }), 7 ) // end of the set interval for the downAttackProjectile2
+) // end of the push into the downAttackProjectile2 array
+}) // end of the setState for the down attack
+} // end of the else if for the second down attack
 
 
 
@@ -1193,6 +1338,14 @@ class SecondPlayer extends React.Component {
         while(leftAttackProjectile3.length > 0) {
           let leftattackInstance = leftAttackProjectile3.pop()
           clearInterval(leftattackInstance)
+        }
+      } else if (this.state.topAttack > window.innerHeight) {
+        while(downAttackProjectile.length > 0) {
+          clearInterval(downAttackProjectile.pop())
+        }
+      } else if (this.state.topAttack2 > window.innerHeight) {
+        while(downAttackProjectile2.length > 0) {
+          clearInterval(downAttackProjectile2.pop())
         }
       }
 
