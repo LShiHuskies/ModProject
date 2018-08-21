@@ -6,9 +6,7 @@ import World from './containers/World';
 import { connect } from 'react-redux';
 import GameOver from './containers/GameOver';
 import Profile from './containers/Profile';
-import Logout from './containers/Logout';
 import { ActionCable } from 'react-actioncable-provider';
-import SecondPlayer from './containers/SecondPlayer';
 
 
 
@@ -298,6 +296,7 @@ class App extends Component {
         type: 'SETSCORE',
         payload: event.scores
       }
+      this.props.dispatch(action)
       this.setState({
         backgroundImage: 'url(https://images7.alphacoders.com/315/thumb-1920-315686.jpg)',
         gameOver: true

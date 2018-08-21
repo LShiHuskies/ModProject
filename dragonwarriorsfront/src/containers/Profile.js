@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Logout from './Logout';
 import { ActionCable } from 'react-actioncable-provider';
-import SecondPlayer from './SecondPlayer';
 import HighScores from './HighScores';
 import Controls from './Controls';
 import GameLobby from './GameLobby';

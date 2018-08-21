@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import playerTwoAttackInterval from '../reducers/playerTwoAttackInterval';
 import { ActionCable } from 'react-actioncable-provider';
 
 
