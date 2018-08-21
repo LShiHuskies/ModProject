@@ -45,7 +45,7 @@ Next, for the terminal for the front end's directory.
 
 <img width="290" height="280" alt="screen shot 2018-08-20 at 10 25 11 am" src="https://user-images.githubusercontent.com/34640293/44346232-75362380-a463-11e8-84e6-986c6765db6a.png">
 
-<img width="290" height="280" alt="screen shot 2018-08-20 at 10 46 27 pm" src="https://user-images.githubusercontent.com/34640293/44377480-f543a400-a4ca-11e8-829f-c2601146c8a1.png">
+<img width="290" height="280" alt="screen shot 2018-08-21 at 12 32 16 am" src="https://user-images.githubusercontent.com/34640293/44380502-c4b73680-a4d9-11e8-8c88-f95f21df363d.png">
 
 <img width="290" height="280" alt="screen shot 2018-08-20 at 11 01 59 pm" src="https://user-images.githubusercontent.com/34640293/44377975-202ef780-a4cd-11e8-86c7-c220bd5fc418.png">
 
@@ -54,4 +54,18 @@ Game Lobby to select your character
 
 <img width="460" height="350" alt="screen shot 2018-08-20 at 11 04 10 pm" src="https://user-images.githubusercontent.com/34640293/44378028-62f0cf80-a4cd-11e8-8b51-6f3af96908e0.png">
 
-13. Log Out once you are finished playing the game.
+13. Remember, this is a two player co-op play, when you select a character, the other user on his/her computer will get prompted of the character you selected and will select the other character. Once both users have selected, either of you may proceed and click on start game and the game will be prompted to start on both players' screen.
+
+# Sample of Game in Action
+
+<div display="inline">
+<img width="200" height="200" alt="screen shot 2018-08-21 at 12 43 17 am" src="https://user-images.githubusercontent.com/34640293/44380993-4e680380-a4dc-11e8-982f-88eea6c67cd6.png">
+
+<img width="200" height="200" alt="screen shot 2018-08-21 at 12 44 30 am" src="https://user-images.githubusercontent.com/34640293/44381049-8d965480-a4dc-11e8-91fa-77c972fbc7d0.png">
+
+<img width="200" height="200" alt="screen shot 2018-08-21 at 12 45 42 am" src="https://user-images.githubusercontent.com/34640293/44381079-a3a41500-a4dc-11e8-87b3-c49e7cb860e5.png">
+
+<img width="200" height="200" alt="screen shot 2018-08-21 at 12 50 26 am" src="https://user-images.githubusercontent.com/34640293/44381106-be768980-a4dc-11e8-85b8-f851ac6de42a.png">
+</div>
+
+14. Log Out once you are finished playing the game.
