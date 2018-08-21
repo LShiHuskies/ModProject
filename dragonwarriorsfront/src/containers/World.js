@@ -24,10 +24,10 @@ class World extends React.Component {
       <Player />
       <SecondPlayer />
       <Enemy />
-      {this.props.level == 'ONE' && (this.props.time < 30 && this.props.time > 20) ? <Ginyu /> : null}
-      {this.props.level == 'TWO' && (this.props.time < 40 && this.props.time > 20) ? <Ginyu /> : null}
-      {this.props.level == 'THREE' && (this.props.time < 45 && this.props.time > 15) ? <Ginyu /> : null}
-      {this.props.level == 'FOUR' && (this.props.time < 45 && this.props.time > 5) ? <Ginyu /> : null}
+      {this.props.level === 'ONE' && (this.props.time < 30 && this.props.time > 20) ? <Ginyu /> : null}
+      {this.props.level === 'TWO' && (this.props.time < 40 && this.props.time > 20) ? <Ginyu /> : null}
+      {this.props.level === 'THREE' && (this.props.time < 45 && this.props.time > 15) ? <Ginyu /> : null}
+      {this.props.level === 'FOUR' && (this.props.time < 55 && this.props.time > 15) ? <Ginyu /> : null}
     </div>
     )
   }

@@ -144,7 +144,7 @@ class Enemy extends React.Component {
      }
 
      if (( (this.props.time < 50 && this.props.time > 48) ||
-     (this.props.enemyHealth < 40 && this.props.enemyHealth > 15))
+     (this.props.enemyHealth < 25 && this.props.enemyHealth > 15))
      && this.props.level !== 'ONE'
    ) {
 
@@ -152,6 +152,7 @@ class Enemy extends React.Component {
          let action = {
            type: 'TELEPORTTOGOKULEFT'
          }
+
          this.props.dispatch(action)
        } else if (this.props.playerLeft > 700 && this.props.playerLeft < window.innerWidth - 200) {
          let action = {
@@ -162,7 +163,7 @@ class Enemy extends React.Component {
 
      }
 
-     if ( (( this.props.time < 40 && this.props.time > 38 ) || ( this.props.enemyHealth < 15))
+     if ( (( this.props.time < 40 && this.props.time > 38 ) || ( this.props.enemyHealth < 10))
      && this.props.level !== 'ONE' ) {
 
        if (this.props.playerTwoLeft < 700 && this.props.playerTwoLeft > 200) {
@@ -385,7 +386,7 @@ class Enemy extends React.Component {
      && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
    ) {
     if (this.props.enemyLeft < window.innerWidth - 30) {
-    
+
      let action = {
        type: 'ENEMYATTACKRIGHT2VEGETA'
      }

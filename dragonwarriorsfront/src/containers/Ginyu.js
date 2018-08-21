@@ -26,7 +26,7 @@ class Ginyu extends React.Component {
   }
 
   handleGinyu = () => {
-    if(this.props.time > 25) {
+    if(this.props.time > 30) {
       if(this.props.playerLeft < this.props.ginyuLeft) {
         let action = {
           type: 'GINYUGOLEFT'

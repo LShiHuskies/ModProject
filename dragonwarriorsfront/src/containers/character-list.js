@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { doSomething } from '../actions';
-import characterList from '../reducers/characters';
 import { bindActionCreators } from 'redux';
 import CharacterDetail from './character-detail'
 
