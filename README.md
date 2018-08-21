@@ -59,13 +59,13 @@ Game Lobby to select your character
 # Sample of Game in Action
 
 <div display="inline">
-<img width="200" height="200" alt="screen shot 2018-08-21 at 12 43 17 am" src="https://user-images.githubusercontent.com/34640293/44380993-4e680380-a4dc-11e8-982f-88eea6c67cd6.png">
+<img width="210" height="210" alt="screen shot 2018-08-21 at 12 43 17 am" src="https://user-images.githubusercontent.com/34640293/44380993-4e680380-a4dc-11e8-982f-88eea6c67cd6.png">
 
-<img width="200" height="200" alt="screen shot 2018-08-21 at 12 44 30 am" src="https://user-images.githubusercontent.com/34640293/44381049-8d965480-a4dc-11e8-91fa-77c972fbc7d0.png">
+<img width="210" height="210" alt="screen shot 2018-08-21 at 12 44 30 am" src="https://user-images.githubusercontent.com/34640293/44381049-8d965480-a4dc-11e8-91fa-77c972fbc7d0.png">
 
-<img width="200" height="200" alt="screen shot 2018-08-21 at 12 45 42 am" src="https://user-images.githubusercontent.com/34640293/44381079-a3a41500-a4dc-11e8-87b3-c49e7cb860e5.png">
+<img width="210" height="210" alt="screen shot 2018-08-21 at 12 45 42 am" src="https://user-images.githubusercontent.com/34640293/44381079-a3a41500-a4dc-11e8-87b3-c49e7cb860e5.png">
 
-<img width="200" height="200" alt="screen shot 2018-08-21 at 12 50 26 am" src="https://user-images.githubusercontent.com/34640293/44381106-be768980-a4dc-11e8-85b8-f851ac6de42a.png">
+<img width="210" height="210" alt="screen shot 2018-08-21 at 12 50 26 am" src="https://user-images.githubusercontent.com/34640293/44381106-be768980-a4dc-11e8-85b8-f851ac6de42a.png">
 </div>
 
 14. Log Out once you are finished playing the game.
