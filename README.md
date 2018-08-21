@@ -45,10 +45,14 @@ Next, for the terminal for the front end's directory.
 
 <img width="290" height="280" alt="screen shot 2018-08-20 at 10 25 11 am" src="https://user-images.githubusercontent.com/34640293/44346232-75362380-a463-11e8-84e6-986c6765db6a.png">
 
-<img width="290" height="280" alt="screen shot 2018-08-13 at 8 00 01 pm" src="https://user-images.githubusercontent.com/34640293/44064540-8994d3ec-9f33-11e8-9f0f-afaa0d05b92e.png">
+<img width="290" height="280" alt="screen shot 2018-08-20 at 10 46 27 pm" src="https://user-images.githubusercontent.com/34640293/44377480-f543a400-a4ca-11e8-829f-c2601146c8a1.png">
 
-<img width="290" height="280" alt="screen shot 2018-08-13 at 8 03 55 pm" src="https://user-images.githubusercontent.com/34640293/44064625-0d086338-9f34-11e8-81c1-970cfaf8c316.png">
+<img width="290" height="280" alt="screen shot 2018-08-20 at 11 01 59 pm" src="https://user-images.githubusercontent.com/34640293/44377975-202ef780-a4cd-11e8-86c7-c220bd5fc418.png">
 
 </div>
+
+# Game Lobby to select your character
+
+<img width="460" height="350" alt="screen shot 2018-08-20 at 11 04 10 pm" src="https://user-images.githubusercontent.com/34640293/44378028-62f0cf80-a4cd-11e8-8b51-6f3af96908e0.png">
 
 13. Log Out once you are finished playing the game.
