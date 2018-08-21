@@ -282,13 +282,9 @@ export default function secondPlayMovements(state = defaultState, action) {
       ...state, attackTop3: Number(state.top) - 75, attackLeft3: Number(state.left) - 5, degree: '270'
     }
 
-
-
-
-
-
-
+  default:
+    return state
   }
 
-  return state
+
 }

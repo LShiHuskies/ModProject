@@ -654,7 +654,6 @@ export default function playMovements(state = defaultState, action) {
       ...state, clicked: false
     }
 
-    break;
 
   default:
     return state
