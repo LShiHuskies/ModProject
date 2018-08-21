@@ -68,4 +68,8 @@ Game Lobby to select your character
 <img width="215" height="215" alt="screen shot 2018-08-21 at 12 50 26 am" src="https://user-images.githubusercontent.com/34640293/44381106-be768980-a4dc-11e8-85b8-f851ac6de42a.png">
 </div>
 
-14. Log Out once you are finished playing the game.
+<img width="215" height="215" alt="screen shot 2018-08-21 at 12 47 45 am" src="https://user-images.githubusercontent.com/34640293/44381258-773cc880-a4dd-11e8-96a1-474674357a66.png">
+
+14. Once the Game is Over, you may choose to go back to the profile page and play another game.
+
+15. Log Out once you are finished playing the game.
