@@ -50,8 +50,7 @@ Next, for the terminal for the front end's directory.
 <img width="290" height="280" alt="screen shot 2018-08-20 at 11 01 59 pm" src="https://user-images.githubusercontent.com/34640293/44377975-202ef780-a4cd-11e8-86c7-c220bd5fc418.png">
 
 </div>
-
-# Game Lobby to select your character
+Game Lobby to select your character
 
 <img width="460" height="350" alt="screen shot 2018-08-20 at 11 04 10 pm" src="https://user-images.githubusercontent.com/34640293/44378028-62f0cf80-a4cd-11e8-8b51-6f3af96908e0.png">
 
