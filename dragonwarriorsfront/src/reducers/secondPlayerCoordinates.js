@@ -109,7 +109,7 @@ export default function secondPlayMovements(state = defaultState, action) {
     return {
         ...state, defaultDirection: {
         image: 'http://www.spriters-resource.com/resources/sheet_icons/64/67278.png',
-        width: '7',
+        width: '7.5',
         characterdirection: 'LEFT'
       }
     }
@@ -121,6 +121,17 @@ export default function secondPlayMovements(state = defaultState, action) {
         image: 'https://www.freepngimg.com/thumb/dragon_ball/21449-6-vegeta-file-thumb.png',
         width: '8',
         characterdirection: 'DOWN'
+      }
+    }
+
+    case 'LOOKUP TWO':
+    // image: 'https://img00.deviantart.net/cb6d/i/2011/296/c/6/ssj_vegeta_on_namek_by_enoch_rising-d4ds43e.png',
+    // https://1.bp.blogspot.com/-PAFPhaoEP_8/WCS0x-yuiTI/AAAAAAAAX_Q/0GbvV9-nsI4vmKAfaG6g0kYmA-U9dAlTACLcB/s1600/SH%2BFiguarts%2BSuper%2BSaiyan%2BVegeta%2B04.JPG
+    return {
+      ...state, defaultDirection: {
+        image: 'https://img00.deviantart.net/cb6d/i/2011/296/c/6/ssj_vegeta_on_namek_by_enoch_rising-d4ds43e.png',
+        width: '5.3',
+        characterdirection: 'UP'
       }
     }
 
@@ -146,6 +157,12 @@ export default function secondPlayMovements(state = defaultState, action) {
       ...state, attackTop: state.top + 120,
       attackLeft: state.left + 19,
       degree: 90
+    }
+
+    case 'ATTACKUP TWO':
+
+    return {
+      ...state, attackTop: Number(state.top) - 75, attackLeft: Number(state.left) - 5, degree: '270'
     }
 
     case 'ENEMYSUCCESSFULATTACKLEFTVEGETA':
@@ -224,6 +241,12 @@ export default function secondPlayMovements(state = defaultState, action) {
       degree: 90
     }
 
+    case 'ATTACKUP TWO SECONDONE':
+
+    return {
+      ...state, attackTop2: Number(state.top) - 75, attackLeft2: Number(state.left) - 5, degree: '270'
+    }
+
     case 'TELEPORTVEGETAANDPLAYER':
 
     return {
@@ -243,6 +266,20 @@ export default function secondPlayMovements(state = defaultState, action) {
       ...state, attackTop3: state.top + 15,
       attackLeft3: state.left - 50,
       degree: 180
+    }
+
+    case 'ATTACKDOWN TWO THIRDONE':
+
+    return {
+      ...state, attackTop3: state.top + 120,
+      attackLeft3: state.left + 19,
+      degree: 90
+    }
+
+    case 'ATTACKUP TWO THIRDONE':
+
+    return {
+      ...state, attackTop3: Number(state.top) - 75, attackLeft3: Number(state.left) - 5, degree: '270'
     }
 
 

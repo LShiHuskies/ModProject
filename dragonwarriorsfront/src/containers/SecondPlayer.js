@@ -16,7 +16,12 @@ let leftAttackProjectile3 = [];
 let rightAttackProjectile3= [];
 
 let downAttackProjectile = [];
-let downAttackProjectile2 = []
+let downAttackProjectile2 = [];
+let downAttackProjectile3 = [];
+
+let upAttackProjectile = [];
+let upAttackProjectile2 = [];
+let upAttackProjectile3 = [];
 
 
 class SecondPlayer extends React.Component {
@@ -291,30 +296,30 @@ class SecondPlayer extends React.Component {
 
       break;
 
-      // case 38:
-      //
-      //   action = {
-      //     type: 'LOOKUP TWO'
-      //   }
-      //
-      //   // this.props.dispatch(action)
-      //
-      //
-      //   config = {
-      //     method: 'POST',
-      //     headers: {
-      //     'Accepts': 'application/json',
-      //   'Content-Type': 'application/json'
-      //   },
-      //     body: JSON.stringify({
-      //       top: this.props.top,
-      //       left: this.props.left,
-      //       type: action
-      //     })
-      //   };
-      //   fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-      //
-      // break;
+      case 38:
+
+        action = {
+          type: 'LOOKUP TWO'
+        }
+
+        // this.props.dispatch(action)
+
+
+        config = {
+          method: 'POST',
+          headers: {
+          'Accepts': 'application/json',
+        'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({
+            top: this.props.top,
+            left: this.props.left,
+            type: action
+          })
+        };
+        fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+      break;
 
       case 40:
 
@@ -499,8 +504,9 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if for the downattack 1 for vegeta
-    else if (this.props.characterdirection == 'DOWN' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
-      // this is the start of the copy and paste for the downward direction
+    else if (this.props.characterdirection == 'DOWN' && this.state.attack == true
+    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+      // this is the start for the downward direction
 
 
       action = {
@@ -524,9 +530,104 @@ class SecondPlayer extends React.Component {
       };
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
+    } //  this is the end of the downward direction third attack for vegeta
+    else if (this.props.characterdirection == 'DOWN' && this.state.attack == true
+    && this.state.attack2 == true && this.state.attack3 == false && this.state.leftAttack3 == null) {
+
+      action = {
+        type: "ATTACKDOWN TWO THIRDONE"
+      }
+      // this.props.dispatch(action)
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+    } // this is the end of the attack down third one
+    else if (this.props.characterdirection == 'UP' && this.state.attack == false
+    && this.state.leftAttack == null) {
+      action = {
+        type: 'ATTACKUP TWO'
+      }
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+    } // end of the else if for up direction One for vegeta
+    else if (this.props.characterdirection == 'UP' && this.state.attack == true
+    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+      action = {
+        type: 'ATTACKUP TWO SECONDONE'
+      }
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+    } // end of the attackup two second one for vegeta
+    else if ( this.props.characterdirection == 'UP' && this.state.attack == true
+    && this.state.attack2 == true && this.state.attack3 == false && this.state.leftAttack3 == null ) {
 
 
-    }
+      action = {
+        type: 'ATTACKUP TWO THIRDONE'
+      }
+
+      config = {
+        method: 'POST',
+        headers: {
+        'Accepts': 'application/json',
+      'Content-Type': 'application/json'
+      },
+        body: JSON.stringify({
+          top: this.props.top,
+          left: this.props.left,
+          attackTop: this.props.attackTop,
+          attackLeft: this.props.attackLeft,
+          type: action
+        })
+      };
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
+    } // end of the else if for third attack up for vegeta
+
 
     break;
 
@@ -1294,6 +1395,190 @@ else if (event.type.type === 'ATTACKDOWN TWO SECONDONE') {
 ) // end of the push into the downAttackProjectile2 array
 }) // end of the setState for the down attack
 } // end of the else if for the second down attack
+      else if (event.type.type === 'ATTACKDOWN TWO THIRDONE') {
+
+        this.setState({
+          attack3: true,
+          leftAttack3: this.props.attackLeft3,
+          topAttack3: this.props.attackTop3,
+          degree: this.props.degree
+        }, () => {
+          downAttackProjectile3.push(setInterval(
+            () =>  this.setState({
+            leftAttack3: this.state.leftAttack3,
+            topAttack3: this.state.topAttack3 + 5
+          }, () => { if (this.state.topAttack3 > window.innerHeight) {
+            this.setState({
+              attack3: false,
+              leftAttack3: null,
+              topAttack3: null
+            })
+            clearInterval(downAttackProjectile3.pop())
+          }  // end of the if statement
+          else if ( (this.state.topAttack3 > this.props.enemyTop - 30 && this.state.topAttack3 < this.props.enemyTop + 30)
+                && (this.state.leftAttack3 < this.props.enemyLeft + 40 && this.state.leftAttack3 > this.props.enemyLeft - 60 )
+
+           ) {
+
+
+               let action = {
+                 type: 'HITFRIEZADOWN'
+               }
+             this.props.dispatch(action)
+
+             this.setState({
+               attack3: false,
+               leftAttack3: null,
+               topAttack3: null
+             })
+
+             clearInterval(downAttackProjectile3.pop())
+          }  // end of the else if statement
+
+
+        }), 7 ) // end of the set interval for the downAttackProjectile2
+      ) // end of the push into the downAttackProjectile2 array
+      }) // end of the setState for the down attack
+
+
+
+
+    } // end of the event.type.type == attackdown two thirdOne
+    else if (event.type.type === 'ATTACKUP TWO') {
+
+      this.setState({
+        attack: true,
+        leftAttack: this.props.leftAttack,
+        topAttack: this.props.topAttack,
+        degree: this.props.degree
+      }, () => {
+        upAttackProjectile.push(setInterval(
+          () =>  this.setState({
+          leftAttack: this.state.leftAttack,
+          topAttack: this.state.topAttack - 5
+        }, () => { if (this.state.topAttack < 0) {
+          this.setState({
+            attack: false,
+            leftAttack: null,
+            topAttack: null
+          }) // end of the setState
+          clearInterval(upAttackProjectile.pop())
+        } // end of the if statement
+        else if (
+          ( this.state.topAttack < this.props.enemyTop + 100 && this.state.topAttack > this.props.enemyTop )
+          && (this.state.leftAttack > this.props.enemyLeft - 30 && this.state.leftAttack < this.props.enemyLeft + 20)
+        ) {
+
+          let action = {
+            type: 'HITFRIEZAUP'
+          }
+        this.props.dispatch(action)
+
+        this.setState({
+          attack: false,
+          leftAttack: null,
+          topAttack: null
+        }) // end of this this state within the else if statement
+
+        clearInterval(upAttackProjectile.pop())
+
+        } // end of the else if
+      }), 7 ) // end of the setInterval
+    ) // end of the upAttackProjectile
+    })  // end of the setState
+
+
+  } // closing of the else if upattack 2
+      else if (event.type.type === 'ATTACKUP TWO SECONDONE') {
+
+        this.setState({
+          attack2: true,
+          leftAttack2: this.props.attackLeft2,
+          topAttack2: this.props.attackTop2,
+          degree: this.props.degree
+        }, () => {
+          upAttackProjectile2.push(setInterval(
+            () =>  this.setState({
+            leftAttack2: this.state.leftAttack2,
+            topAttack2: this.state.topAttack2 - 5
+          }, () => { if (this.state.topAttack2 < 0) {
+            this.setState({
+              attack2: false,
+              leftAttack2: null,
+              topAttack2: null
+            }) // end of the setState
+            clearInterval(upAttackProjectile2.pop())
+          } // end of the if statement
+          else if (
+            ( this.state.topAttack2 < this.props.enemyTop + 100 && this.state.topAttack2 > this.props.enemyTop )
+            && (this.state.leftAttack2 > this.props.enemyLeft - 30 && this.state.leftAttack2 < this.props.enemyLeft + 20)
+          ) {
+
+            let action = {
+              type: 'HITFRIEZAUP'
+            }
+          this.props.dispatch(action)
+
+          this.setState({
+            attack2: false,
+            leftAttack2: null,
+            topAttack2: null
+          }) // end of this this state within the else if statement
+
+          clearInterval(upAttackProjectile2.pop())
+
+          } // end of the else if
+        }), 7 ) // end of the setInterval
+      ) // end of the upAttackProjectile
+      })  // end of the setState
+
+
+    } // end of the else if for up attack 2 for vegeta
+    else if (event.type.type === 'ATTACKUP TWO THIRDONE') {
+
+      this.setState({
+        attack3: true,
+        leftAttack3: this.props.attackLeft3,
+        topAttack3: this.props.attackTop3,
+        degree: this.props.degree
+      }, () => {
+        upAttackProjectile3.push(setInterval(
+          () =>  this.setState({
+          leftAttack3: this.state.leftAttack3,
+          topAttack3: this.state.topAttack3 - 5
+        }, () => { if (this.state.topAttack3 < 0) {
+          this.setState({
+            attack3: false,
+            leftAttack3: null,
+            topAttack3: null
+          }) // end of the setState
+          clearInterval(upAttackProjectile3.pop())
+        } // end of the if statement
+        else if (
+          ( this.state.topAttack3 < this.props.enemyTop + 100 && this.state.topAttack3 > this.props.enemyTop )
+          && (this.state.leftAttack3 > this.props.enemyLeft - 30 && this.state.leftAttack3 < this.props.enemyLeft + 20)
+        ) {
+
+          let action = {
+            type: 'HITFRIEZAUP'
+          }
+        this.props.dispatch(action)
+
+        this.setState({
+          attack3: false,
+          leftAttack3: null,
+          topAttack3: null
+        }) // end of this this state within the else if statement
+
+        clearInterval(upAttackProjectile3.pop())
+
+        } // end of the else if
+      }), 7 ) // end of the setInterval
+    ) // end of the upAttackProjectile
+    })  // end of the setState
+
+
+  } // end of the else if for third attack up for vegeta
 
 
 
@@ -1346,6 +1631,22 @@ else if (event.type.type === 'ATTACKDOWN TWO SECONDONE') {
       } else if (this.state.topAttack2 > window.innerHeight) {
         while(downAttackProjectile2.length > 0) {
           clearInterval(downAttackProjectile2.pop())
+        }
+      } else if (this.state.topAttack3 > window.innerHeight) {
+        while(downAttackProjectile3.length > 0) {
+          clearInterval(downAttackProjectile3.pop())
+        }
+      } else if (this.state.topAttack < 0) {
+        while(upAttackProjectile.length > 0) {
+          clearInterval(upAttackProjectile.pop())
+        }
+      } else if (this.state.topAttack2 < 0) {
+        while(upAttackProjectile2.length > 0) {
+          clearInterval(upAttackProjectile2.pop())
+        }
+      } else if (this.state.topAttack3 < 0) {
+        while(upAttackProjectile3.length > 0) {
+          clearInterval(upAttackProjectile3.pop())
         }
       }
 
