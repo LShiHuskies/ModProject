@@ -192,7 +192,7 @@ class Enemy extends React.Component {
 
      if (( (this.props.time < 28 && this.props.time > 26) ||
      (this.props.enemyHealth < 40 && this.props.enemyHealth > 15))
-     && (this.props.level == 'THREE' || this.props.level == 'FOUR')
+     && (this.props.level === 'THREE' || this.props.level === 'FOUR')
    ) {
 
        if (this.props.playerLeft < 700 && this.props.playerLeft > 200) {
@@ -210,7 +210,7 @@ class Enemy extends React.Component {
      }
 
      if ( (( this.props.time < 20 && this.props.time > 18 ) || ( this.props.enemyHealth < 15))
-     && (this.props.level == 'THREE' || this.props.level == 'FOUR')
+     && (this.props.level === 'THREE' || this.props.level === 'FOUR')
       ) {
 
        if (this.props.playerTwoLeft < 700 && this.props.playerTwoLeft > 200) {
@@ -301,7 +301,7 @@ class Enemy extends React.Component {
      if (
        (this.props.playerLeft < this.props.enemyLeft)
        && (this.props.enemyTop > this.props.playerTop - 80 && this.props.enemyTop < this.props.playerTop + 80)
-       && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+       && (this.props.enemyAttack === true && this.props.enemyAttack2 !== true)
      ) {
       if (this.props.enemyLeft > 30) {
        let action = {
@@ -316,7 +316,7 @@ class Enemy extends React.Component {
      if (
        (this.props.playerTwoLeft < this.props.enemyLeft)
        && (this.props.enemyTop > this.props.playerTwoTop - 80 && this.props.enemyTop < this.props.playerTwoTop + 80)
-       && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+       && (this.props.enemyAttack === true && this.props.enemyAttack2 !== true)
      ) {
       if (this.props.enemyLeft > 30) {
 
@@ -369,7 +369,7 @@ class Enemy extends React.Component {
      if (
        (this.props.playerLeft > this.props.enemyLeft)
        && (this.props.enemyTop < this.props.playerTop + 80 && this.props.enemyTop > this.props.playerTop - 80)
-       && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+       && (this.props.enemyAttack === true && this.props.enemyAttack2 !== true)
      ) {
       if (this.props.enemyLeft < window.innerWidth - 30) {
        let action = {
@@ -383,7 +383,7 @@ class Enemy extends React.Component {
    if (
      (this.props.playerTwoLeft > this.props.enemyLeft)
      && (this.props.enemyTop < this.props.playerTwoTop + 80 && this.props.enemyTop > this.props.playerTwoTop - 80)
-     && (this.props.enemyAttack == true && this.props.enemyAttack2 !== true)
+     && (this.props.enemyAttack === true && this.props.enemyAttack2 !== true)
    ) {
     if (this.props.enemyLeft < window.innerWidth - 30) {
 
@@ -399,7 +399,7 @@ class Enemy extends React.Component {
 
      if ( (this.props.playerTop + 110 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 50 < this.props.enemyAttackLeft )
-      && (this.props.enemyAttackDirection == "LEFT")
+      && (this.props.enemyAttackDirection === "LEFT")
       )
      {
 
@@ -424,7 +424,7 @@ class Enemy extends React.Component {
 
      if ( (this.props.playerTwoTop + 110 > this.props.enemyAttackTop && this.props.playerTwoTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerTwoLeft + 50 > this.props.enemyAttackLeft && this.props.playerTwoLeft - 50 < this.props.enemyAttackLeft )
-      && (this.props.enemyAttackDirection == "LEFT")
+      && (this.props.enemyAttackDirection === "LEFT")
       )
      {
 
@@ -453,7 +453,7 @@ class Enemy extends React.Component {
      if (
        (this.props.playerTop + 110 > this.props.enemyAttackTop2 && this.props.playerTop - 40 < this.props.enemyAttackTop2)
         && (this.props.playerLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerLeft - 50 < this.props.enemyAttackLeft2 )
-        && (this.props.enemyAttack2Direction == "LEFT")
+        && (this.props.enemyAttack2Direction === "LEFT")
       ) {
 
         let action = {
@@ -478,7 +478,7 @@ class Enemy extends React.Component {
      if (
        (this.props.playerTwoTop + 110 > this.props.enemyAttackTop2 && this.props.playerTwoTop - 40 < this.props.enemyAttackTop2)
         && (this.props.playerTwoLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerTwoLeft - 50 < this.props.enemyAttackLeft2 )
-        && (this.props.enemyAttack2Direction == "LEFT")
+        && (this.props.enemyAttack2Direction === "LEFT")
       ) {
 
         let action = {
@@ -505,7 +505,7 @@ class Enemy extends React.Component {
 
      if ( (this.props.playerTop + 90 > this.props.enemyAttackTop && this.props.playerTop - 40 < this.props.enemyAttackTop)
       && (this.props.playerLeft + 50 > this.props.enemyAttackLeft && this.props.playerLeft - 30 < this.props.enemyAttackLeft )
-      && (this.props.enemyAttackDirection == "RIGHT")
+      && (this.props.enemyAttackDirection === "RIGHT")
       ) {
 
 
@@ -530,7 +530,7 @@ class Enemy extends React.Component {
 
       if ( (this.props.playerTwoTop + 90 > this.props.enemyAttackTop && this.props.playerTwoTop - 40 < this.props.enemyAttackTop)
        && (this.props.playerTwoLeft + 50 > this.props.enemyAttackLeft && this.props.playerTwoLeft - 30 < this.props.enemyAttackLeft )
-       && (this.props.enemyAttackDirection == "RIGHT")
+       && (this.props.enemyAttackDirection === "RIGHT")
        ) {
 
          let action = {
@@ -552,7 +552,7 @@ class Enemy extends React.Component {
       if (
         (this.props.playerTop + 90 > this.props.enemyAttackTop2 && this.props.playerTop - 40 < this.props.enemyAttackTop2)
          && (this.props.playerLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerLeft - 30 < this.props.enemyAttackLeft2 )
-         && (this.props.enemyAttack2Direction == "RIGHT")
+         && (this.props.enemyAttack2Direction === "RIGHT")
       ) {
         let action = {
           type: 'ENEMYSUCCESSFULATTACKRIGHT'
@@ -573,7 +573,7 @@ class Enemy extends React.Component {
       if (
         (this.props.playerTwoTop + 90 > this.props.enemyAttackTop2 && this.props.playerTwoTop - 40 < this.props.enemyAttackTop2)
          && (this.props.playerTwoLeft + 50 > this.props.enemyAttackLeft2 && this.props.playerTwoLeft - 30 < this.props.enemyAttackLeft2 )
-         && (this.props.enemyAttack2Direction == "RIGHT")
+         && (this.props.enemyAttack2Direction === "RIGHT")
       ) {
         let action = {
           type: 'ENEMYSUCCESSFULATTACKRIGHTVEGETA'
@@ -610,8 +610,8 @@ class Enemy extends React.Component {
     return (
       <div>
         <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506' style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
-        {this.props.enemyAttack == true ? <EnemyAttacks /> : null }
-        {this.props.enemyAttack2 == true ? <EnemyAttacks2 /> : null }
+        {this.props.enemyAttack === true ? <EnemyAttacks /> : null }
+        {this.props.enemyAttack2 === true ? <EnemyAttacks2 /> : null }
       </div>
     )
   }

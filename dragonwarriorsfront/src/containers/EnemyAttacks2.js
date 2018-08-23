@@ -16,13 +16,13 @@ class EnemyAttacks2 extends React.Component {
 
 
   handleTheComponent = () => {
-    if (this.props.enemyAttack2Direction == "LEFT") {
+    if (this.props.enemyAttack2Direction === "LEFT") {
       let action = {
         type: 'ENEMYMISSILELEFT2'
       }
       this.props.dispatch(action)
 
-  } if (this.props.enemyAttack2Direction == "RIGHT") {
+  } if (this.props.enemyAttack2Direction === "RIGHT") {
     let action = {
       type: 'ENEMYMISSILERIGHT2'
     }
