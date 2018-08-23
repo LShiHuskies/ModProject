@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Logout from './Logout';
-import { ActionCable } from 'react-actioncable-provider';
 
 
 
@@ -25,15 +24,6 @@ class GameOver extends React.Component {
 
   }
 
-  // handleEndGame = (event) => {
-  //   let action = {
-  //     type: 'GAMEENDED'
-  //   }
-  //   debugger;
-  //
-  // }
-
-
 
   render() {
     let user = this.props.player.username !== undefined ? this.props.player.username : this.props.player.name
@@ -51,7 +41,7 @@ class GameOver extends React.Component {
           marginLeft: '500px',
           marginRight: '500px',
           backgroundColor: 'rgba(0, 0, 0, 0.6)'
-      }}> {`${user}\'s`} Score: {this.props.score}</div>
+      }}> {`${user}'s`} Score: {this.props.score}</div>
     <button value="Refresh Page" onClick={() => {window.location.reload()}} style={{color: 'red', backgroundColor: 'rgba(128, 128, 128, 0.7)', marginTop: '50px', fontFamily: 'cursive'}}> Back to Profile? </button>
       </React.Fragment>
 

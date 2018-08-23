@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { ActionCable } from 'react-actioncable-provider';
 
 class GameLobby extends Component {
 
@@ -21,9 +20,11 @@ class GameLobby extends Component {
 
   render() {
     let characters = this.props.characters.filter( character => {
-      return character.name == 'Goku' || character.name == 'Vegeta'
+      return character.name === 'Goku' || character.name === 'Vegeta'
     })
-    let characterImage = characters.map(he => <img src={he.image} style={{width: '135px', height: '150px', marginTop: '10px', marginLeft: '10px', marginRight: '10px', marginBottom: '10px'}}/>)
+
+    let characterImage = characters.map(he => <img src={he.image} alt={he.name} style={{width: '135px', height: '150px',
+      marginTop: '10px', marginLeft: '10px', marginRight: '10px', marginBottom: '10px'}}/>)
     return (
         <React.Fragment>
         <div id='description' style={{boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
@@ -39,11 +40,11 @@ class GameLobby extends Component {
          <h3 style={{marginTop: '0'}}>
            {characterImage}
            <br></br>
-           <button onClick={this.props.count == 0 ? this.props.handleClick : null} style={{float: 'left', marginLeft: '16%', fontSize: '17px'}}>
-             {this.props.gokuTaken == false ? 'Goku' : 'TAKEN'}
+           <button onClick={this.props.count === 0 ? this.props.handleClick : null} style={{float: 'left', marginLeft: '16%', fontSize: '17px'}}>
+             {this.props.gokuTaken === false ? 'Goku' : 'TAKEN'}
            </button>
-           <button onClick={this.props.count == 0 ? this.props.handleClick : null} style={{float: 'right', marginRight: '14%',fontSize: '17px'}}>
-             {this.props.vegetaTaken == false ? 'Vegeta' : 'TAKEN'} </button>
+           <button onClick={this.props.count === 0 ? this.props.handleClick : null} style={{float: 'right', marginRight: '14%',fontSize: '17px'}}>
+             {this.props.vegetaTaken === false ? 'Vegeta' : 'TAKEN'} </button>
            <br></br>
            <button onClick={this.handleStartGameforReal} style={{fontSize: '17px'}}>Start Game</button>
            <br></br>
