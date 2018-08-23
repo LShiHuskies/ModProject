@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayerAttack from './SecondPlayerAttack';
-import playerTwoAttackInterval from '../reducers/playerTwoAttackInterval';
 import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2'
 

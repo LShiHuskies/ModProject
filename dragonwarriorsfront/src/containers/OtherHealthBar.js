@@ -7,9 +7,9 @@ class OtherHealthBar extends React.Component {
   render() {
     return (
       <div id='top-health' style={{marginTop: '45%'}}>
-        {this.props.clicked == false ? 'Player: Goku' : 'Player: Vegeta' }
+        {this.props.clicked === false ? 'Player: Goku' : 'Player: Vegeta' }
         <div className="health">
-          {this.props.clicked == false ? <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
+          {this.props.clicked === false ? <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
         : <span style={{width: `${this.props.playerTwoHealth}%`}}>{this.props.playerTwoHealth}% </span> }
         </div>
       </div>

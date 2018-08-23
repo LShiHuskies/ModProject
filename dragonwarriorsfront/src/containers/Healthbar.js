@@ -10,9 +10,9 @@ class Healthbar extends React.Component {
     return (
       <React.Fragment>
       <div id='top-health'>
-        {this.props.clicked == true ? 'Player: Goku' : 'Player: Vegeta' }
+        {this.props.clicked === true ? 'Player: Goku' : 'Player: Vegeta' }
         <div className="health">
-          {this.props.clicked == true ? <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
+          {this.props.clicked === true ? <span style={{width: `${this.props.playerHealth}%`}}>{this.props.playerHealth}% </span>
         : <span style={{width: `${this.props.playerTwoHealth}%`}}>{this.props.playerTwoHealth}% </span> }
         </div>
       </div>
