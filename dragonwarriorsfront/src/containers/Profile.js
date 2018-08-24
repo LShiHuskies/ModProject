@@ -201,7 +201,7 @@ class Profile extends Component {
         alt='goku vs frieza'
         style={{position: 'absolute', width: '8%'}} />
       <img src='https://media.giphy.com/media/R8mLRyn4T1dcY/giphy.gif'
-        alt='gohan vs cell'
+        alt=''
         style={{position: 'absolute', width: '20%', top: '490px', left: '1000px'}}
          />
 

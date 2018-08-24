@@ -6,11 +6,11 @@ import ginyuAttackIntervalArray from '../reducers/ginyuAttackInterval';
 class Ginyu extends React.Component {
 
   componentDidMount() {
-    if (this.props.level == 'ONE') {
+    if (this.props.level === 'ONE') {
         ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 30 ))
-    } else if (this.props.level == 'TWO') {
+    } else if (this.props.level === 'TWO') {
         ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 26 ))
-    } else if (this.props.level == 'THREE') {
+    } else if (this.props.level === 'THREE') {
         ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 23 ))
     } else {
         ginyuAttackIntervalArray.push(setInterval( this.handleGinyu, 20 ))
@@ -105,6 +105,7 @@ class Ginyu extends React.Component {
     return (
       <div>
         <img src='https://vignette.wikia.nocookie.net/dbz-vs/images/7/72/Captain_Ginyu.png/revision/latest?cb=20150805182823'
+          alt='ginyu'
           style={{position: 'absolute',
             width: '6%',
             top: `${this.props.ginyuTop}px`,
