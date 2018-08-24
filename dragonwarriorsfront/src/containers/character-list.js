@@ -25,7 +25,7 @@ class CharacterList extends Component {
       marginTop: '30px',
       marginRight: '1.5%'
     }} >
-      <img src={character.image} style={{width: '135px', height: '150px'}}/>
+      <img src={character.image} alt={character.name} style={{width: '135px', height: '150px'}}/>
       <p id="characterName">{character.name}</p>
       </div>
 

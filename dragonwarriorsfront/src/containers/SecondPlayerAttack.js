@@ -1,5 +1,4 @@
 import React from 'react';
-import { ActionCable } from 'react-actioncable-provider';
 
 
 class SecondPlayerAttack extends React.Component {
@@ -18,12 +17,11 @@ class SecondPlayerAttack extends React.Component {
 
 
 
-
-
     return (
       <div>
 
       <img src="http://i.imgur.com/nTwGHSe.png"
+        alt='kamehameha'
       style={{
                     width: "6%",
                     position: "absolute",
