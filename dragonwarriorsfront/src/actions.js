@@ -7,9 +7,9 @@ export function doSomething(thing) {
 }
 
 
-export function moveLeft() {
-
-  return {
-    type: 'MOVE LEFT'
-  }
-}
+// export function moveLeft() {
+//
+//   return {
+//     type: 'MOVE LEFT'
+//   }
+// }

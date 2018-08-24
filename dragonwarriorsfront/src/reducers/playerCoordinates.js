@@ -634,7 +634,7 @@ export default function playMovements(state = defaultState, action) {
 
     case 'SETGAMEID':
 
-    if (action.payload == undefined || action.payload == null ) {
+    if (action.payload === undefined || action.payload === null ) {
       return state
     }
 

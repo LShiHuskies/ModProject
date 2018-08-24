@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { moveLeft } from '../actions';
-import { bindActionCreators } from 'redux';
-import Healthbar from './Healthbar';
+// import { moveLeft } from '../actions';
+// import { bindActionCreators } from 'redux';
+// import Healthbar from './Healthbar';
 import PlayerAttack from './PlayerAttack';
-import Score from './Score';
+// import Score from './Score';
 import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 
 import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2'
@@ -32,7 +32,7 @@ let downAttackProjectile3 = [];
 let rightAttackProjectile3 = [];
 let upAttackProjectile3 = [];
 
-let counter = 0;
+// let counter = 0;
 
 class Player extends React.Component {
 
@@ -56,7 +56,7 @@ class Player extends React.Component {
 
 
   componentDidMount() {
-    if (this.props.clicked == true )
+    if (this.props.clicked === true )
       window.addEventListener('keydown', this.handleControls)
   }
 
@@ -378,7 +378,7 @@ class Player extends React.Component {
 
       case 32:
 
-      if (this.props.playerDirection.characterdirection == 'LEFT' && this.state.attack == false && this.state.leftAttack == null) {
+      if (this.props.playerDirection.characterdirection === 'LEFT' && this.state.attack === false && this.state.leftAttack === null) {
 
 
         action = {
@@ -506,7 +506,7 @@ class Player extends React.Component {
   } // end of the if statement for left direction pointing
 
 
-  else if ( this.props.playerDirection.characterdirection == 'LEFT' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+  else if ( this.props.playerDirection.characterdirection === 'LEFT' && this.state.attack === true && this.state.attack2 === false && this.state.leftAttack2 === null ) {
 
     let action = {
       type: "ATTACKLEFT2"
@@ -635,11 +635,11 @@ class Player extends React.Component {
 
 // this is the start of the else if for attack phase # 3
 
-else if ( this.props.playerDirection.characterdirection == 'LEFT'
-&& this.state.attack == true
-&& this.state.attack2 == true
-&& this.state.attack3 == false
-&& this.state.leftAttack3 == null ) {
+else if ( this.props.playerDirection.characterdirection === 'LEFT'
+&& this.state.attack === true
+&& this.state.attack2 === true
+&& this.state.attack3 === false
+&& this.state.leftAttack3 === null ) {
 
 // this is the start for attack # 3
 let action = {
@@ -762,7 +762,7 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
   }
 
-  else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == false && this.state.topAttack == null){
+  else if (this.props.playerDirection.characterdirection === 'DOWN' && this.state.attack === false && this.state.topAttack === null){
         action = {
           type: "ATTACKDOWN"
         }
@@ -834,7 +834,7 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
 
 }  // end of the else if for the down direction pointing for attack 1
- else if (this.props.playerDirection.characterdirection == 'DOWN' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+ else if (this.props.playerDirection.characterdirection === 'DOWN' && this.state.attack === true && this.state.attack2 === false && this.state.leftAttack2 === null ) {
    // this is the start of the copy and paste for the downward direction
 
 
@@ -914,11 +914,11 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
  }  // this is the end of the phase 2 attack for the down attack
 
-  else if ( this.props.playerDirection.characterdirection == 'DOWN'
-  && this.state.attack == true
-  && this.state.attack2 == true
-  && this.state.attack3 == false
-  && this.state.leftAttack3 == null   ) {
+  else if ( this.props.playerDirection.characterdirection === 'DOWN'
+  && this.state.attack === true
+  && this.state.attack2 === true
+  && this.state.attack3 === false
+  && this.state.leftAttack3 === null   ) {
    // this is the start for phase #3 down attack for goku
 
    action = {
@@ -997,7 +997,7 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
 
 
-  else if (this.props.playerDirection.characterdirection == 'RIGHT' && this.state.attack == false && this.state.leftAttack == null) {
+  else if (this.props.playerDirection.characterdirection === 'RIGHT' && this.state.attack === false && this.state.leftAttack === null) {
       action = {
         type: "ATTACKRIGHT"
       }
@@ -1128,7 +1128,7 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
     } // end of the else if statement for the first phase of the right attack
     // This is the start of the copy and paste for the second phase attack for the right attack2
 
-    else if (this.props.playerDirection.characterdirection == 'RIGHT' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null) {
+    else if (this.props.playerDirection.characterdirection === 'RIGHT' && this.state.attack === true && this.state.attack2 === false && this.state.leftAttack2 === null) {
 
 
       action = {
@@ -1261,11 +1261,11 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
     // This is the end for the second phase attack for the right attack2
     // this is the start for the phase attack # 3 for the right
-    else if ( this.props.playerDirection.characterdirection == 'RIGHT'
-    && this.state.attack == true
-    && this.state.attack2 == true
-    && this.state.attack3 == false
-    && this.state.leftAttack3 == null   ) {
+    else if ( this.props.playerDirection.characterdirection === 'RIGHT'
+    && this.state.attack === true
+    && this.state.attack2 === true
+    && this.state.attack3 === false
+    && this.state.leftAttack3 === null   ) {
       action = {
         type: "ATTACKRIGHT3"
       }
@@ -1396,9 +1396,9 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
     } // this is the end for the phase # 3 attack for the right.
 
 
-         else if (this.props.playerDirection.characterdirection == 'UP'
-         && this.state.attack == false
-         && this.state.topAttack == null) {
+         else if (this.props.playerDirection.characterdirection === 'UP'
+         && this.state.attack === false
+         && this.state.topAttack === null) {
 
           action = {
             type: "ATTACKUP"
@@ -1469,7 +1469,7 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
           } // end of the else end of the spacebar
           // end of the if statement for the first up attack--
-          else if ( this.props.playerDirection.characterdirection == 'UP' && this.state.attack == true && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+          else if ( this.props.playerDirection.characterdirection === 'UP' && this.state.attack === true && this.state.attack2 === false && this.state.leftAttack2 === null ) {
 
             // this is the start of the second attack
 
@@ -1539,11 +1539,11 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
 
         } // end of the else if for the up attack for phase # 2
-        else if ( this.props.playerDirection.characterdirection == 'UP'
-        && this.state.attack == true
-        && this.state.attack2 == true
-        && this.state.attack3 == false
-        && this.state.leftAttack3 == null   ) {
+        else if ( this.props.playerDirection.characterdirection === 'UP'
+        && this.state.attack === true
+        && this.state.attack2 === true
+        && this.state.attack3 === false
+        && this.state.leftAttack3 === null   ) {
 
           // start of attack # 3 for the up
 
@@ -1679,7 +1679,8 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
       }
       break;
 
-
+      default:
+        fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
     } // end of the switch statements
@@ -1695,7 +1696,7 @@ fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.j
 
 handleReceived = (event) => {
   this.props.dispatch(event.type)
-  if (event.type.type == 'ATTACKLEFT') {
+  if (event.type.type === 'ATTACKLEFT') {
     if (this.props.left > 90) {
 
       this.setState({
@@ -1798,7 +1799,7 @@ handleReceived = (event) => {
     ) // end of the leftAttackProjectile push
   }) // end of the setState for leftAttack1
 }
-} else if (event.type.type == 'ATTACKLEFT2') {
+} else if (event.type.type === 'ATTACKLEFT2') {
 
   this.setState({
     attack2: true,
@@ -1895,7 +1896,7 @@ handleReceived = (event) => {
 
 
 } // end of the left attack2
-else if (event.type.type == 'ATTACKLEFT3') {
+else if (event.type.type === 'ATTACKLEFT3') {
 
   this.setState({
     attack3: true,
@@ -1992,7 +1993,7 @@ else if (event.type.type == 'ATTACKLEFT3') {
 }
 
 // end of the left attack 3
-else if (event.type.type == 'ATTACKDOWN') {
+else if (event.type.type === 'ATTACKDOWN') {
 
 
   this.setState({
@@ -2045,7 +2046,7 @@ else if (event.type.type == 'ATTACKDOWN') {
 }
 // end of the down attack 1
 
-  else if (event.type.type == 'ATTACKDOWN2') {
+  else if (event.type.type === 'ATTACKDOWN2') {
 
 
     this.setState({
@@ -2097,7 +2098,7 @@ else if (event.type.type == 'ATTACKDOWN') {
   }
 
     // end of the down attack 2
-  else if (event.type.type == 'ATTACKDOWN3') {
+  else if (event.type.type === 'ATTACKDOWN3') {
 
 
     this.setState({
@@ -2147,7 +2148,7 @@ else if (event.type.type == 'ATTACKDOWN') {
   }
 
         // end of the down attack 3
-  else if (event.type.type == 'ATTACKRIGHT') {
+  else if (event.type.type === 'ATTACKRIGHT') {
     this.setState({
       attack: true,
       leftAttack: this.props.attackLeft,
@@ -2251,7 +2252,7 @@ else if (event.type.type == 'ATTACKDOWN') {
 
     )
   } // end of the else if statement for the right attack 1
-  else if (event.type.type == 'ATTACKRIGHT2') {
+  else if (event.type.type === 'ATTACKRIGHT2') {
 
 
     this.setState({
@@ -2358,7 +2359,7 @@ else if (event.type.type == 'ATTACKDOWN') {
 
 
   } // end of the right attack # 2
-  else if ( event.type.type == 'ATTACKRIGHT3' ) {
+  else if ( event.type.type === 'ATTACKRIGHT3' ) {
 
 
     this.setState({
@@ -2461,7 +2462,7 @@ else if (event.type.type == 'ATTACKDOWN') {
 
 
 } // end of the right attack 3
-else if (event.type.type == 'ATTACKUP') {
+else if (event.type.type === 'ATTACKUP') {
 
 
   this.setState({
@@ -2506,7 +2507,7 @@ else if (event.type.type == 'ATTACKUP') {
 
 
 } // end of the first up attack
-      else if (event.type.type == 'ATTACKUP2') {
+      else if (event.type.type === 'ATTACKUP2') {
 
         this.setState({
           attack2: true,
@@ -2549,7 +2550,7 @@ else if (event.type.type == 'ATTACKUP') {
 
 
       } // end of attack up 2
-      else if ( event.type.type == 'ATTACKUP3') {
+      else if ( event.type.type === 'ATTACKUP3') {
 
         this.setState({
           attack3: true,
@@ -2692,11 +2693,11 @@ else if (event.type.type == 'ATTACKUP') {
           onReceived={this.handleReceived}
           />
         <div>
-          <img src={this.props.playerDirection.image} style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`}} />
+          <img src={this.props.playerDirection.image} alt='goku' style={{position: 'absolute', width: `${this.props.playerDirection.width}%`, top: `${this.props.top}px`, left: `${this.props.left}px`}} />
         </div>
         {/*<Score />
         <Healthbar />*/}
-        {this.state.attack == true ?
+        {this.state.attack === true ?
             this.props.level !== 'FOUR' ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack}
             topAttackCoordinates={this.state.topAttack}
             degree={this.state.degree}/> : <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack}
@@ -2705,7 +2706,7 @@ else if (event.type.type == 'ATTACKUP') {
           : null
         }
 
-        {this.state.attack2 == true ?
+        {this.state.attack2 === true ?
           this.props.level !== 'FOUR' ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack2}
           topAttackCoordinates={this.state.topAttack2}
           degree={this.state.degree}/> : <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack2}
@@ -2714,7 +2715,7 @@ else if (event.type.type == 'ATTACKUP') {
         : null
         }
 
-        {this.state.attack3 == true ?
+        {this.state.attack3 === true ?
           this.props.level !== 'FOUR' ? <PlayerAttack leftAttackCoordinates={this.state.leftAttack3}
           topAttackCoordinates={this.state.topAttack3}
           degree={this.state.degree}/> : <PlayerAttack2 leftAttackCoordinates={this.state.leftAttack3}

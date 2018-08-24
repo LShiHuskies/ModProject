@@ -609,7 +609,9 @@ class Enemy extends React.Component {
     }
     return (
       <div>
-        <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506' style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
+        <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506'
+          alt='frieza' 
+          style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
         {this.props.enemyAttack === true ? <EnemyAttacks /> : null }
         {this.props.enemyAttack2 === true ? <EnemyAttacks2 /> : null }
       </div>

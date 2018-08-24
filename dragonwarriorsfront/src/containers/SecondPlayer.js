@@ -43,7 +43,7 @@ class SecondPlayer extends React.Component {
 
   componentDidMount() {
 
-    if (this.props.clicked == false ) {
+    if (this.props.clicked === false ) {
       window.addEventListener('keydown', this.handleControls)
     }
   }
@@ -346,7 +346,7 @@ class SecondPlayer extends React.Component {
 
       case 32:
 
-      if (this.props.characterdirection == 'LEFT' && this.state.attack == false) {
+      if (this.props.characterdirection === 'LEFT' && this.state.attack === false) {
 
       action = {
         type: "ATTACKLEFT TWO"
@@ -368,8 +368,8 @@ class SecondPlayer extends React.Component {
       };
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
-    } else if ( this.props.characterdirection == 'LEFT' && this.state.attack == true
-    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+    } else if ( this.props.characterdirection === 'LEFT' && this.state.attack === true
+    && this.state.attack2 === false && this.state.leftAttack2 === null ) {
       action = {
         type: "ATTACKLEFT TWO SECONDONE"
       }
@@ -391,8 +391,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
-    } else if ( this.props.characterdirection == 'LEFT' && this.state.attack == true
-    && this.state.attack2 == true && this.state.attack3 == false && this.state.leftAttack3 == null ) {
+    } else if ( this.props.characterdirection === 'LEFT' && this.state.attack === true
+    && this.state.attack2 === true && this.state.attack3 === false && this.state.leftAttack3 === null ) {
       action = {
         type: "ATTACKLEFT TWO THIRDONE"
       }
@@ -416,7 +416,7 @@ class SecondPlayer extends React.Component {
 
     } // end of the else if for the leftattack 3 for player two
 
-    else if (this.props.characterdirection == 'RIGHT' && this.state.attack == false ) {
+    else if (this.props.characterdirection === 'RIGHT' && this.state.attack === false ) {
       action = {
         type: "ATTACKRIGHT TWO"
       }
@@ -438,8 +438,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
     }  // end of the else if statement for first right attack for vegeta
 
-    else if ( this.props.characterdirection == 'RIGHT' && this.state.attack == true
-    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+    else if ( this.props.characterdirection === 'RIGHT' && this.state.attack === true
+    && this.state.attack2 === false && this.state.leftAttack2 === null ) {
       action = {
         type: "ATTACKRIGHT TWO SECONDONE"
       }
@@ -460,8 +460,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if statement for the second right attack for vegeta
-    else if ( this.props.characterdirection == 'RIGHT' && this.state.attack == true
-    && this.state.attack2 == true && this.state.attack3 == false && this.state.leftAttack3 == null ) {
+    else if ( this.props.characterdirection === 'RIGHT' && this.state.attack === true
+    && this.state.attack2 === true && this.state.attack3 === false && this.state.leftAttack3 === null ) {
       action = {
         type: "ATTACKRIGHT TWO THIRDONE"
       }
@@ -481,7 +481,7 @@ class SecondPlayer extends React.Component {
       };
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
-    } else if ( this.props.characterdirection == 'DOWN' && this.state.attack == false && this.state.leftAttack == null) {
+    } else if ( this.props.characterdirection === 'DOWN' && this.state.attack === false && this.state.leftAttack === null) {
       action = {
         type: "ATTACKDOWN TWO"
       }
@@ -503,8 +503,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if for the downattack 1 for vegeta
-    else if (this.props.characterdirection == 'DOWN' && this.state.attack == true
-    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+    else if (this.props.characterdirection === 'DOWN' && this.state.attack === true
+    && this.state.attack2 === false && this.state.leftAttack2 === null ) {
       // this is the start for the downward direction
 
 
@@ -530,8 +530,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } //  this is the end of the downward direction third attack for vegeta
-    else if (this.props.characterdirection == 'DOWN' && this.state.attack == true
-    && this.state.attack2 == true && this.state.attack3 == false && this.state.leftAttack3 == null) {
+    else if (this.props.characterdirection === 'DOWN' && this.state.attack === true
+    && this.state.attack2 === true && this.state.attack3 === false && this.state.leftAttack3 === null) {
 
       action = {
         type: "ATTACKDOWN TWO THIRDONE"
@@ -555,8 +555,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // this is the end of the attack down third one
-    else if (this.props.characterdirection == 'UP' && this.state.attack == false
-    && this.state.leftAttack == null) {
+    else if (this.props.characterdirection === 'UP' && this.state.attack === false
+    && this.state.leftAttack === null) {
       action = {
         type: 'ATTACKUP TWO'
       }
@@ -578,8 +578,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if for up direction One for vegeta
-    else if (this.props.characterdirection == 'UP' && this.state.attack == true
-    && this.state.attack2 == false && this.state.leftAttack2 == null ) {
+    else if (this.props.characterdirection === 'UP' && this.state.attack === true
+    && this.state.attack2 === false && this.state.leftAttack2 === null ) {
       action = {
         type: 'ATTACKUP TWO SECONDONE'
       }
@@ -601,8 +601,8 @@ class SecondPlayer extends React.Component {
       fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the attackup two second one for vegeta
-    else if ( this.props.characterdirection == 'UP' && this.state.attack == true
-    && this.state.attack2 == true && this.state.attack3 == false && this.state.leftAttack3 == null ) {
+    else if ( this.props.characterdirection === 'UP' && this.state.attack === true
+    && this.state.attack2 === true && this.state.attack3 === false && this.state.leftAttack3 === null ) {
 
 
       action = {
@@ -678,17 +678,19 @@ class SecondPlayer extends React.Component {
 
 
     }
+    break;
 
+    default:
+      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
+  } // end of the switch statements
 
-    }
-
-  }
+} // end of the function
 
   handleReceived = (event) => {
     this.props.dispatch(event.type)
 
-    if (event.type.type == 'ATTACKLEFT TWO') {
+    if (event.type.type === 'ATTACKLEFT TWO') {
       this.setState({
         attack: true,
         leftAttack: this.props.leftAttack,
@@ -783,7 +785,7 @@ class SecondPlayer extends React.Component {
 }) // end of the setState
 
     } // end of the if statement for the attack left two
-    else if (event.type.type == 'ATTACKLEFT TWO SECONDONE' ) {
+    else if (event.type.type === 'ATTACKLEFT TWO SECONDONE' ) {
 
       this.setState({
         attack2: true,
@@ -881,7 +883,7 @@ class SecondPlayer extends React.Component {
 
     } // left attack second one for player 2
 
-    else if ( event.type.type == 'ATTACKLEFT TWO THIRDONE' ) {
+    else if ( event.type.type === 'ATTACKLEFT TWO THIRDONE' ) {
 
 
       this.setState({
@@ -981,7 +983,7 @@ class SecondPlayer extends React.Component {
 
 
 
-  else if (event.type.type == 'ATTACKRIGHT TWO') {
+  else if (event.type.type === 'ATTACKRIGHT TWO') {
 
     this.setState({
       attack: true,
@@ -1086,7 +1088,7 @@ class SecondPlayer extends React.Component {
 
     )
   } // closing for the else if for the right attack one for vegeta
-  else if ( event.type.type == 'ATTACKRIGHT TWO SECONDONE' ) {
+  else if ( event.type.type === 'ATTACKRIGHT TWO SECONDONE' ) {
 
 
     this.setState({
@@ -1192,7 +1194,7 @@ class SecondPlayer extends React.Component {
 
 
   } // closing for the else if for the right attack 2 for vegeta
-  else if ( event.type.type == 'ATTACKRIGHT TWO THIRDONE' ) {
+  else if ( event.type.type === 'ATTACKRIGHT TWO THIRDONE' ) {
 
 
 
@@ -1442,7 +1444,7 @@ else if (event.type.type === 'ATTACKDOWN TWO SECONDONE') {
 
 
 
-    } // end of the event.type.type == attackdown two thirdOne
+    } // end of the event.type.type === attackdown two thirdOne
     else if (event.type.type === 'ATTACKUP TWO') {
 
       this.setState({
@@ -1655,10 +1657,10 @@ else if (event.type.type === 'ATTACKDOWN TWO SECONDONE') {
           channel={{ channel: 'MoveTwosChannel' }}
           onReceived={this.handleReceived}
           />
-        <img src={this.props.image} style={{position: 'absolute', top: `${this.props.top}px`, left: `${this.props.left}px`, width: `${this.props.width}%`}} />
-        {this.state.attack == true ? <SecondPlayerAttack leftAttack={this.state.leftAttack} topAttack={this.state.topAttack} degree={this.state.degree}/> : null}
-        {this.state.attack2 == true ? <SecondPlayerAttack leftAttack={this.state.leftAttack2} topAttack={this.state.topAttack2} degree={this.state.degree}/> : null}
-        {this.state.attack3 == true ? <SecondPlayerAttack leftAttack={this.state.leftAttack3} topAttack={this.state.topAttack3} degree={this.state.degree}/> : null}
+        <img src={this.props.image} alt='vegeta' style={{position: 'absolute', top: `${this.props.top}px`, left: `${this.props.left}px`, width: `${this.props.width}%`}} />
+        {this.state.attack === true ? <SecondPlayerAttack leftAttack={this.state.leftAttack} topAttack={this.state.topAttack} degree={this.state.degree}/> : null}
+        {this.state.attack2 === true ? <SecondPlayerAttack leftAttack={this.state.leftAttack2} topAttack={this.state.topAttack2} degree={this.state.degree}/> : null}
+        {this.state.attack3 === true ? <SecondPlayerAttack leftAttack={this.state.leftAttack3} topAttack={this.state.topAttack3} degree={this.state.degree}/> : null}
       </React.Fragment>
     )
   }
@@ -1677,7 +1679,6 @@ else if (event.type.type === 'ATTACKDOWN TWO SECONDONE') {
       characterdirection: state.secondPlayerCoordinates.defaultDirection.characterdirection,
       leftAttack: state.secondPlayerCoordinates.attackLeft,
       topAttack: state.secondPlayerCoordinates.attackTop,
-      attack: state.secondPlayerCoordinates.attack,
       degree: state.secondPlayerCoordinates.degree,
       enemyAttackLeft: state.playerCoordinates.enemyAttackLeft,
       enemyAttackTop: state.playerCoordinates.enemyAttackTop,
