@@ -62,6 +62,7 @@ class EnemyAttacks2 extends React.Component {
     return (
       <div>
         <img src='https://orig00.deviantart.net/6ee6/f/2009/227/f/4/death_ball_cell__png_by_aragorn3000.png'
+          alt='deathball'
           style={{position: 'absolute',
             width:"3%",
             left: `${this.props.enemyAttackLeft2}px`,
