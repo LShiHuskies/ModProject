@@ -18,6 +18,14 @@ class Controls extends React.Component {
        backgroundColor: 'rgba(255, 255, 255, 0.5)',
        height: '350px'
      }} >
+     <h4>Player Objective</h4>
+     <ul style={{fontSize: '16px'}}>
+       <ol> 1. Deplete Frieza's health before the timer runs out and before either player's health reaches 0</ol>
+       <ol> 2. The players must work together</ol>
+       <ol> 3. The players must avoid getting hit by Ginyu as it will reduce his or her health by 2.5% and increase Frieza's by 5%</ol>
+       <ol> 4. Try to stay alive as long as you can and get the highest score</ol>
+       <ol> 5. Getting hit by Frieza's attacks will decrease the player's health by 5%</ol>
+     </ul>
      <h4>Player Movements</h4>
      <ul style={{fontSize: '16px'}}>
       <li>Go Left: Press A</li>
