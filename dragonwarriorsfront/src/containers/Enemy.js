@@ -195,12 +195,17 @@ class Enemy extends React.Component {
      && (this.props.level === 'THREE' || this.props.level === 'FOUR')
    ) {
 
-       if (this.props.playerLeft < 700 && this.props.playerLeft > 200) {
+       if (this.props.playerLeft < 700 && this.props.playerLeft > 200)
+        {
          let action = {
            type: 'TELEPORTTOGOKULEFT'
          }
          this.props.dispatch(action)
-       } else if (this.props.playerLeft > 700 && this.props.playerLeft < window.innerWidth - 200) {
+       } else if ( (this.props.playerLeft > 700
+         && this.props.playerLeft < window.innerWidth - 200)
+         || (this.props.playerLeft < 200 && this.props.playerLeft > 30)
+       )  {
+
          let action = {
            type: 'TELEPORTTOGOKURIGHT'
          }
@@ -222,7 +227,9 @@ class Enemy extends React.Component {
            }
          }
          this.props.dispatch(action)
-       } else if (this.props.playerTwoLeft > 700 && this.props.playerTwoLeft < window.innerWidth - 200) {
+       } else if ( (this.props.playerTwoLeft > 700 && this.props.playerTwoLeft < window.innerWidth - 200)
+       || ( this.props.playerTwoLeft < 200 && this.props.playerTwoLeft > 30 )
+     ) {
          let action = {
            type: 'TELEPORTTOVEGETARIGHT',
            payload: {
@@ -610,7 +617,7 @@ class Enemy extends React.Component {
     return (
       <div>
         <img src='https://vignette.wikia.nocookie.net/unanything/images/5/5d/Frieza.png/revision/latest?cb=20150214101506'
-          alt='frieza' 
+          alt='frieza'
           style={{position: 'absolute', width: '5%', top: `${this.props.enemyTop}px`, left: `${this.props.enemyLeft}px` }}/>
         {this.props.enemyAttack === true ? <EnemyAttacks /> : null }
         {this.props.enemyAttack2 === true ? <EnemyAttacks2 /> : null }
