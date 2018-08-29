@@ -6,7 +6,7 @@ class Api::UserGamesController < ApplicationController
 
   def create
      @userGame = UserGame.new
-      
+
 
       ActionCable.server.broadcast 'UserGamesChannel', {
         id: @userGame.id

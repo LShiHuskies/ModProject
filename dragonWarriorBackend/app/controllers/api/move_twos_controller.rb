@@ -5,7 +5,7 @@ class Api::MoveTwosController < ApplicationController
   end
 
   def create
-    
+
     ActionCable.server.broadcast 'MoveTwosChannel', {
       left: params[:left],
       top: params[:top],
