@@ -256,20 +256,6 @@ class SecondPlayer extends React.Component {
 
         createMovesTwo(body);
 
-        //
-        // config = {
-        //   method: 'POST',
-        //   headers: {
-        //   'Accepts': 'application/json',
-        // 'Content-Type': 'application/json'
-        // },
-        //   body: JSON.stringify({
-        //     top: this.props.top,
-        //     left: this.props.left,
-        //     type: action
-        //   })
-        // };
-        // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
       break;
 
@@ -291,21 +277,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } else if ( this.props.characterdirection === 'LEFT' && this.state.attack === true
     && this.state.attack2 === false && this.state.leftAttack2 === null ) {
@@ -323,22 +294,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
 
     } else if ( this.props.characterdirection === 'LEFT' && this.state.attack === true
     && this.state.attack2 === true && this.state.attack3 === false && this.state.leftAttack3 === null ) {
@@ -355,22 +310,6 @@ class SecondPlayer extends React.Component {
       };
 
       createMovesTwo(body);
-
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
     } // end of the else if for the leftattack 3 for player two
@@ -390,21 +329,7 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+
     }  // end of the else if statement for first right attack for vegeta
 
     else if ( this.props.characterdirection === 'RIGHT' && this.state.attack === true
@@ -423,21 +348,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if statement for the second right attack for vegeta
     else if ( this.props.characterdirection === 'RIGHT' && this.state.attack === true
@@ -456,22 +366,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
     } else if ( this.props.characterdirection === 'DOWN' && this.state.attack === false && this.state.leftAttack === null) {
       action = {
         type: "ATTACKDOWN TWO"
@@ -486,22 +380,6 @@ class SecondPlayer extends React.Component {
       };
 
       createMovesTwo(body);
-
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if for the downattack 1 for vegeta
     else if (this.props.characterdirection === 'DOWN' && this.state.attack === true
@@ -524,22 +402,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
     } //  this is the end of the downward direction third attack for vegeta
     else if (this.props.characterdirection === 'DOWN' && this.state.attack === true
     && this.state.attack2 === true && this.state.attack3 === false && this.state.leftAttack3 === null) {
@@ -559,22 +421,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
     } // this is the end of the attack down third one
     else if (this.props.characterdirection === 'UP' && this.state.attack === false
     && this.state.leftAttack === null) {
@@ -592,22 +438,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
     } // end of the else if for up direction One for vegeta
     else if (this.props.characterdirection === 'UP' && this.state.attack === true
     && this.state.attack2 === false && this.state.leftAttack2 === null ) {
@@ -624,22 +454,6 @@ class SecondPlayer extends React.Component {
       };
 
       createMovesTwo(body);
-
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the attackup two second one for vegeta
     else if ( this.props.characterdirection === 'UP' && this.state.attack === true
@@ -659,22 +473,6 @@ class SecondPlayer extends React.Component {
       };
 
       createMovesTwo(body);
-
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
     } // end of the else if for third attack up for vegeta
 
@@ -698,22 +496,6 @@ class SecondPlayer extends React.Component {
 
       createMovesTwo(body);
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
 
     } else if (this.props.left < 750) {
 
@@ -730,22 +512,6 @@ class SecondPlayer extends React.Component {
       };
 
       createMovesTwo(body);
-
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     attackTop: this.props.attackTop,
-      //     attackLeft: this.props.attackLeft,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
     }
