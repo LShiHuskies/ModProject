@@ -13,6 +13,8 @@ import PlayerAttack2 from './PlayerAttack2';
 
 import { ActionCable } from 'react-actioncable-provider';
 
+import createMove from '../constants/adapter';
+
 
 
 var leftAttackProjectile = [];
@@ -76,21 +78,30 @@ class Player extends React.Component {
         // this.props.dispatch(action)
 
 
-          let config = {
-            method: 'POST',
-            headers: {
-            'Accepts': 'application/json',
-          'Content-Type': 'application/json'
-          },
-            body: JSON.stringify({
-              user_id: this.props.player.id,
-              top: this.props.top,
-              left: this.props.left,
-              type: action
-            })
-          };
+        let body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
+        createMove(body);
 
-      fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+
+      //     let config = {
+      //       method: 'POST',
+      //       headers: {
+      //       'Accepts': 'application/json',
+      //     'Content-Type': 'application/json'
+      //     },
+      //       body: JSON.stringify({
+      //         user_id: this.props.player.id,
+      //         top: this.props.top,
+      //         left: this.props.left,
+      //         type: action
+      //       })
+      //     };
+      //
+      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -103,22 +114,31 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-         config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        createMove(body);
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+    //
+    //      let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -131,21 +151,30 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
-         config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        createMove(body);
+
+    //      let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -156,21 +185,30 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        createMove(body);
+
+    //     config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -181,21 +219,30 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
-         config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        createMove(body)
+
+    //      let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -206,21 +253,30 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        createMove(body)
+
+    //     config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -230,21 +286,30 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
-       config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        createMove(body)
+
+    //    let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -254,22 +319,31 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        createMove(body)
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+
+    //     let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -280,22 +354,31 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        createMove(body)
 
-    fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+
+    //     let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         user_id: this.props.player.id,
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
         break;
 
@@ -307,20 +390,29 @@ class Player extends React.Component {
 
         // this.props.dispatch(action)
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
-      fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
+
+        createMove(body)
+
+      //   config = {
+      //     method: 'POST',
+      //     headers: {
+      //     'Accepts': 'application/json',
+      //   'Content-Type': 'application/json'
+      //   },
+      //     body: JSON.stringify({
+      //       user_id: this.props.player.id,
+      //       top: this.props.top,
+      //       left: this.props.left,
+      //       type: action
+      //     })
+      //   };
+      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -333,8 +425,17 @@ class Player extends React.Component {
 
         // this.props.dispatch(action)
 
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-        config = {
+        createMove(body)
+
+
+        let config = {
           method: 'POST',
           headers: {
           'Accepts': 'application/json',
@@ -358,21 +459,30 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
-        fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        createMove(body)
+
+
+        // config = {
+        //   method: 'POST',
+        //   headers: {
+        //   'Accepts': 'application/json',
+        // 'Content-Type': 'application/json'
+        // },
+        //   body: JSON.stringify({
+        //     user_id: this.props.player.id,
+        //     top: this.props.top,
+        //     left: this.props.left,
+        //     type: action
+        //   })
+        // };
+        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -386,23 +496,35 @@ class Player extends React.Component {
         }
         // this.props.dispatch(action)
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            leftAttack: this.props.attackLeft,
-            topAttack: this.props.attackTop,
-            degree: this.props.degree,
-            type: action
-          })
-        };
-        fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+        body = {
+          user_id: this.props.player.id,
+          top: this.props.top,
+          left: this.props.left,
+          leftAttack: this.props.attackLeft,
+          topAttack: this.props.attackTop,
+          degree: this.props.degree,
+          type: action
+        }
+
+        createMove(body)
+
+        // config = {
+        //   method: 'POST',
+        //   headers: {
+        //   'Accepts': 'application/json',
+        // 'Content-Type': 'application/json'
+        // },
+        //   body: JSON.stringify({
+        //     user_id: this.props.player.id,
+        //     top: this.props.top,
+        //     left: this.props.left,
+        //     leftAttack: this.props.attackLeft,
+        //     topAttack: this.props.attackTop,
+        //     degree: this.props.degree,
+        //     type: action
+        //   })
+        // };
+        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
   } // end of the if statement for left direction pointing
@@ -416,7 +538,7 @@ class Player extends React.Component {
     // this.props.dispatch(action)
 //  here is the start of the copy and paste ---
 
-      config = {
+       config = {
         method: 'POST',
         headers: {
         'Accepts': 'application/json',
