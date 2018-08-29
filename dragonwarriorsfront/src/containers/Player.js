@@ -87,24 +87,6 @@ class Player extends React.Component {
         createMove(body);
 
 
-      //     let config = {
-      //       method: 'POST',
-      //       headers: {
-      //       'Accepts': 'application/json',
-      //     'Content-Type': 'application/json'
-      //     },
-      //       body: JSON.stringify({
-      //         user_id: this.props.player.id,
-      //         top: this.props.top,
-      //         left: this.props.left,
-      //         type: action
-      //       })
-      //     };
-      //
-      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
-
-
 
       break;
 
@@ -122,23 +104,6 @@ class Player extends React.Component {
         }
 
         createMove(body);
-
-    //
-    //      let config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -160,22 +125,6 @@ class Player extends React.Component {
 
         createMove(body);
 
-    //      let config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
 
       break;
 
@@ -193,22 +142,6 @@ class Player extends React.Component {
         }
 
         createMove(body);
-
-    //     config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -228,21 +161,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-    //      let config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -262,21 +180,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-    //     config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -295,21 +198,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-    //    let config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -328,22 +216,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-
-    //     let config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
       break;
 
@@ -364,22 +236,6 @@ class Player extends React.Component {
         createMove(body)
 
 
-    //     let config = {
-    //       method: 'POST',
-    //       headers: {
-    //       'Accepts': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     },
-    //       body: JSON.stringify({
-    //         user_id: this.props.player.id,
-    //         top: this.props.top,
-    //         left: this.props.left,
-    //         type: action
-    //       })
-    //     };
-    //
-    // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
         break;
 
       case 37:
@@ -399,20 +255,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-      //   config = {
-      //     method: 'POST',
-      //     headers: {
-      //     'Accepts': 'application/json',
-      //   'Content-Type': 'application/json'
-      //   },
-      //     body: JSON.stringify({
-      //       user_id: this.props.player.id,
-      //       top: this.props.top,
-      //       left: this.props.left,
-      //       type: action
-      //     })
-      //   };
-      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
       break;
@@ -453,21 +295,6 @@ class Player extends React.Component {
         createMove(body)
 
 
-        // config = {
-        //   method: 'POST',
-        //   headers: {
-        //   'Accepts': 'application/json',
-        // 'Content-Type': 'application/json'
-        // },
-        //   body: JSON.stringify({
-        //     user_id: this.props.player.id,
-        //     top: this.props.top,
-        //     left: this.props.left,
-        //     type: action
-        //   })
-        // };
-        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
       break;
 
       case 32:
@@ -492,23 +319,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-        // config = {
-        //   method: 'POST',
-        //   headers: {
-        //   'Accepts': 'application/json',
-        // 'Content-Type': 'application/json'
-        // },
-        //   body: JSON.stringify({
-        //     user_id: this.props.player.id,
-        //     top: this.props.top,
-        //     left: this.props.left,
-        //     leftAttack: this.props.attackLeft,
-        //     topAttack: this.props.attackTop,
-        //     degree: this.props.degree,
-        //     type: action
-        //   })
-        // };
-        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
   } // end of the if statement for left direction pointing
@@ -533,24 +343,6 @@ class Player extends React.Component {
     }
 
     createMove(body);
-
-      //  config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     user_id: this.props.player.id,
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     leftAttack: this.props.attackLeft,
-      //     topAttack: this.props.attackTop,
-      //     degree: this.props.degree,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -583,23 +375,6 @@ let action = {
 
  createMove(body)
 
-// config = {
-//   method: 'POST',
-//   headers: {
-//   'Accepts': 'application/json',
-// 'Content-Type': 'application/json'
-// },
-//   body: JSON.stringify({
-//     user_id: this.props.player.id,
-//     top: this.props.top,
-//     left: this.props.left,
-//     leftAttack: this.props.attackLeft,
-//     topAttack: this.props.attackTop,
-//     degree: this.props.degree,
-//     type: action
-//   })
-// };
-// fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r => r.json())
 
   }
 
@@ -621,23 +396,6 @@ let action = {
 
         createMove(body)
 
-        // config = {
-        //   method: 'POST',
-        //   headers: {
-        //   'Accepts': 'application/json',
-        // 'Content-Type': 'application/json'
-        // },
-        //   body: JSON.stringify({
-        //     user_id: this.props.player.id,
-        //     top: this.props.top,
-        //     left: this.props.left,
-        //     leftAttack: this.props.attackLeft,
-        //     topAttack: this.props.attackTop,
-        //     degree: this.props.degree,
-        //     type: action
-        //   })
-        // };
-        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
 
@@ -664,23 +422,6 @@ let action = {
 
    createMove(body)
 
-   // config = {
-   //   method: 'POST',
-   //   headers: {
-   //   'Accepts': 'application/json',
-   // 'Content-Type': 'application/json'
-   // },
-   //   body: JSON.stringify({
-   //     user_id: this.props.player.id,
-   //     top: this.props.top,
-   //     left: this.props.left,
-   //     leftAttack: this.props.attackLeft,
-   //     topAttack: this.props.attackTop,
-   //     degree: this.props.degree,
-   //     type: action
-   //   })
-   // };
-   // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
  }  // this is the end of the phase 2 attack for the down attack
@@ -709,24 +450,6 @@ let action = {
 
    createMove(body)
 
-   // config = {
-   //   method: 'POST',
-   //   headers: {
-   //   'Accepts': 'application/json',
-   // 'Content-Type': 'application/json'
-   // },
-   //   body: JSON.stringify({
-   //     user_id: this.props.player.id,
-   //     top: this.props.top,
-   //     left: this.props.left,
-   //     leftAttack: this.props.attackLeft,
-   //     topAttack: this.props.attackTop,
-   //     degree: this.props.degree,
-   //     type: action
-   //   })
-   // };
-   // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
 
 
  }  // this is the end of the phase # 3 down attack for goku
@@ -752,23 +475,6 @@ let action = {
 
       createMove(body)
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     user_id: this.props.player.id,
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     leftAttack: this.props.attackLeft,
-      //     topAttack: this.props.attackTop,
-      //     degree: this.props.degree,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
     } // end of the else if statement for the first phase of the right attack
@@ -794,24 +500,6 @@ let action = {
       }
 
       createMove(body)
-
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     user_id: this.props.player.id,
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     leftAttack: this.props.attackLeft,
-      //     topAttack: this.props.attackTop,
-      //     degree: this.props.degree,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
     }
@@ -841,25 +529,6 @@ let action = {
       createMove(body)
 
 
-      // config = {
-      //   method: 'POST',
-      //   headers: {
-      //   'Accepts': 'application/json',
-      // 'Content-Type': 'application/json'
-      // },
-      //   body: JSON.stringify({
-      //     user_id: this.props.player.id,
-      //     top: this.props.top,
-      //     left: this.props.left,
-      //     leftAttack: this.props.attackLeft,
-      //     topAttack: this.props.attackTop,
-      //     degree: this.props.degree,
-      //     type: action
-      //   })
-      // };
-      // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
-
 
     } // this is the end for the phase # 3 attack for the right.
 
@@ -885,25 +554,6 @@ let action = {
 
           createMove(body)
 
-          // config = {
-          //   method: 'POST',
-          //   headers: {
-          //   'Accepts': 'application/json',
-          // 'Content-Type': 'application/json'
-          // },
-          //   body: JSON.stringify({
-          //     user_id: this.props.player.id,
-          //     top: this.props.top,
-          //     left: this.props.left,
-          //     leftAttack: this.props.attackLeft,
-          //     topAttack: this.props.attackTop,
-          //     degree: this.props.degree,
-          //     type: action
-          //   })
-          // };
-          // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
-
 
           } // end of the else end of the spacebar
           // end of the if statement for the first up attack--
@@ -928,24 +578,6 @@ let action = {
             }
 
             createMove(body)
-
-            // config = {
-            //   method: 'POST',
-            //   headers: {
-            //   'Accepts': 'application/json',
-            // 'Content-Type': 'application/json'
-            // },
-            //   body: JSON.stringify({
-            //     user_id: this.props.player.id,
-            //     top: this.props.top,
-            //     left: this.props.left,
-            //     leftAttack: this.props.attackLeft,
-            //     topAttack: this.props.attackTop,
-            //     degree: this.props.degree,
-            //     type: action
-            //   })
-            // };
-            // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
 
         } // end of the else if for the up attack for phase # 2
@@ -974,24 +606,6 @@ let action = {
           };
 
           createMove(body);
-
-          // config = {
-          //   method: 'POST',
-          //   headers: {
-          //   'Accepts': 'application/json',
-          // 'Content-Type': 'application/json'
-          // },
-          //   body: JSON.stringify({
-          //     user_id: this.props.player.id,
-          //     top: this.props.top,
-          //     left: this.props.left,
-          //     leftAttack: this.props.attackLeft,
-          //     topAttack: this.props.attackTop,
-          //     degree: this.props.degree,
-          //     type: action
-          //   })
-          // };
-          // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
 
           // end of the attack # 3 for the up
 
@@ -1022,24 +636,6 @@ let action = {
 
         createMove(body)
 
-        // config = {
-        //   method: 'POST',
-        //   headers: {
-        //   'Accepts': 'application/json',
-        // 'Content-Type': 'application/json'
-        // },
-        //   body: JSON.stringify({
-        //     user_id: this.props.player.id,
-        //     top: this.props.top,
-        //     left: this.props.left,
-        //     leftAttack: this.props.attackLeft,
-        //     topAttack: this.props.attackTop,
-        //     degree: this.props.degree,
-        //     type: action
-        //   })
-        // };
-        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
 
 
       } else if (this.props.left >= 800) {
@@ -1059,23 +655,7 @@ let action = {
         }
 
         createMove(body)
-        // config = {
-        //   method: 'POST',
-        //   headers: {
-        //   'Accepts': 'application/json',
-        // 'Content-Type': 'application/json'
-        // },
-        //   body: JSON.stringify({
-        //     user_id: this.props.player.id,
-        //     top: this.props.top,
-        //     left: this.props.left,
-        //     leftAttack: this.props.attackLeft,
-        //     topAttack: this.props.attackTop,
-        //     degree: this.props.degree,
-        //     type: action
-        //   })
-        // };
-        // fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
+  
       }
       break;
 
