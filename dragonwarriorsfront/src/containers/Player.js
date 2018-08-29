@@ -434,22 +434,6 @@ class Player extends React.Component {
 
         createMove(body)
 
-
-        let config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            user_id: this.props.player.id,
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
-        fetch(`http://${window.location.hostname}:3000/api/moves`, config).then(r=> r.json())
-
       break;
 
       case 40:
