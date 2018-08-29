@@ -4,6 +4,7 @@ import { ActionCable } from 'react-actioncable-provider';
 import SecondPlayerAttack from './SecondPlayerAttack';
 import enemyAttackIntervalArray from '../reducers/enemyAttackInterval';
 import enemyAttackIntervalArray2 from '../reducers/enemyAttackInterval2'
+import createMovesTwo from '../constants/adapter2';
 
 var leftAttackProjectile = [];
 var rightAttackProjectile = [];
@@ -58,21 +59,28 @@ class SecondPlayer extends React.Component {
         }
         // this.props.dispatch(action)
 
+        let body = {
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-          let config = {
-            method: 'POST',
-            headers: {
-            'Accepts': 'application/json',
-          'Content-Type': 'application/json'
-          },
-            body: JSON.stringify({
-              top: this.props.top,
-              left: this.props.left,
-              type: action
-            })
-          };
+        createMovesTwo(body)
 
-      fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+      //     let config = {
+      //       method: 'POST',
+      //       headers: {
+      //       'Accepts': 'application/json',
+      //     'Content-Type': 'application/json'
+      //     },
+      //       body: JSON.stringify({
+      //         top: this.props.top,
+      //         left: this.props.left,
+      //         type: action
+      //       })
+      //     };
+      //
+      // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
       break;
 
@@ -82,23 +90,27 @@ class SecondPlayer extends React.Component {
         }
         // this.props.dispatch(action)
 
+        body = {
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
+        createMovesTwo(body);
 
-         config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
-
-    fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
-
-
+    //      let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -109,20 +121,28 @@ class SecondPlayer extends React.Component {
         }
         // this.props.dispatch(action)
 
-         config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+        createMovesTwo(body)
+
+    //      let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -133,20 +153,28 @@ class SecondPlayer extends React.Component {
         }
         // this.props.dispatch(action)
 
-        config = {
-          method: 'POST',
-          headers: {
-          'Accepts': 'application/json',
-        'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({
-            top: this.props.top,
-            left: this.props.left,
-            type: action
-          })
-        };
+        body = {
+          top: this.props.top,
+          left: this.props.left,
+          type: action
+        }
 
-    fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
+        createMovesTwo(body)
+
+    //     let config = {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accepts': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //       body: JSON.stringify({
+    //         top: this.props.top,
+    //         left: this.props.left,
+    //         type: action
+    //       })
+    //     };
+    //
+    // fetch(`http://${window.location.hostname}:3000/api/move_twos`, config).then(r=> r.json())
 
 
       break;
@@ -157,7 +185,7 @@ class SecondPlayer extends React.Component {
         }
         // this.props.dispatch(action)
 
-         config = {
+         let config = {
           method: 'POST',
           headers: {
           'Accepts': 'application/json',
